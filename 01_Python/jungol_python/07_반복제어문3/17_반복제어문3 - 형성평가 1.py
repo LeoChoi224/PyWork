@@ -1,0 +1,17 @@
+# 반복제어문3 - 형성평가 1
+# https://jungol.co.kr/problem/9341?cursor=MTYsNywxNw==
+
+
+n = int(input())
+
+for i in range((n + 1) // 2):
+    for j in range(0, n):
+        if j <= i:
+            print('*', end='')
+    print()
+for i in range(n // 2):
+    for j in range((n // 2) - i, 0, -1):
+        print('*', end='')
+    print()
+
+  

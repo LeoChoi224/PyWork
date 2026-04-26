@@ -1,0 +1,1 @@
+source /Users/leo/LeoData/MyCode/KoreaITAcademy/LangChain/.venv/bin/activate
