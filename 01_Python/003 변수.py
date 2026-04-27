@@ -73,7 +73,7 @@ print(int(True))
 #      finally,  for, from,  global,  if,  import,  in,  lambda,  nonlocal,  
 #      not,  or,  pass,  raise,  return,  try,  while,  with, yield
 
-# 🟦 del() : 변수 제거
+# 🟦 del() : 변수 제거 # 사용할 일 거의 없음
 name = "John"
 print(name, type(name))
 
@@ -86,7 +86,7 @@ b = 20
 c = 30
 print(a, b, c)
 
-a, b, c = 100, 200, 300
+a, b, c = 100, 200, 300 # 튜플
 print(a, b, c)
 
 # 🟦 기존의 변수값 증감...
@@ -112,7 +112,7 @@ print('a =', a)
 # TypeError: 'b' is an invalid keyword argument for print()
 # print(b = 20) # 파이썬은 대입연산자 결과값이 없다.
 
-# :=  ← walrus 연산자.
+# :=  ← walrus 연산자. # 가급적 사용 x
 #  식 안에서 변수에 값을 대입하면서 동시에 사용할수 있게 함.
 print(b := 20)
 

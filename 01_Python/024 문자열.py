@@ -14,7 +14,7 @@ for d in [
     # lower() : 문자열을 전부 소문자로 만드는 함수
 
     str1 := "Apple",
-    (str1.upper(), str1.lower()), # 리턴값이 있기 때문에 원본 변화 없음
+    (str1.upper(), str1.lower()), # 리턴값이 있기 때문에 원본 변화 없음⭐️
     str1, # 원본 변경 안함
 
     "Car" == "car",  # 대문자와 소문자는 다르다!
