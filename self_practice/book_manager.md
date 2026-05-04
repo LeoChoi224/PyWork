@@ -319,10 +319,9 @@ SELECT * FROM book WHERE title LIKE %s
 ```python
 keyword = f"%{keyword}%"
 ```
-
 ---
 
-### 도전 2: 재고 부족 도서 조회
+### 도전 2: 재고 부족 도서 조회r
 
 메뉴에 `[6] 재고 부족 도서 조회`를 추가하세요.
 

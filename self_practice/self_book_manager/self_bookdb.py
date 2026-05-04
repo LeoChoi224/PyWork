@@ -1,4 +1,4 @@
-
+import logging
 from datetime import datetime
 import pymysql
 
@@ -43,59 +43,65 @@ class BookDB:
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8            
             """ 
         cursor.execute(sql)
+        
     # DML 구문 실행
-    def execute(self, sql, params=None):
-
+    def execute(self, sql, *args):
         last_row_id = -1
+        
         try:
             cursor = self.conn.cursor()
 
-            cursor.execute(sql, params)
+            cursor.execute(sql, args)
             self.conn.commit()
+            
+            row_count = cursor.rowcount
             last_row_id = cursor.lastrowid
-
         except Exception as e:
-            print(e)
+            logging.error(e.__class__.__name__, e)
         finally:
             cursor.close()
-            return last_row_id
+            return last_row_id, row_count
 
     # SELECT - 1개의 row 리턴 (dict 로 리턴)
-    def select_one(self, id):
-        sql = "SELECT * FROM book WHERE id = %s"
-        result = self.cursor.execute(sql, id)
-
-        if result == -1:
-            raise ValueError("ERR-3]ID오류 존재하지 않는 id:", id)
-            
-        print("id\ttitle\tauthor\tprice\tstock\tyear\ttime")
-        print("-" * 30)
-        print(f"{result['id']} | {result['title']} | {result['author']} | {result['price']} | {result['stock']} | {result['published_year']} | {result['regDate']}")
+    def select_all(self, sql, *args):
+        result = None
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(sql, args)
+            result = cursor.fetchone()
+        except Exception as e:
+            logging.error(e.__class__.__name__, e)
+        finally:
+            cursor.close()
+            return result
+        # print("id\ttitle\tauthor\tprice\tstock\tyear\ttime")
+        # print("-" * 30)
+        # print(f"{result['id']} | {result['title']} | {result['author']} | {result['price']} | {result['stock']} | {result['published_year']} | {result['regDate']}")
 
 
     # SELECT - 전체 row 불러오기
-    def select_all(self):
+    def select_all(self, sql, *args):
+        result = None
         try:
             cursor = self.conn.cursor()
-
-            sql = "SELECT * FROM book"
-            cursor.execute(sql)
-            result = cursor.fetchall() # 결과값 전체를 리스트[딕트{}, ...]
-
-            print("id\ttitle\tauthor\tprice\tstock\tyear\ttime")
-            for row in result:
-                print("-" * 30)
-                print(f"{result['id']} | {result['title']} | {result['author']} | {result['price']} | {result['stock']} | {result['published_year']} | {result['regDate']}")
+            cursor.execute(sql, args)
+            result = cursor.fetchall() # -> list[dict]
 
         except Exception as e:
-            print(e)
+            logging.error(e.__class__.__name__, e)
         finally:
             cursor.close()
+            return result
+            # print("id\ttitle\tauthor\tprice\tstock\tyear\ttime")
+            # for row in result:
+            #     print("-" * 30)
+            #     print(f"{result['id']} | {result['title']} | {result['author']} | {result['price']} | {result['stock']} | {result['published_year']} | {result['regDate']}")
 
+        
     # INSERT
     def insert(self, title, author, price, stock, published_year):
         sql = "INSERT INTO book (title, author, price, stock, published_year, regDate) VALUES (%s, %s, %s, %s, %s, %s)"
-        self.cursor.execute(sql, (
+        self.execute(sql, (
             title,
             author,
             price,
@@ -109,7 +115,7 @@ class BookDB:
     def update(self, title, author, price, stock, published_year, id):
         result = None
         sql = "UPDATE book SET title=%s, author=%s price=%s, stock=%s, published_year=%s, regDate=%s WHERE id = %s"
-        self.cursor.execute(sql, (
+        self.execute(sql, (
             title,
             author,
             price,
@@ -122,7 +128,7 @@ class BookDB:
     # DELETE
     def delete(self, id):
         sql = "DELETE FROM book WHERE id = %s"
-        result = self.cursor.execute(sql, id)
+        result = self.execute(sql, id)
 
         if result == -1:
                 raise ValueError("ERR-3]ID오류 존재하지 않는 id:", id)

@@ -1,5 +1,5 @@
-from book import Book
-from bookdb import BookDB
+from self_practice.self_book_manager.self_book import Book
+from self_practice.self_book_manager.self_bookdb import BookDB
 from dotenv import load_dotenv
 import os
 
@@ -53,7 +53,7 @@ def append_product():
     
 
 # 도서 목록 열람하기
-def show_book_list():
+def show_book_list():4
     print("모든 도서 목록을 출력합니다.")
     db.select_all()
 
