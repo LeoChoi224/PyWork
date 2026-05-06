@@ -4,11 +4,31 @@
 
 SELECT * FROM t_exam01;  -- 일단 함 보자
 SELECT * FROM t_credit;
+SELECT * FROM t_student;
+SELECT * FROM t_customer;
+SELECT * FROM t_gift;
 
 -- MySQL	
+SELECT
+    s.name "학생이름", e.total "점수", c.grade "학점"
+FROM
+    t_student s, t_exam01 e, t_credit c
+WHERE
+    s.studno = e.studno AND e.total BETWEEN c.min_point AND c.max_point
+ORDER BY
+    c.grade ASC
+;
 
 -- ANSI
-
+SELECT
+    s.name "학생이름", e.total "점수", c.grade "학점"
+FROM
+    t_student s
+    JOIN t_exam01 e ON s.studno = e.studno
+    JOIN t_credit c ON e.total BETWEEN c.min_point AND c.max_point
+ORDER BY
+    c.grade ASC
+;
 
 --  #6204) 연습
 -- t_customer 와 t_gift 테이블 join : 
@@ -19,9 +39,23 @@ SELECT * FROM t_credit;
 -- 상품명(g_name)을 출력하세요
 
 -- MySQL	
+SELECT 
+    c.c_name AS '고객명', c.c_point AS 'POINT', g.g_name AS '상품명'
+FROM
+    t_customer c, t_gift g
+WHERE
+    g.g_name = '산악용자전거' AND c.c_point >= g.g_start
+;
 
 -- ANSI
-
+SELECT 
+    c.c_name AS '고객명', c.c_point AS 'POINT', g.g_name AS '상품명'
+FROM
+    t_customer c
+    JOIN t_gift g ON g.g_name = '산악용자전거'
+WHERE
+    c.c_point >= g.g_start
+;
 
 -- #6205) 연습
 -- t_emp2, t_post 테이블 join : 
