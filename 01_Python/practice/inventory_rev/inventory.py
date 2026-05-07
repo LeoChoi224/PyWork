@@ -68,7 +68,7 @@ if __name__ == "__main__":
         # print(Inventory(name='aaa', price=10000, stock=10))
         # print(Inventory(name='      ', price=10000, stock=10))
         # print(Inventory(name='bbb', price=-2, stock=10))
-        # print(Inventory(name='bbb', price="홍목", stock=10))
+        # print(Inventory(name='bbb', price="홍묵", stock=10))
         print(Inventory(name='bbb', price=-100, stock="정준"))
     except ValidationError as e:
         print('💥 Error:', e)
