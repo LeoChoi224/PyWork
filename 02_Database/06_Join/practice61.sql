@@ -2,12 +2,6 @@
 -- t_student 테이블과 t_exam01 시험성적 테이블, t_credit 학점 테이블을 조회하여 
 -- 학생들의 이름과 점수와 학점을 출력하세요
 
-SELECT * FROM t_exam01;  -- 일단 함 보자
-SELECT * FROM t_credit;
-SELECT * FROM t_student;
-SELECT * FROM t_customer;
-SELECT * FROM t_gift;
-
 -- MySQL	
 SELECT
     s.name "학생이름", e.total "점수", c.grade "학점"
@@ -67,9 +61,32 @@ WHERE
 
 
 -- MySQL	
+SELECT
+    e.name "이름",
+    (year(now()) - year(e.birthday)) + 1 "현재나이",
+    e.post "현재직급",
+    p.post "예상직급"
+FROM
+    t_emp2 e, t_post p
+WHERE
+    (year(now()) - year(e.birthday)) + 1 BETWEEN p.s_age AND p.e_age
+ORDER BY
+    e.birthday DESC
+;
 
 -- ANSI
-
+SELECT
+    e.name "이름",
+    (year(now()) - year(e.birthday)) + 1 "현재나이",
+    e.post "현재직급",
+    p.post "예상직급"
+FROM
+    t_emp2 e
+    JOIN t_post p
+        ON (year(now()) - year(e.birthday)) + 1 BETWEEN p.s_age AND p.e_age
+ORDER BY
+    e.birthday DESC
+;
 
 
 -- #6210)
@@ -78,11 +95,17 @@ WHERE
 -- 단 자신보다 입사일이 빠른 사람수를 오름차순으로 출력하세요
 -- hint: left outer 사용 
 --         / 그룹함수 사용
-
-
-
-
-
-
-
-
+SELECT
+    p1.profno "교수번호",
+    p1.name "교수명",
+    p1.hiredate "입사일",
+    count(p2.NAME) "빠른사람"
+FROM
+    t_professor p1
+    LEFT OUTER JOIN t_professor p2
+        ON p1.hiredate > p2.hiredate
+GROUP BY
+    교수번호, 교수명, 입사일
+ORDER BY
+    p1.hiredate ASC
+;
