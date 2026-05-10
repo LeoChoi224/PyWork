@@ -13,3 +13,5 @@ SELECT * FROM test_movie;
 SELECT * FROM test_book;
 
 DESC test_movie;
+
+SELECT deptno, AVG(bonus) FROM t_professor GROUP BY deptno;

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+
+<link rel="stylesheet" href="CSS/styles.css">
+
+<style>
+    /* selector {property:value; property:value; ...} */
+
+    body {background-color: powderblue;}
+    h1 {color: blue;}
+    p {color: red;}
+
+    #p01 {  /* id=p01 인 element 를 선택 (id selector)*/
+        background-color: antiquewhite;
+    }
+
+    .error {  /* class 에 error 를 갖고 있는 element (class selector) */
+        background-color: darkorange;
+    }
+
+</style>
+
+
+
+</head>
+
+<!--
+CSS : Cascading Style Sheets.
+ HTML elements 들이 화면상에 어떻게 표시될지 기술함.
+ 
+적용방식 3가지
+1. Inline : 시작태그에 style 속성과 함께 기술
+2. Internal : <style> 태그로 기술
+3. External : 외부 파일 (*.css) 로 만들고 연결
+-->
+
+<body>
+
+<h1>This is a heading1</h1>
+<p>This is a paragraph1</p>
+<h1>This is a heading2</h1>
+<p style="color: orange;">This is a paragraph2</p>
+
+<hr>
+
+<h1>This is a heading3</h1>
+<p>This is a paragraph3</p>
+<p id="p01">I am different1</p>
+
+<hr>
+
+<p>This is a paragraph4</p>
+<p>This is a paragraph5</p>
+<p class="error">I am different2.</p>
+<p>This is a paragraph6</p>
+<p class="error">I am different too3.</p>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

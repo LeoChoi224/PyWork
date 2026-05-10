@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Table1</title>
+
+<style>
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+table {
+	width: 100%;
+}
+
+td {
+	padding: 15px;
+}
+
+</style>
+
+</head>
+<!--
+HTML 문서에 '표' 를 나타내기 위한 태그로 <table> 제공
+다음 태그들과 같이 사용된다.
+<tr> : table row
+<td> : table data
+<th> : table header
+	실제 내용을 담는 태그는 td, th 다.
+<thead> : table header 들을 담는 태그
+<tbody> : table body 들을 담는 태그
+ 
+
+정렬관련 (td, th 에 적용)
+좌우 정렬: text-align
+세로 정렬: vertical-align
+ 
+ -->
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align: center;">4</td>
+			<td style="background-color: yellow;">5</td>
+			<td>6</td>
+		</tr>
+		<tr style="height: 150px;">
+			<td style="vertical-align: bottom;">7</td>
+			<td>8</td>
+			<td style="vertical-align: top;">9</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+		</tr>
+	</tbody>
+
+</table>
+
+<hr>
+
+<table>
+	<thead>
+		<tr>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="3">4</td>
+			<td colspan="2">5</td>
+			<!-- <td>6</td> -->
+		</tr>
+		<tr>
+			<!-- <td>7</td> -->
+			<td>8</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<!-- <td>10</td> -->
+			<td>11</td>
+			<td>12</td>
+		</tr>
+	</tbody>
+
+</table>
+
+<hr>
+
+<table>
+	<thead>
+		<tr>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td colspan="2" rowspan="3">8</td>
+			<!-- <td>9</td> -->
+		</tr>
+		<tr>
+			<td>10</td>
+			<!-- <td>11</td> -->
+			<!-- <td>12</td> -->
+		</tr>
+	</tbody>
+
+</table>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

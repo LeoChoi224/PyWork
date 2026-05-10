@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 브라우저쪽에 전달하는 내용 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML기초</title>
+</head>
+<body>
+    <!-- body: 화면에 렌더링 되는 내용 -->
+    <h1>기본 Tag</h1>
+    <h2>제목2단계</h2>
+    <h6>제목6단계</h6>
+
+    <p>문단 paragraph</p>
+    <p>문단 paragraph</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed eros volutpat, accumsan nisl cursus, facilisis est. Sed quis nunc ut eros ornare auctor sed non lacus. Donec eu neque ut sapien venenatis venenatis sed vel quam. Nulla ut metus et ipsum posuere egestas. Maecenas ac hendrerit risus. Sed ultrices est id nisi congue ultrices. Vestibulum eget velit sed arcu ornare auctor.</p>
+    <p>Lorem ipsum dolor sit amet,
+        <br><br><br>
+        consectetur adipiscing elit. Maecenas sed eros volutpat, accumsan nisl cursus, facilisis est. Sed quis nunc ut eros ornare auctor sed non lacus. Donec eu neque ut sapien venenatis venenatis sed vel quam. Nulla ut metus et ipsum posuere egestas. Maecenas ac hendrerit risus. Sed ultrices est id nisi congue ultrices. Vestibulum eget velit sed arcu ornare auctor.</p>
+
+    <!-- Entity(엔티티):
+    HTML 코드는 < ~~ > 형식의 태그들로 구성되어 있다 보니
+    < 와 > 등을 나타낼때는 특수한 방법을 사용해야 한다.
+    바로 & 로 시작 하는 엔티티(Entity) 라 불리우는 것들입니다
+    
+    HTML 에는 수~많은 엔티티가 존재하지만.  다음6개는 일단 필수적으로 암기합시다
+    
+        non-breaking space  &nbsp;
+    <   less than           &lt;    
+    >   greater than        &gt;    
+    &   ampersand           &amp;  
+    "   double quotation mark   &quot;
+    '   single quotation mark (apostrophe)  &apos;
+    -->
+    <p> &lt;a&gt; 는 링 &nbsp&nbsp&nbsp&nbsp&nbsp크다 </p>
+
+    <hr>
+
+    <aaa bbb="ccc" jjj="uuu" style="color:red; background-color: yellow;" title="툴팁이당">이것이 aaa 다</aaa>
+    
+    <hr>
+    <h1>div span 컨테이너</h1>
+    <div>div1</div>
+    <div>div2</div>
+    <div style="border: 3px solid green">div3
+        <div style="border: 2px dotted red">hello</div>
+        <div>안녕</div>
+        <p>div 안의 p</p>
+    </div>
+
+    <span style="border: 2px solid blue">span1</span>
+    <span style="border: 2px solid blue">span2</span>
+    <span style="border: 2px solid blue">span3</span>
+
+    <!-- 컨테이너 역할 span / div :
+        결정적 차이점은
+            div 는 display:block 속성
+            span 은 display:inline 속성
+    -->
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
