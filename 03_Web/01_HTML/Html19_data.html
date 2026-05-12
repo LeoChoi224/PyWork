@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>data-* attribute</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<!--
+    ※ JavaScript 를 배운 후 진행 ※ 
+
+    data-* attribute 구문
+        <element data-*="somevalue">
+
+    data-* attribute 는
+        페이지에 custom data 등을 저장하는 용도로 사용.
+        element 에 emebed 된 데이터
+        JavaScript 와 연동하여 다양한 사용자 편의성 증가한 인터페이스 구현
+            (jQuery, BootStrap 등에서도 많이 사용함)
+
+    data-* attribute 형식
+        'data-' 로 시작하며 이후 최소 1글자는 붙어야 한다.  대문자 안됨.
+
+    브라우저에선, data-* attirbute 는 무시된다.
+
+-->
+<script>
+  function doData() {
+    // element 나 attribute 의 이름은 자유롭게 작명하고 사용 가능하다.
+    document.getElementById("result1").innerHTML
+      // TODO
+    ;
+  }
+
+  function showDetails(animal) {
+    // TODO
+    document.getElementById("result1").innerHTML
+      // TODO
+    ;
+  }
+
+  // data-animal-type 값 꺼내기
+  $(document).ready(function () {
+    let result = []
+    
+    // TODO
+
+  });
+
+</script>
+
+<body onload="doData()">
+  <h2>data-* attribute</h2>
+  
+  <!-- TODO -->
+
+  <hr>
+  [결과1] : <span id="result1"></span>
+  <hr>
+  [결과2] : <span id="result2"></span>
+  <hr>
+
+  <ul>
+    <li onclick="showDetails(this)" id="owl" TODO>Owl</li>
+    <li onclick="showDetails(this)" id="salmon" TODO>Salmon</li>
+    <li onclick="showDetails(this)" id="tarantula" TODO>Tarantula</li>
+  </ul>
+  <hr>
+
+  <div class="container mt-3">
+    <h2>Activate Modal with JavaScript</h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-primary" id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" TODO>×</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Modal body..
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" TODO>Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+  <div class="container mt-3">
+
+    <h2>Carousel</h2>
+    <div id="myCarousel" class="carousel slide" TODO>
+
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li TODO class="active"></li>
+        <li TODO></li>
+        <li TODO></li>
+      </ul>
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../img/la.jpg" alt="Los Angeles" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="../img/chicago.jpg" alt="Chicago" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="../img/ny.jpg" alt="New York" width="1100" height="500">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#myCarousel" TODO>
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" TODO>
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+
+  </div>
+
+
+</body>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</html>

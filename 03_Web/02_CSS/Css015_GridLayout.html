@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grid Layout</title>
+
+	<style>
+		.grid-container {
+			background-color: #2196F3;
+			padding: 10px;
+
+			/* TODO */
+		}
+
+		.grid-item {
+			background-color: rgba(255, 255, 255, 0.8);
+			border: 1px solid rgba(0, 0, 0, 0.8);
+			padding: 20px;
+			font-size: 30px;
+			text-align: center;
+		}
+
+	</style>
+</head>
+<!--
+  CSS Grid Layout
+	
+		'float' 나 'position' 과 같은 번거로움(?) 없이
+		간편하게 '행(row) x 열(column)' 방식의 grid-based 레이아웃 시스템
+
+		display: grid  
+		
+	  https://www.w3schools.com/css/css_grid.asp
+	  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout	  
+-->
+
+<body>
+    <h2>display: grid</h2>
+	<div class="grid-container">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+		<div class="grid-item">5</div>
+		<div class="grid-item">6</div>
+		<div class="grid-item">7</div>
+		<div class="grid-item">8</div>
+		<div class="grid-item">9</div>
+	</div>
+	<hr>
+
+    <h2>column-gap, row-gap</h2>
+	<div class="grid-container" style="TODO">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+		<div class="grid-item">5</div>
+		<div class="grid-item">6</div>
+		<div class="grid-item">7</div>
+		<div class="grid-item">8</div>
+		<div class="grid-item">9</div>
+	</div>
+	<hr>
+
+    <h2>gap</h2>
+	<div class="grid-container" style="TODO"> <!-- gap: 행간격 열간격 -->
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+		<div class="grid-item">5</div>
+		<div class="grid-item">6</div>
+		<div class="grid-item">7</div>
+		<div class="grid-item">8</div>
+		<div class="grid-item">9</div>
+	</div>
+	<hr>
+
+
+	<img src="https://www.w3schools.com/css/grid_lines.png" width="100%">
+	<br>
+
+    <h2>grid-column-start grid-column-end grid-row-start grid-row-end</h2>
+	<div class="grid-container" style="">
+		<div class="grid-item" style="TODO">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item" style="TODO">3</div>
+		<div class="grid-item">4</div>
+		<div class="grid-item">5</div>
+		<div class="grid-item">6</div>
+		<div class="grid-item">7</div>
+	</div>
+	<hr>
+
+    <h2>grid-template-columns: auto</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>grid-template-columns: px</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>grid-template-rows</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>justify-content: space-evenly</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>justify-content: space-around</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>justify-content: space-between</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>justify-content: center</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>justify-content: start</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>align-content: center</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>align-content: space-evenly</h2>
+    <div class="grid-container" 
+        style="TODO">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>grid-column: start / end</h2>
+    <div class="grid-container" 
+        style="grid-template-columns: auto auto auto auto;">
+        <div class="grid-item" style="TODO">1</div> <!-- line1 ~ line4 차지 -->
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>grid-column: start / span</h2>
+    <div class="grid-container" style="grid-template-columns: auto auto auto auto;">
+        <div class="grid-item" style="TODO">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>
+
+    <h2>grid-area</h2>
+    <div class="grid-container" style="">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item" style="TODO">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <hr>	
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
