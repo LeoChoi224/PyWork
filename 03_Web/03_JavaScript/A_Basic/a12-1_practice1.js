@@ -10,7 +10,8 @@ I Am A Programmer
 */
 
 const letterCapitalize = function(text) {
-    // TODO
+    
+
 };
 
 let value = "i am a PROGRAMMER";

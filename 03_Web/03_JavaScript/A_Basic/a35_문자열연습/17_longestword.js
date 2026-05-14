@@ -10,10 +10,8 @@ const input = [
 ]
 
 function longestWord(str){
-
-    // TODO : 이 함수내의 코드만! 작성하세요
-    // 리턴값: string
-
+    return str.trim().split(/\s+/) // 공백 기준 스플릿
+    .reduce((prev, cur) => prev.length > cur.length ? prev : cur)
 }
 
 input.forEach(e => console.log(longestWord(e)));

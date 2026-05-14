@@ -12,7 +12,11 @@
 console.log('[every]')
 let arr1 = [1, 30, 39, 29, 10, 13];
 
-// TODO
+// 배열의 모든 값들이 40 미만인가?
+console.log(arr1.every(e => e < 40));  // 6번 호출
+
+// 배열의 모든 값들은 홀수인가?
+console.log(arr1.every(e => e % 2 == 1));  // 2번 호출
 
 /**********************************************
  * 배열.some(판별함수)
@@ -27,12 +31,14 @@ let arr1 = [1, 30, 39, 29, 10, 13];
  * ES5 소개
  * https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some
  */
-// console.log('-'.repeat(20));
-// console.log('[some()]');
-// arr1 = [1, 2, 3, 4, 5];
+console.log('-'.repeat(20));
+console.log('[some()]');
+arr1 = [1, 2, 3, 4, 5];
 
+// 배열값중에 짝수가 있습니까?
+console.log(arr1.some(e => e % 2 == 0)) // true, 두번 호출
 
-// TODO
+// 배열값중에 10 보다 큰 값이 있습니까?
+console.log(arr1.some(e => e > 10)) // false
 
-console.log("\n[프로그램 종료]", '\n'.repeat(20));
 

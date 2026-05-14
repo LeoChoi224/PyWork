@@ -52,7 +52,8 @@ console.log('삭제후', person);
 // console.log('-'.repeat(20));
 // console.log('[object 의 value]');
 
-// TODO
+
+
 
 /****************************************************
  *  object method 와 this

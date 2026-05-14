@@ -11,14 +11,58 @@
  * https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
  */
 
- let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
- // 위 배열에서 3의배수만 걸러진 배열을 구하려면?
- //          [1, 2, 3,  4,  5,  6,  7,  8,  9]
- // 3의배수?  x  x  ↓   x   x   ↓   x   x   ↓
- //          [      3           6           9]
+// 위 배열에서 3의배수만 걸러진 배열을 구하려면?
+//          [1, 2, 3,  4,  5,  6,  7,  8,  9]
+// 3의배수?  x  x  ↓   x   x   ↓   x   x   ↓
+//          [      3           6           9]
 
 
- // TODO
+console.log(array.filter(e => e % 3 == 0));
 
-console.log("\n[프로그램 종료]", '\n'.repeat(20));
+// --------------------------------------------
+
+let todos = [
+    {
+        id: 1,
+        text: "자바스크립트 입문",
+        done: true
+    },
+    {
+        id: 2,
+        text: "함수 배우기",
+        done: true
+    },
+    {
+        id: 3,
+        text: "객체와 배열 배우기",
+        done: true
+    },
+    {
+        id: 4,
+        text: "배열 내장함수 배우기",
+        done: false
+    }
+];
+
+//
+
+// done 값이 false 인 것만 뽑아내려면 (filtering!)
+// ==> [ { id: 4, text: '배열 내장함수 배우기', done: false } ]
+
+
+// for ~ of 사용 
+arr = [];
+for (todo of todos) {
+    todo.done || arr.push(todo)
+};
+console.log(arr);
+
+// forEach 사용
+arr = [];
+todos.forEach(todo => todo.done || arr.push(todo));
+console.log(arr);
+
+// filter 
+console.log(todos.filter(todo => todo.done === false));

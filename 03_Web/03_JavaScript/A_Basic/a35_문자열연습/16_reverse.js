@@ -10,8 +10,7 @@ const input = [
 ]
 
 function reverse(str){
-    // TODO : 이 함수내의 코드만! 작성하세요
-    // 리턴값: string
+    return str.split("").reverse().reduce((prev, cur) => prev.concat("", cur))
 }
 
 input.forEach(e => console.log(reverse(e)));

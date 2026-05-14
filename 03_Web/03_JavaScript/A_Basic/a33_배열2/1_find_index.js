@@ -21,7 +21,12 @@
 let superheroes = ["아이언맨", "캡틴", "토르", "헐크"]
 let index
 
-// TODO
+index = superheroes.indexOf('토르');
+console.log(index);
+
+index = superheroes.indexOf('하석'); // -1
+console.log(index);
+
 
 //----------------------------------------------
 // findIndex(함수)
@@ -49,15 +54,21 @@ let todos = [
   }
 ];
 
-// TODO
+
+// id 가 3인 원소를 찾는다면?
 
 // findIndex(판별함수) : 배열 인텍스 리턴
-// TODO
+index = todos.findIndex(todo => todo.id === 3)
+console.log(index, todos[index]);
 
 //---------------------
 // find(판별함수) : 배열 원소 자체(값)를 리턴
 
-// TODO
+console.log(todos.find(todo => todo.id === 3));
 
-console.log("\n[프로그램 종료]", '\n'.repeat(20));
+console.log(todos.find((todo, i) => {
+    console.log(`💖 ${i}:`)
+    return todo.id === 3
+}));
+
 

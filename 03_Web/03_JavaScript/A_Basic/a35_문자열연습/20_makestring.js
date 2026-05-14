@@ -11,10 +11,10 @@ const input = [
 ]
 
 function makeString(str){
-
-    // TODO : 이 함수내의 코드만! 작성하세요
-    // 리턴값: string
     
+    return str.trim().split(/\s+/) //  공백 기준 스플릿
+        .map(word => word[0]) // 첫번째 글자만 배열로
+        .reduce((prev, cur) => prev.concat("", cur))
 }
 
 input.forEach(e => console.log(makeString(e)));

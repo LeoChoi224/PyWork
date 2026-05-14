@@ -15,8 +15,7 @@ const input = [
 ]
 
 function shiftedDiff(first, second){
-    // TODO : 이 함수내의 코드만! 작성하세요
-    // 리턴값: 정수
+    return second.concat("", second).indexOf(first)
 }
 
 input.forEach(e => console.log(shiftedDiff(e[0], e[1])));

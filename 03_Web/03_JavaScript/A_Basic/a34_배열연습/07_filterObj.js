@@ -18,4 +18,3 @@ console.log(filterObj(students, '김'));
 //     { name: '김철수', score: [ 10, 20, 30 ] },
 //     { name: '김영희', score: [ 45, 78, 31 ] }
 // ]
-console.log("\n[프로그램 종료]", '\n'.repeat(20));

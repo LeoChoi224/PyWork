@@ -104,14 +104,16 @@ console.log(num1.toFixed(3));
 // toExponential() 메서드는 숫자를 지수 표기법으로 표기해 반환합니다.
 //  https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toExponential
 
-// TODO
+
+
 
 // toPrecision(n)
 //  Number 객체를 지정된 정밀도로 나타내는 문자열을 반환한다.
 //  n : 유효 자릿수
 // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision
 
-// TODO
+
+
 
 /****************************************
  * number 로 변환하는 방법 4가지
@@ -154,7 +156,8 @@ console.log(-"10");   // 10 number
 //  console.log('-'.repeat(20));
 //  console.log('Number 의 property, static 메소드');
 
-// TODO
+
+
 
 
 

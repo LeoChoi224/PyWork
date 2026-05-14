@@ -24,9 +24,9 @@ console.log(str.length);  // 4
 /******************************************
  * 문자열 인덱싱
  */
- console.log('-'.repeat(20));
- console.log('[문자열인덱싱]');
- str = "Hello World";
+console.log('-'.repeat(20));
+console.log('[문자열인덱싱]');
+str = "Hello World";
 console.log(str[0]);
 console.log(str[100]);
 
@@ -45,7 +45,7 @@ console.log(str);
  *  mutable : 데이터를 변경할수 있는 특성
  * 
  */
-	
+
 /******************************************
  *  문자열 안에서 문자열 찾기
  *  indexOf(), lastIndexOf(), search()
@@ -113,10 +113,11 @@ console.log(str.replace(/JAPAN/i, "Korean"));  // 정규표현식 대소문자 �
 console.log('-'.repeat(20));
 console.log("[대소문자 전환 toUpperCase(), toLowerCase()]");
 str = "Hello World!";
- 
+
 console.log(str);
 console.log(str.toUpperCase());
 console.log(str.toLowerCase());
+console.log(str);
 
 /*********************************
  * 문자열 연결 
@@ -126,7 +127,7 @@ console.log('-'.repeat(20));
 console.log("문자열 연결 concat()");
 str1 = "Hello";
 str2 = "World";
- 
+
 console.log(str1 + " " + str2);
 console.log(str1.concat(" ", str2));
 
@@ -151,7 +152,8 @@ console.log(`[${str.trim()}]`);
 // console.log('[문자열 앞/뒤로 패딩문자 추가]');
 // str = "5";
 
-// TODO
+
+
 
 
 
@@ -165,7 +167,8 @@ console.log(`[${str.trim()}]`);
 // console.log("[문자 코드 [ ], charAt(), charCodeAt()]");
 // str = "HELLO WORLD";
 
-// TODO
+
+
 
 /************************
  * 문자열 대소 비교   <- 파이썬 과 동일 (코드값 비교)
@@ -180,7 +183,7 @@ console.log("abcd" < "ABCD");
  */
 console.log('-'.repeat(20));
 console.log("[string ↔ array]");
-str = "2022-11-23"; 
+str = "2022-11-23";
 
 let arr = str.split("-"); // array 리턴
 console.log(arr);

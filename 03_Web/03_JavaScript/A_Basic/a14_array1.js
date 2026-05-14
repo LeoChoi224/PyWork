@@ -22,7 +22,8 @@
 
 // console.log('[왜 배열(array) 이 필요한가?]');
 
-// TODO
+
+
 
 
 /****************************************
@@ -51,7 +52,8 @@ console.log(arr1 == arr2);
 
 
 // 일반적으로 배열변수는 const 로 선언한다
-// TODO
+
+
 
 /********************************************
  * 배열 여부 판단 하기
@@ -145,6 +147,9 @@ console.log(fruits);
 fruits.splice(2, 3);
 console.log(fruits);
 
+console.log(fruits.splice(0, 1));
+console.log(fruits);
+
 // 주의! delete 를 사용하여 배열 원소 삭제 하지 말기
 // 이는 배열에 구멍(undefined hole) 을 만들게 된다.
 // delete 보다는 
@@ -202,7 +207,8 @@ console.log(fruits.includes("Lemon"));
 // console.log("[join()]");
 // console.log(cars);
 
-// TODO
+
+
 
 
 /******************************************
@@ -233,7 +239,8 @@ console.log(arr1.length); // 5
 // console.log("reverse()");
 // console.log(cars);
  
-// TODO
+
+
 
 /**********************************
  * 배열 정렬 sort()

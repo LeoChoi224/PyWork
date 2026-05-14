@@ -14,9 +14,10 @@ Object.freeze(data);   // 원본 변화 시키지 말기
 
 const countedSum = function(arr){
 
-    // TODO
+    
+
 
 }
 
 console.log(countedSum(data));
-console.log("\n[프로그램 종료]", '\n'.repeat(20));
+

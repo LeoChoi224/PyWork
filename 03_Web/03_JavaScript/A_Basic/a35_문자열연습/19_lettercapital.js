@@ -10,9 +10,9 @@ const input = [
 ]
 
 function letterCapitalize(str){
-
-    // TODO : 이 함수내의 코드만! 작성하세요
-    // 리턴값: string
+    return str.toLowerCase().trim().split(/\s+/) // 모ems 문자열 소문자로 변환 후 공백 기준 스플릿
+        .map(word => word.replace(word[0], word[0].toUpperCase())) // map()으로 첫번쨰 인덱스를 대문자로 변환 후 치환
+        .reduce((prev, cur) => prev.concat(" ", cur)) // 공백 기준 join
 }
 
 input.forEach(e => console.log(letterCapitalize(e)));

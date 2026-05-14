@@ -16,7 +16,7 @@ def shiftedDiff(words):
     first = words[0]
     second = words[1]
 
-    # return (first * 2).find(first)
+    # return (second * 2).find(first)
 
     cnt = 0
     for i in second:

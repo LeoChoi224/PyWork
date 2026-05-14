@@ -5,12 +5,13 @@ const data = [1, 2, 3, 5, 10, 20, 30, 40, 50, 60];
 
 const countBiggerThan = function(arr, number) {
 
-  // TODO
+  
+
 
 }
 console.log(countBiggerThan(data, 10)); // 5
 
-console.log("\n[프로그램 종료]", '\n'.repeat(20));
+
 
 
   

@@ -9,7 +9,8 @@ Object.freeze(students); // ※ 원본 배열 students 는 건드리지 말고 �
 
 function getTotal(data){
 
-    // TODO
+    
+
 
 }
 console.log(getTotal(students));
@@ -21,4 +22,3 @@ console.log(getTotal(students));
 //     { name: '김영희', total: 154 },     
 //     { name: '조수현', total: 266 }      
 // ]    
-console.log("\n[프로그램 종료]", '\n'.repeat(20));
