@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Output</title>
+</head>
+<!-- 
+JavaScript 가  출력하는 4가지 방법.
+1. HTML element 에 출력  ← innerHTML 사용
+2. HTML 에 직접 출력 ← document.write() 사용
+3. alert 팝업 ← window.alert() 사용
+4. 브라우저 console 에 출력, ← console.log().
+ -->
+<body>
+
+<script>
+// 이 시점에서 id='demo' 요소는 아직 로딩 안됨!
+document.getElementById('demo').innerHTML = '로딩중 실행될까요?';
+
+function showRandom(){
+	document.getElementById('demo').innerHTML = Math.floor(Math.random() * 10 + 1);
+}
+
+</script>
+
+
+<h2 onclick="showRandom();">클릭하세요</h2>
+<p id="demo">1~10까지 난수</p>
+<script>
+	// document.getElementById('demo').innerHTML = '로딩중 실행될까요?';
+/**
+ * ⭐️ script element 안의 JS코드는 element 로딩이 완료된 직후 '실행'
+ * ⭐️ inline 으로 작성된 JS 코드는 해당 event 발생시 실행.
+ * ⭐️ 무엇을 '실행' 시키는 건가 주목!
+ * 	- ex) 동작 실행?
+ * 	- ex) 함수정의 실행?
+ * 	- ex) 이벤트 함수등록 실행? or 이벤트 함수 실행?
+ * /
+
+</script>
+
+<br>
+
+<script>
+// 아래 코드는 '페이지가 로딩'될때 실행
+// TODO
+
+</script>
+
+<p onclick="TODO">그러나 이것을 클릭하면..</p>
+
+<br>
+
+<h2 onclick="alert('지원이는 \n 휴가중')">클릭하면 팝업이..</h2>
+
+<br>
+
+
+<h2 onclick="showNumber(5)">클릭하고 console에서 확인해보자</h2>
+
+<script>
+
+function showNumber(num){
+	let i, j;
+	for(i = 0; i < num; i++){
+		j = i * 2;
+		console.log(`🐶 i=${i}, j=${j}`);
+	}
+}
+
+/*
+	JavaScript 는 브라우저에서 실행 (Client side script) 이기 때문에
+	브라우저에서 디버깅도 가능하다.
+	크롬의 경우 Sources 탭에서 Scources 선택하고, breakpoint 추가한 뒤에 실행 가능.
+
+	
+	클라이언트 쪽(브라우저)에서 정상적인 동작이 안된다면
+	
+	1. 우선 '소스' 확인.  제대로 
+	2. console 창에서 에러 (예외) 발생여부 확인하기
+	3. source 창에서 디버깅
+
+	Step Over: 다음 단계 진행 (한단계씩)
+	Resume: 다음 breakpoint (혹은 코드 종료) 까지 진행
+	Step Into: 호출할 함수 안으로 진입
+	Stop Out: 호출중인 함수가 리턴할때까지 진행.
+
+	디버깅 하면서 관찰할 것들
+	1. 내가 의도한대로 변수의 값들이 변경되는가?
+	2. 내가 의도한대로 코드 흐름이 진행되는가?
+	3. 내가 의도한대로 함수 호출이 진행되는가?
+
+	★ 프로그래밍의 실력은 곧 디버깅 실력이다 ★
+
+*/
+
+</script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

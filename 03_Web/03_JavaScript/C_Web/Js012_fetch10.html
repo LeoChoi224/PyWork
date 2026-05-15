@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>httpbin</title>
+	<style>
+		div#btnBox {
+			position: fixed;
+			right: 0px;
+			top: 0px;
+			margin: 4px;
+			border: 1px solid orange;
+			width: 180px;
+		}
+
+		div#btnBox * {
+			margin: 2px;
+		}
+	</style>
+</head>
+<!--
+
+-->
+
+<body>
+	<h1>httpbin</h1>
+	<div id="btnBox">
+		<button type="button" onclick="test1()">1 GET</button><br>
+		<button type="button" onclick="test2()">2 method</button><br>
+		<button type="button" onclick="test3()">3 get + query string</button><br>
+		<button type="button" onclick="test4()">4 post + query string</button><br>
+		<button type="button" onclick="test5()">5 post + json</button><br>
+		<button type="button" onclick="test6()">6 error</button><br>
+		<button type="button" onclick="test7()">7 file</button><br>
+		<button type="button" onclick="test8()">8 delay</button><br>
+	</div>
+
+	<hr>
+	<form name="frm">
+		method:
+		<select name="method">
+			<option value="get" selected>GET</option>
+			<option value="post">POST</option>
+			<option value="patch">PATCH</option> <!-- chrome 에선 PATCH 는 CORS 막힘-->
+			<option value="put">PUT</option>
+			<option value="delete">DELETE</option>
+		</select>
+		<br>
+		header:
+
+		body:
+		<textarea name="body"></textarea>
+		<br>
+
+		file(upload1):
+		<input type="file" name="upload1"><br>
+		file(upload2):
+		<input type="file" name="upload2"><br>
+
+		<h2>결과</h2>
+		<textarea name="response" cols="120" rows="20"></textarea>
+		<h2>에러</h2>
+		<textarea name="error" cols="120" rows="20"></textarea>
+	</form>
+
+	<hr>
+
+
+
+	<script>
+		let httpbin_url = "https://httpbin.org";
+		let frm = document.forms['frm'];
+
+		// 일반적인 get 방식
+		function test1() {
+			let url = `${httpbin_url}`;  // TODO
+			fetch(url)
+				// TODO
+		}
+
+		// 일반적인 post 방식
+		function test2() {
+			let method; // TODO
+			url = `${httpbin_url}`;  // TODO
+			// fetch(url, {method:...})
+			fetch(url)  // TODO
+			.then(response => response.text())
+			.then(text => showResult(text));
+		}
+
+		// GET 방식 + query string
+		function test3() {
+			qryStr = '';
+			url = `${httpbin_url}/get`;  // TODO
+			fetch(url)
+			.then(response => response.text())
+			.then(text => showResult(text));
+		}
+
+		// POST + query string
+		function test4() {
+			qryStr = 'name=John&age=72';
+			url = `${httpbin_url}/post`;
+			fetch(url, {
+				// TODO
+			})
+			.then(response => response.text())
+			.then(text => showResult(text));
+		}
+
+		// POST + json 데이터
+		function test5() {
+			obj = { name: 'John', age: 72 };
+			url = `${httpbin_url}/post`;
+			fetch(url, {
+				method: "POST",
+				// TODO
+			})
+			.then(response => response.text())
+			.then(text => showResult(text));
+		}
+
+		// error
+		function test6() {
+			qryStr = 'name=John&age=72';
+			url = `${httpbin_url}/get`;
+			fetch(url)   //TODO  // GET 방식에선 body 데이터를 담을수 없다.
+			.then(response => response.text())
+			.then(text => showResult(text))
+			// TODO
+		}
+
+		// 파일 업로드
+		function test7() {
+			// TODO
+			
+			url = `${httpbin_url}/post`;   // post, put 둘다 가능
+			fetch(url, {
+				method: 'post',
+				// TODO
+			})
+			.then(response => response.text())
+			.then(text => showResult(text))
+			.catch(error => showError(error))
+		}
+
+		// 비동기 체험
+		function test8() {
+			// TODO
+		}
+
+		function clear() {
+			document.forms['frm']['response'].value = "";
+			document.forms['frm']['error'].value = "";
+		}
+		function showResult(text) {
+			clear();
+			document.forms['frm']['response'].value = text;
+		}
+		function showError(text) {
+			clear();
+			document.forms['frm']['error'].value = text;
+		}
+
+		function appendResult(text) {
+			document.forms['frm']['response'].value += text + '\n';
+		}
+
+	</script>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

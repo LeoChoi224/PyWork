@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>JSON 데이터 다루기</title>
+	<style>
+		table,
+		td,
+		th {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		table {
+			width: 100%;
+		}
+
+		thead {
+			font-weight: 700;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<script src="JS/Js006_Data.js"></script>
+
+<body>
+	<p id="demo"></p>
+	<script>
+		const n = x.items?.length; // x.items는 배열 -> ?. 으로
+
+		result = [];
+		result.push(`${n}개의 매물이 있습니다<br>`);
+		result.push("<table><thead><tr>"); // 중앙 정렬과 굵기를 위해 <thead>도 푸쉬 -> <th> 태그면 자동 으로 적용
+		result.push("<td>No</td><td>타이틀</td><td>월세</td><td>보증금</td>");
+		result.push("</tr></thead><tbody>");
+
+		for (i = 0; i < n; i++) {
+			let { item: { title, rent, deposit } } = x.items[i]; // 비구조화할당으로 해당 키의 value를 변수로 받아옴
+			result.push(`<tr><td>${i + 1}</td>`);
+			result.push(`<td>${title}</td>`);
+			result.push(`<td>${rent}</td>`);
+			result.push(`<td>${deposit}</td></tr>`);
+		}
+		result.push("</tbody></table>");
+
+		document.getElementById('demo').innerHTML = result.join(""); // result로 Join해서 문자열로 변환 후 id="demo"인 element의 content에 대입
+
+	</script>
+
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

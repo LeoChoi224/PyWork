@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API 스트리밍 응답 예시 (Streaming)</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Markdown 을 HTML 로 변환 -->
+    <script src="https://kit.fontawesome.com/51772bd9bd.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            width: 80%;
+        }
+
+        .loading {
+            color: orange;
+        }
+    </style>
+</head>
+
+<!--
+    스트림 콘텐츠 생성
+    메서드: models.streamGenerateContent
+    https://ai.google.dev/api/generate-content?hl=ko#method:-models.streamgeneratecontent
+
+    ■ 엔드포인트
+        https://ai.google.dev/api/generate-content?hl=ko#endpoint_1
+
+        ▶ https://generativelanguage.googleapis.com/v1beta/{model=models/*}:streamGenerateContent
+
+    ■ request body요청 본문: 
+        https://ai.google.dev/api/generate-content?hl=ko#request-body_1
+
+    ■ response body 응답 본문: 
+        https://ai.google.dev/api/generate-content?hl=ko#response-body_1
+
+    Gemini API의 스트리밍 응답(각 청크가 JSON 객체이며, 각 객체 앞에 알 수 없는 문자(?)가 포함된 형태)을 수신하고 
+    수동으로 파싱하도록 구현되어 있습니다.       
+    
+    ※ 참조] Client/Server 간 Stream 처리
+        https://5bong2-develop.tistory.com/541    
+-->
+
+<!--
+Gemini API 에서 여러 후보(candidate) 응답을 지원하는 모델의 응답 포맷
+https://docs.google.com/presentation/d/1m9QCl1-yA3a7gSLHwAqetzLiUw84-0_0DLLfEfuCZh4
+-->
+
+<body style="margin-bottom: 200px">
+    <h1>Gemini API 스트리밍 테스트</h1>
+    <input type="text" id="promptInput" placeholder="프롬프트를 입력하세요 (예: AI에 대해 간략히 설명해줘)" value="JavaScript 란 무엇인가요?"
+        style="width: 80%;">
+    <button onclick="streamGeminiResponse()">요청하기</button>
+
+    <h2>응답:</h2>
+    <div id="output"></div>
+
+    <script>
+        // 🚨 보안 경고: 실제 환경에서는 이 API 키를 클라이언트 코드에 직접 노출하지 마십시오!
+        //      서버 측에서 안전하게 처리하는 것을 강력히 권장합니다.
+        const API_KEY = "너의키값은?";
+        const MODEL_NAME = "gemini-2.5-flash"; // 스트리밍을 지원하는 모델
+
+        // 스트리밍 엔드포인트: streamGenerateContent
+        const API_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:streamGenerateContent?key=${API_KEY}`;
+
+        const outputElement = document.getElementById('output');
+        const promptInput = document.getElementById('promptInput');
+
+        /**
+         * Fetch API를 사용하여 Gemini API에 스트리밍 요청을 보내고 응답을 처리합니다.
+         */
+        async function streamGeminiResponse() {
+            const prompt = promptInput.value.trim();
+            if (!prompt) {
+                alert("프롬프트를 입력해주세요.");
+                return;
+            }
+
+            outputElement.innerHTML = "<i class='fas fa-spinner fa-spin'></i>응답 생성 중... 잠시 기다려주십시오."
+            outputElement.classList.add('loading');
+
+            // request body (요청 본문)
+            const requestBody = {
+                contents: [{
+                    parts: [{ text: prompt }]
+                }],
+            };
+
+            try {
+                // 1. Fetch API를 사용하여 요청을 보냅니다.
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                outputElement.classList.remove('loading');
+
+                // 2. HTTP 상태 코드 확인
+                if (!response.ok) {
+                    const errorJson = await response.json();
+                    const errorMessage = errorJson.error.message || `HTTP 오류: ${response.status}`;  // 호출실패하면 응답에 error 키가 있다.
+                    outputElement.textContent = `API 요청 실패: ${errorMessage}`;
+                    console.error("API Error Response:", errorJson);
+                    return;
+                }
+
+                // 응답 본문을 ReadableStream으로 가져옵니다.
+                // TODO
+
+                // 스트림을 비동기적으로 읽습니다.
+                // TODO
+
+            } catch (error) {
+                console.error("Fetch 또는 스트림 처리 중 오류 발생:", error);
+                outputElement.textContent = `오류 발생: ${error.message}`;
+            }
+        } // end streamGeminiResponse()
+    </script>
+</body>
+
+</html>

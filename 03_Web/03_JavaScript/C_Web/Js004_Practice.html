@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>테이블 생성 연습</title>
+<!-- 
+랜덤으로 생성된 row (행) 과 col(열)  값에 따라 <table> 을 생성해보세요
+document.write() 사용   +  for 문등 제어문 사용 
+페이지 새로고침 할때마다 row, col 이 random 으로 생성
+row 와 col 은 각각 1 ~ 10 사이 랜덤 정수값
+ -->
+<style>
+table, td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+table{
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<div id="demo1"></div>
+<script>
+let n = Math.floor(Math.random() * 10) + 1;
+
+result = [];
+result.push(`n:${n}<br>`);
+result.push("<ol>");
+for(i = 0; i < n; i++){
+	result.push(`<li>안녕하세요 ${i + 1} 번째 입니다</li>`);
+}	
+result.push("</ol>");
+
+document.getElementById('demo1').innerHTML = result.join("");
+
+</script>
+
+<hr>
+
+<div id="demo2"></div>
+<script>
+function random() {
+	return Math.floor(Math.random() * 10) + 1;
+}
+let row = random();
+let col = random();
+
+result = [];
+result.push(`row: ${row} col:${col}<br>`);
+result.push("<table>")
+for(i = 1; i <= row; i++) {
+	result.push("<tr>")
+	for(j = 1; j <= col; j++) {
+	result.push(`<td>${i}행${j}열</td>`)
+	}
+	result.push("</tr>")
+}
+result.push("</table>")
+
+document.getElementById('demo2').innerHTML = result.join("")
+</script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

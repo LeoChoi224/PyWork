@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>DOM Navigation</title>
+</head>
+<!-- 
+DOM 에서 node 
+
+	node type, node name, node value <- 3가지 속성에 주목
+
+node type (종류) 와    nodeType 값
+	Element node		1       <h1 class="heading">W3Schools</h1>
+	Attribute node		2        class = "heading" (deprecated)
+	Text node			3        W3Schools
+	Comment node		8        
+	Document node		9        HTML 문서 자신, <html> 의 부모
+	DOCUMENT_TYPE_NODE	10       <!Doctype html>
+	
+	** 명심! Element node 가 text 를 갖고 있는 것이 아니다!!! 
+
+JS 로 DOM 의 node 간 navigate 할수 있다.  | Element 의 property 들도 있다. 'element node 에 대해서만' navigate 한다
+    ↓↓↓                                          ↓↓↓
+- parentNode
+- childNodes[nodenumber],                  children
+- firstChild,                              firstElementChild
+- lastChild,                               lastElementChild
+- nextSibling,                             nextElementSibling
+- previousSibling,                         previousElementSibling
+- attributes
+
+  Node: https://developer.mozilla.org/en-US/docs/Web/API/Node#instance_properties
+  Element: https://developer.mozilla.org/en-US/docs/Web/API/Element#instance_properties
+    ※ 위의 property 들 중에 어떤거는 Node , 어떤거는 Element 의 것이다. 
+
+	   가령 
+	   nextSiling 은 첫번째 동생 node  (text 이든 element 이든 관계 없슴)
+       nextElementSibling 은 첫번째 동생 element node 다
+ -->
+<body>
+<img src="https://www.w3schools.com/js/pic_htmltree.gif">
+<hr>
+<img src="https://www.w3schools.com/js/pic_navigate.gif">
+<hr>	
+<h2>childNodes, nodeValue</h2>
+<!-- childNodes 와 nodeValue -->
+<h3 id="id01">My First Page</h3>
+<p id="id02"></p>
+
+<script>
+// 아래와 같이 'Text node 의 값'에 접근 해야 한다 (3가지 방법)
+document.getElementById("id02").innerHTML
+
+// TODO
+
+</script>
+
+
+<br><hr>
+<h2>document.body</h2>
+<p onclick="TODO">클릭하면 body 의 컨텐츠가!</p>
+
+
+<br><hr>
+<h2>document.documentElement</h2>
+<p onclick="TODO">클릭하면 document 의 컨텐츠가!</p>
+
+<br><hr>
+<h2>nodeType</h2>
+<p id="id03"></p>
+<script>
+document.getElementById("id03").innerHTML;
+	// TODO
+
+</script>
+
+<!-- TODO: document.body 노드 밑의 
+	모든 child 노드의 nodeName, nodeValue, nodeType 을 출력해보세요
+	
+	hint) document.body.childNodes 사용
+ -->
+ 
+<br><hr>
+<h2>childNodes, nodeName, nodeType, nodeValue</h2>
+<!-- body element node 의 child 들의 nodeName, nodeType, nodeValue  -->
+<p id="id04"></p>
+<script>
+
+// TODO
+document.getElementById('id04').innerHTML
+
+</script>
+
+<br><hr>
+<h2>attributes</h2>
+<!-- 특정element.attributes : attribute node(들) 만 추출한다 -->
+<img id="img01"
+	src="https://www.w3schools.com/html/img_girl.jpg"
+	alt="girl"
+	width="150"
+	height="200"/>
+
+<p id="id05"></p>
+<script>
+
+// TODO
+
+</script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
