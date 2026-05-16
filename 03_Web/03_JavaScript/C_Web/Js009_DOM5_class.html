@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<title>DOM class</title>
-<style>
-.important {
-    font-weight: bold;
-    font-size: x-large;
-    color: red;
-}
+    <meta charset="UTF-8">
+    <title>DOM class</title>
+    <style>
+        .important {
+            font-weight: bold;
+            font-size: x-large;
+            color: red;
+        }
 
-h1, h2, p, div {
-	transition: background 1s;
-}
+        h1,
+        h2,
+        p,
+        div {
+            transition: background 1s;
+        }
 
-.blue {
-    background-color: cyan;
-}
-</style>
+        .blue {
+            background-color: cyan;
+        }
+    </style>
 </head>
 
 <!--
@@ -38,68 +42,63 @@ h1, h2, p, div {
 
 <body>
 
-<h1 id="h1" class="aaa bbb">h1 태그</h1>
-<h2>h2 태그</h2>
+    <h1 id="h1" class="aaa bbb">h1 태그</h1>
+    <h2>h2 태그</h2>
 
-<p>p 태그입니다</p>
-<p>이것도 p 태그입니다</p>
+    <p>p 태그입니다</p>
+    <p>이것도 p 태그입니다</p>
 
-<div id="d01">div#d01 중요한 텍스트!</div>
-<div id="d02">div#d02 important 텍스트!</div>
+    <div id="d01">div#d01 중요한 텍스트!</div>
+    <div id="d02">div#d02 important 텍스트!</div>
 
-<br>
-<button id="btn01">btn01 classList</button>
-<button id="btn02">btn02 addClass()</button>
-<button id="btn03">btn03 removeClass()</button>
-<button id="btn04">btn04 toggleClass()</button>
-<hr>
-<p id="result"></p>
+    <br>
+    <button id="btn01">btn01 classList</button>
+    <button id="btn02">btn02 addClass()</button>
+    <button id="btn03">btn03 removeClass()</button>
+    <button id="btn04">btn04 toggleClass()</button>
+    <hr>
+    <p id="result"></p>
 
-<script>
-let h1 = document.getElementById("h1");
-let btn01 = document.getElementById("btn01");
-let btn02 = document.getElementById("btn02");
-let btn03 = document.getElementById("btn03");
-let btn04 = document.getElementById("btn04");
-let result = document.getElementById("result");
+    <script>
+        let h1 = document.getElementById("h1");
+        let btn01 = document.getElementById("btn01");
+        let btn02 = document.getElementById("btn02");
+        let btn03 = document.getElementById("btn03");
+        let btn04 = document.getElementById("btn04");
+        let result = document.getElementById("result");
 
-btn01.onclick = function(){
-    // TODO
-};
-
-btn02.onclick = function(){
-    // TODO
-};
-
-btn03.onclick = function(){
-    // TODO
-};
-
-btn04.onclick = function(){
-    // TODO
-};
+        btn01.onclick = function () {
+            result.innerHTML = `${h1.classList}`;
+        };
 
 
-</script>
+        btn02.onclick = function () {
+            for (e of document.querySelectorAll('h1, h2, p')) {
+                e.classList.add('blue');
+            }
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            document.getElementById('d01').classList.add('blue');
+            document.getElementById('d02').classList.add('important', 'blue');
+        };
+
+
+        btn03.onclick = function () {
+            for (e of document.querySelectorAll('h1, h2, p')) {
+                e.classList.remove('blue');
+            }
+        };
+
+        btn04.onclick = function () {
+            for (e of document.querySelectorAll('h1, h2, p')) {
+                e.classList.toggle('blue');
+            }
+
+            document.getElementById('d01').classList.toggle('blue');
+        };
+
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -99,11 +99,15 @@ HTML element를 다루기 위한
 		// div element들을 찾아서 차례대로 "div1 입니다" "div2 입니다"..  로 내용 바꾸기
 		let elements = document.getElementsByTagName('div');
 
-		i = 0;
-		for(element of elements){
-			element.innerHTML = "div " + i + " 입니다";
-			i++;
-		}
+		// i = 0;
+		// for(element of elements){
+		// 	element.innerHTML = "div " + i + " 입니다";
+		// 	i++;
+		// }
+
+		Array.from(elements).forEach((e, i) => {
+			e.innerHTML = `🎃div ${i} 입니다`;
+		});
 
 	</script>
 
@@ -121,7 +125,10 @@ HTML element를 다루기 위한
 		// getElementsByClassName("c3")
 		// element.style.background
 
-		// TODO
+		elements = document.getElementsByClassName("c3");
+
+		for(e of elements) e.style.backgroundColor = 'yellow';
+		// CSS 의 'background-color' -> JS에선 'backgroundColor'
 
 	</script>
 
@@ -139,7 +146,12 @@ HTML element를 다루기 위한
 		// 배경색을 노란색으로 하고 입력사이즈를 50으로 변경해보기
 		// background (CSS),  size(attribute)
 
-		// TODO
+		elements = document.getElementsByName('name1');
+
+		elements.forEach(e => {
+			e.style.backgroundColor = 'yellow';
+			e.size = 50;
+		});
 
 	</script>
 
@@ -152,8 +164,12 @@ HTML element를 다루기 위한
 	<div class="retro">class="retro"</div>
 	<script>
 		// div.intro selector 에 해당하는 element 들을 찾아서 배경색 하늘색으로
+		
+		elements = document.querySelectorAll('div.intro');
 
-		// TODO
+		elements.forEach(e => e.style.backgroundColor = 'cyan');
+
+		document.querySelector('div.intro').style.color = 'red';
 
 	</script>
 
@@ -203,8 +219,21 @@ collection 결과에 .length, for, for-of 는 사용 가능하나 forEach 는 �
 		//name=frm1 인 <form> 안의
 		//form element 들의 value 들을 읽어오기
 
-		// TODO
+		frm1 = document.forms['frm1'];
 
+		// form element 객체의 .length 는
+		// 그 안에 속한 element 들의 개수.
+		document.write(frm1.length);
+
+		// .elements : 그 안에 속한 element 들
+		result = [];
+		for(i = 0; i < frm1.length; i++){
+			result.push(frm1.elements[i].value);
+		}
+
+		document.getElementById('frm_result1').innerHTML = result.join(',');
+
+	
 	</script>
 
 	<hr>
@@ -217,8 +246,12 @@ collection 결과에 .length, for, for-of 는 사용 가능하나 forEach 는 �
 
 	<script>
 		//모든 이미지들의 테두리를 4px solid blue 로 만들기
-		// TODO
+		elements = document.images;
 
+		for(e of document.images){
+			e.style.border = "4px solid blue";
+		}
+		
 	</script>
 
 

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<title>DOM Navigation</title>
+	<meta charset="UTF-8">
+	<title>DOM Navigation</title>
 </head>
 <!-- 
 DOM 에서 node 
@@ -37,101 +38,111 @@ JS 로 DOM 의 node 간 navigate 할수 있다.  | Element 의 property 들도 �
 	   nextSiling 은 첫번째 동생 node  (text 이든 element 이든 관계 없슴)
        nextElementSibling 은 첫번째 동생 element node 다
  -->
+
 <body>
-<img src="https://www.w3schools.com/js/pic_htmltree.gif">
-<hr>
-<img src="https://www.w3schools.com/js/pic_navigate.gif">
-<hr>	
-<h2>childNodes, nodeValue</h2>
-<!-- childNodes 와 nodeValue -->
-<h3 id="id01">My First Page</h3>
-<p id="id02"></p>
+	<div>
+		aaa
+		<div></div>
+		bbb
+		<div></div>
+		ccc
+	</div>
 
-<script>
-// 아래와 같이 'Text node 의 값'에 접근 해야 한다 (3가지 방법)
-document.getElementById("id02").innerHTML
+	<img src="https://www.w3schools.com/js/pic_htmltree.gif">
+	<hr>
+	<img src="https://www.w3schools.com/js/pic_navigate.gif">
+	<hr>
+	<h2>childNodes, nodeValue</h2>
+	<!-- childNodes 와 nodeValue -->
+	<h3 id="id01">My First Page</h3>
+	<p id="id02"></p>
 
-// TODO
+	<script>
+		// 아래와 같이 'Text node 의 값'에 접근 해야 한다 (3가지 방법)
+		document.getElementById("id02").innerHTML =
+			// document.getElementById('id01').innerHTML
+			// document.getElementById('id01').firstChild.nodeValue
+			document.getElementById('id01').childNodes[0].nodeValue
+			;
 
-</script>
+		// nodeValue 는
+		// 	- Element node 의 nodeValue 는 null
+		//  - Text node 의 nodeValue 는 text값
+		//  - Attribute node 의 nodeValue 는 attribute value
+
+	</script>
 
 
-<br><hr>
-<h2>document.body</h2>
-<p onclick="TODO">클릭하면 body 의 컨텐츠가!</p>
+	<br>
+	<hr>
+	<h2>document.body</h2>
+	<p onclick="alert(document.body.innerHTML)">클릭하면 body 의 컨텐츠가!</p>
 
 
-<br><hr>
-<h2>document.documentElement</h2>
-<p onclick="TODO">클릭하면 document 의 컨텐츠가!</p>
+	<br>
+	<hr>
+	<h2>document.documentElement</h2>
+	<p onclick="alert(document.documentElement.innerHTML)">클릭하면 document 의 컨텐츠가!</p>
 
-<br><hr>
-<h2>nodeType</h2>
-<p id="id03"></p>
-<script>
-document.getElementById("id03").innerHTML;
-	// TODO
+	<br>
+	<hr>
+	<h2>nodeType</h2>
+	<p id="id03"></p>
+	<script>
+		document.getElementById("id03").innerHTML =
+			document.getElementById('id01').nodeType + "<br>"    // element node
+			+ document.getElementById('id01').firstChild.nodeType   // text node
+			;
 
-</script>
+	</script>
 
-<!-- TODO: document.body 노드 밑의 
+	<!-- TODO: document.body 노드 밑의 
 	모든 child 노드의 nodeName, nodeValue, nodeType 을 출력해보세요
 	
 	hint) document.body.childNodes 사용
  -->
- 
-<br><hr>
-<h2>childNodes, nodeName, nodeType, nodeValue</h2>
-<!-- body element node 의 child 들의 nodeName, nodeType, nodeValue  -->
-<p id="id04"></p>
-<script>
 
-// TODO
-document.getElementById('id04').innerHTML
+	<br>
+	<hr>
+	<h2>childNodes, nodeName, nodeType, nodeValue</h2>
+	<!-- body element node 의 child 들의 nodeName, nodeType, nodeValue  -->
+	<p id="id04"></p>
+	<script>
+		var c = document.body.childNodes;
+		var result = [];
 
-</script>
+		for (e of c) {
+			result.push(`${e.nodeName} | ${e.nodeType} | ${e.nodeValue}`);
+		}
 
-<br><hr>
-<h2>attributes</h2>
-<!-- 특정element.attributes : attribute node(들) 만 추출한다 -->
-<img id="img01"
-	src="https://www.w3schools.com/html/img_girl.jpg"
-	alt="girl"
-	width="150"
-	height="200"/>
+		document.getElementById('id04').innerHTML = result.join('<br>');
 
-<p id="id05"></p>
-<script>
+	</script>
 
-// TODO
+	<br>
+	<hr>
+	<h2>attributes</h2>
+	<!-- 특정element.attributes : attribute node(들) 만 추출한다 -->
+	<img id="img01" src="https://www.w3schools.com/html/img_girl.jpg" alt="girl" width="150" height="200" />
 
-</script>
+	<p id="id05"></p>
+	<script>
+
+		var c = document.getElementById('img01').attributes;
+		var result = "";
+
+		for (i = 0; i < c.length; i++) {
+			result += c[i].nodeName + " | " +
+				c[i].nodeType + " | " +
+				c[i].nodeValue + "<br>";
+		}
+
+		document.getElementById("id05").innerHTML = result;
+
+	</script>
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

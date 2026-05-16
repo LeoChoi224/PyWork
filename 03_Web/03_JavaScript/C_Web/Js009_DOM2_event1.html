@@ -50,7 +50,49 @@ var addButton = document.getElementById("add_event");
 var removeButton = document.getElementById("remove_event");
 var result = document.getElementById("result");
 
-// TODO
+function clickHandler(event){  // Event 객체를 매개변수로 받는다.
+	result.innerHTML = event.type + " " + event.target
+			+ " " + (event.target == demoBox) // true
+			+ " " + (event.target == this)  // true  event handler 함수내에서 this 는 evnet 가 발생한 element 객체 
+											// 💥화살표 함수를 사용하면 this 사용 못함.
+					;
+
+	let bgcolor = 
+		// demoBox.style.background
+		// event.target.style.background
+		this.style.background
+		;
+
+	demoBox.style.background 
+		= (bgcolor != 'greenyellow') ? 'greenyellow' : 'yellow';
+
+}
+
+function mouseOverHandler(event){
+	result.innerHTML = event.type + " " + event.target;
+	this.style.outline = "3px solid red";
+}
+
+addButton.addEventListener("click", function(){
+	demoBox.addEventListener("click", clickHandler);
+	demoBox.innerHTML = "클릭해보세요";
+
+	// onxxxx attribute
+	demoBox.onmouseover = mouseOverHandler;
+	demoBox.onmouseout = function(event){
+		result.innerHTML = event.type + " " + event.target;
+		this.style.outline = "";		
+	};
+});
+
+removeButton.addEventListener("click", function(){
+	demoBox.removeEventListener("click", clickHandler);
+	demoBox.innerHTML = "이벤트 없어요";
+
+	demoBox.onmouseover = undefined;  // 이벤트 삭제
+	demoBox.onmouseout = undefined; 
+
+});
 
 </script>
 
@@ -58,35 +100,29 @@ var result = document.getElementById("result");
 <p id="windowSize"></p>
 
 <script>
+const showSize = function(event){
+	result.innerHTML = event.type + " " + event.target;
+	document.getElementById("windowSize").innerHTML = 
+    	window.innerWidth + " x " + 
+    	window.innerHeight;
+};
+window.addEventListener('resize', showSize);
 
-// TODO
+// 페이지 '전체' 로딩 완료후
+window.onload = function(event){showSize(event)}
+
+// ※  문서 로딩 후에 JS 코드를 통해 이벤트들을 걸어주는 경우가 있다. 
+// 이때는 window 의 onload 나 document 의 onload 혹은 body 의 onload 에 작성하자
+// --> HTML 과 JS 과 완전히 분업 가능해진다!
+
+
+// ※ document 의 
+//  DOMContentLoaded : DOM 트리 구성완료후
+//  load : 페이지의 모든 리소스 로딩 완료후
 
 </script>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

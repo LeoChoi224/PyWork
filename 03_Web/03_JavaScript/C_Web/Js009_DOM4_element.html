@@ -59,46 +59,36 @@ var parent = document.getElementById("parent");
 // 단계별로 확인해보자
 
 // appendChild()
-// TODO
+para = document.createElement('p');  // <p> element node 생성
+txtNode = document.createTextNode('appendChild() 로 추가');	
+para.appendChild(txtNode);
+parent.appendChild(para);
+// DOM 에 붙으면 브라우저 화면에 렌더링 된다.
 
 // insertBefore()
-// TODO
+para = document.createElement("p");
+txtNode = document.createTextNode("insertBefore()로 추가");
+para.appendChild(txtNode);
+
+child = document.getElementById('p1');
+parent.insertBefore(para, child);
 
 // removeChild()
-// TODO
+child = document.getElementById('p2');
+parent.removeChild(child);
 
 // prepend()
-// TODO
+para = document.createElement("p");
+txtNode = document.createTextNode("prepend() 로 추가")
+para.appendChild(txtNode);
+parent.prepend(para);
+
 
 // remove() <- 특정 element 를 remove
-// TODO
+document.getElementById('p1').remove();
 
 </script>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

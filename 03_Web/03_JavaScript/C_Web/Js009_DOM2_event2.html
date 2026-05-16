@@ -22,19 +22,22 @@ window.event 객세 사용
 -->
 <body>
 <ul>
-  <li onclick="/*TODO*/">Coffee</li>
-  <li onclick="/*TODO*/">Tea
+  <li onclick="show(this)">Coffee</li>
+  <li onclick="show(this)">Tea
     <ul>
-      <li onclick="/*TODO*/">Black tea</li>
-      <li onclick="/*TODO*/">Green tea</li>
+      <li onclick="event.stopPropagation(); show(this);">Black tea</li>
+      <li onclick="show(this)">Green tea</li>
     </ul>
   </li>
-  <li onclick="/*TODO*/">Milk</li>
+  <li onclick="show(this)">Milk</li>
 </ul>
 
 <script>
 
-// TODO
+function show(element){
+  // text 팝업
+  alert(element.childNodes[0].nodeValue);
+}
 
 </script>
 
@@ -60,27 +63,5 @@ window.event 객세 사용
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

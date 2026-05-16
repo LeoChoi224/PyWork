@@ -47,11 +47,11 @@ td{
 	<tr>
 		<td>
 			<div>홍길동</div>
-			<!-- TODO -->
+			<input type="text">
 		</td>
 		<td>
 			<div>Mr.Hong</div>
-			<!-- TODO -->
+			<input type="text">
 		</td>
 	</tr>
 </table>
@@ -60,34 +60,47 @@ td{
 <script>
 // 위 HTML 에 어떠한 inline js 코드도 삽입하지 않고 이 안에서 페이지의 모든 동작을 정의해보자
 
-// TODO
+
+for(e of document.querySelectorAll("#table1 div")){
+	e.addEventListener("click", function(){
+		let txt = this.innerHTML.trim();
+
+		this.classList.add('hidden');
+
+		let input = this.nextElementSibling;
+		input.classList.remove('hidden');
+		input.value = txt;
+		input.focus();
+	});
+}
+
+function switchInput(e){
+	let txt = e.value.trim();
+
+	e.classList.add('hidden');
+	
+	let div =  e.previousElementSibling;
+	div.classList.remove('hidden');
+	div.innerHTML = txt;
+}
+
+for(e of document.querySelectorAll("#table1 input")){
+	e.classList.add('hidden');   // 최초에 input 안보이게 함.
+
+	e.addEventListener("focusout", function(){
+		switchInput(this);
+	});
+
+	e.addEventListener("keyup", function(event){
+		// (event.keyCode == 13) 
+		event.key === 'Enter'
+		&& switchInput(this);
+	});
+
+}
 
 </script>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

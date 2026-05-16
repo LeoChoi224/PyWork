@@ -35,16 +35,21 @@ console.log();
 //   setTimeout(함수, 경과시간ms)
 //    https://developer.mozilla.org/ko/docs/Web/API/WindowTimers/setTimeout
 
-// console.log("비동기. setTimeout() 사용");
+console.log("🟦 비동기. setTimeout() 사용");
 {
   function work() {
-    // TODO
+    setTimeout(() => {
+      const start = Date.now();
+      for (let i = 0; i < 1000000000; i++) { }
+      const end = Date.now();
+      console.log("[B3] 작업 종료", end - start + "ms");
+    }, 0);
     console.log('[B4] work() 종료');
   }
 
-  // console.log("[B1]", "작업 시작!");
-  // work();
-  // console.log("[B2]", "다음 작업");
+  console.log("[B1]", "작업 시작!");
+  work();
+  console.log("[B2]", "다음 작업");
 }
 
 console.log();
@@ -66,15 +71,15 @@ work 함수의 비동기작업이 끝난 다음에 어떤 작업을 처리하고
       const end = Date.now();
       console.log("[C3] 작업 종료", end - start + "ms");
 
-      // TODO
-
+      callback(end-start);  // 비동기 작업 끝나고 수행.
+    
     }, 0);
     console.log('[C4] work() 종료');
   }
 
-  /*
   console.log("[C1]", "작업 시작!");
-  work();  // TODO
+  work(ms => {   // work 호출하여, 비동기 작업 끝나고 수행할 함수 전달
+    console.log(`[C5] ${ms}ms 작업완료후 진행한 callback`);
+  });
   console.log("[C2]", "다음 작업");
-  */
 }
