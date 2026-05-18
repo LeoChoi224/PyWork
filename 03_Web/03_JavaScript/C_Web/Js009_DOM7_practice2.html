@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영수증 확인 폼</title>
+
+    <style>
+        #receipt {
+            width: 700px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table,
+        #receiptOption,
+        th,
+        td {
+            border: 1px solid #aaaaaa;
+            border-collapse: collapse;
+            padding: 0;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        th {
+            width: 180px;
+            text-align: left;
+            padding: 8px;
+            background-color: rgb(198, 214, 235);
+        }
+
+        #receiptOption {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+        }
+
+        .longText {
+            width: 300px;
+            height: 20px;
+            margin: 5px 10px;
+        }
+
+        .shortText {
+            width: 60px;
+            height: 30px;
+            margin: 5px 20px;
+        }
+
+        #btn {
+            font-size: 16px;
+            width: 80px;
+            height: 35px;
+            color: white;
+            background-color: rgb(54, 104, 168);
+            display: block;
+            margin: auto;
+        }
+
+        /* 처음 시작은 구매자명과 결제금액만 보이게 */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="receipt">
+        <h3>영수증 확인을 위해 아래의 정보를 정확히 입력해 주시기 바랍니다.</h3>
+        <br>
+        <div id="receiptOption">
+            <input type="radio" name="option" value="구매자명+금액" checked>구매자명 + 금액
+            <input type="radio" name="option" value="이메일">이메일
+            <input type="radio" name="option" value="카드번호">카드번호
+        </div>
+        <form class="inner_table" name="frm1" action="https://www.w3schools.com/action_page.php" method="get">
+            <table>
+                <tr>
+                    <th>구매자명</th>
+                    <td><input type="text" class="longText" name="name" value=""></td>
+                </tr>
+                <tr>
+                    <th>결제금액</th>
+                    <td><input type="number" class="longText" name="price" value=""></td>
+                </tr>
+            </table>
+        </form>
+        <form class="inner_table hidden hidden hidden" name="frm2" action="https://www.w3schools.com/action_page.php"
+            method="get">
+            <table>
+                <tr>
+                    <th>이메일</th>
+                    <td><input type="text" class="longText" name="email" value=""></td>
+                </tr>
+            </table>
+        </form>
+        <form class="inner_table hidden" name="frm3" action="https://www.w3schools.com/action_page.php" method="get">
+            <table>
+                <tr>
+                    <th>카드번호</th>
+                    <td>
+                        <input type="number" class="shortText" name="cardNum" value="">-
+                        <input type="number" class="shortText" name="cardNum" value="">-
+                        <input type="number" class="shortText" name="cardNum" value="">-
+                        <input type="number" class="shortText" name="cardNum" value="">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <br>
+        <input type="submit" id="btn" value="제출">
+    </div>
+</body>
+
+<script>
+    // 위의 HTML 은 수정하지 마세요
+    // 위의 HTML 안에 inline JS 코드 없이 동작할수 있도록 아래에 작성해보세요
+    let frms = document.querySelectorAll("form.inner_table");
+    let radios = document.querySelectorAll("#receiptOption input");
+    let btn = document.querySelector("#btn");
+    let checked = ""
+
+    for (e of radios) {
+        e.addEventListener("click", function () {
+            // 기존에 보이던 form 전부 숨기기
+            for (frm of frms) {
+                if (frm.classList.length <= 2) {
+                    frm.classList.add("hidden");
+                }
+            }
+            // 선택한 radio에 따라 해당 form만 보이기
+            if (this.value === "구매자명+금액") {
+                checked = this // <input type="radio" name="option" value="구매자명+금액">
+                document.frm1.classList.remove("hidden");
+            }
+            else if (this.value === "이메일") {
+                checked = this
+                document.frm2.classList.remove("hidden");
+            }
+            else if (this.value === "카드번호") {
+                checked = this
+                document.frm3.classList.remove("hidden");
+            }
+            console.log(checked.value)
+        });
+    }
+
+    // submit버튼 이벤트 추가
+    btn.addEventListener("click", function () {
+        // 구매자명 + 금액
+        if (checked.value === "구매자명+금액" || checked === "") { // radio 기본값으로 제출시 checked는 비어있음
+            let input = document.querySelectorAll("form[name=frm1] input")
+
+            if (input[0].value.length <= 0) {
+                alert("구매자명을 입력하세요.") || input[0].focus();
+            } else if (parseInt(input[1].value) <= 0 || input[1].value.length <= 0) {
+                alert("결제금액을 입력하세요.") || input[1].focus();
+            } else {
+                document.frm1.submit()
+            }
+        }
+        // 이메일
+        else if (checked.value === "이메일") {
+            let input = document.querySelector("form[name=frm2] input")
+            if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(input.value)) {
+                document.frm2.submit();
+            } else {
+                alert("이메일을 입력하세요.") || input.focus();
+            }
+        }
+        // 카드번호
+        else if (checked.value === "카드번호") {
+            let input = document.querySelectorAll("form[name=frm3] input")
+
+            isTrue = true;
+            for (i = 0; i < input.length; i++) {
+                if (!/^\d{4}$/.test(input[i].value)) {
+                    alert("카드번호를 입력하세요.") || input[i].focus();
+                    isTrue = false
+                    return;
+                }
+            }
+            if (isTrue) { document.frm3.submit() }
+        }
+    });
+
+    // 뒤로가기시 전 페이지 기억
+
+</script>
+
+</html>

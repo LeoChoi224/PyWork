@@ -81,7 +81,7 @@ addButton.addEventListener("click", function(){
 	demoBox.onmouseover = mouseOverHandler;
 	demoBox.onmouseout = function(event){
 		result.innerHTML = event.type + " " + event.target;
-		this.style.outline = "";		
+		this.style.outline = "";
 	};
 });
 
@@ -90,7 +90,7 @@ removeButton.addEventListener("click", function(){
 	demoBox.innerHTML = "이벤트 없어요";
 
 	demoBox.onmouseover = undefined;  // 이벤트 삭제
-	demoBox.onmouseout = undefined; 
+	demoBox.onmouseout = undefined;
 
 });
 

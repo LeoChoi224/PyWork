@@ -44,14 +44,29 @@ JSON.parse() 를 사용하면 JavaScript object 로 손쉽게 변환된다
 <script>
 function loadPet(){	
 
-	// TODO
-	
+	fetch(url)
+		// JS Object <= Response
+		.then(response => response.json())   // Promise<object>
+		.then(myObj => {
+			document.getElementById('name').innerHTML = myObj.name;
+			document.getElementById('age').innerHTML = myObj.age;
+
+			const result = [];
+
+			for(p of myObj.pets){
+				result.push(`${p.animal} : ${p.name}`);
+			}
+			
+			document.getElementById('pets').innerHTML = `<div>${result.join('<br>')}</div>`;
+		}
+	);	
 }
 
 function clearTable(){
-
-	// TODO
 	
+	document.getElementById('name').innerHTML = "";
+	document.getElementById('age').innerHTML = "";
+	document.getElementById('pets').innerHTML = "";
 }
 
 </script>

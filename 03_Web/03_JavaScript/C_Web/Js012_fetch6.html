@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<title>AJAX API자치구단위 서울 생활인구 일별 집계표</title>
-<style>
-table,th,td {
-  border : 1px solid black;
-  border-collapse: collapse;
-}
-th,td {
-  padding: 5px;
-}
-</style>
+	<meta charset="UTF-8">
+	<title>AJAX API자치구단위 서울 생활인구 일별 집계표</title>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			padding: 5px;
+		}
+	</style>
 </head>
 <!--
 ■자치구단위 서울 생활인구 일별 집계표
@@ -37,52 +42,93 @@ http://openapi.seoul.go.kr:8088/(인증키)/json/SPOP_DAILYSUM_JACHI/1/5/
 ※ 한번에 1000개 까지의 데이터만 볼수 있슴
 
  -->
+
 <body>
-<h1>자치구단위 서울 생활인구 일별 집계표</h1>
-<form>
-날짜: <input type="date" id="stdr_de_id" value="2019-01-01" placeholder="yyyy-mm-dd"/><br>
-시작index <input type="number" id="start_index" value="1"/><br>
-끝index <input type="number" id="end_index" value="5"/><br><br>
+	<h1>자치구단위 서울 생활인구 일별 집계표</h1>
+	<form>
+		날짜: <input type="date" id="stdr_de_id" value="2019-01-01" placeholder="yyyy-mm-dd" /><br>
+		시작index <input type="number" id="start_index" value="1" /><br>
+		끝index <input type="number" id="end_index" value="5" /><br><br>
 
-<button type="button" onclick="loadData()">정보 가져오기</button>
-<button type="button" onclick="removeTable()">지우기</button>
-</form>
-<br><br>
-<h2>AJAX + XML</h2>
-<table id="demoXML"></table>
-<hr>
-<h2>AJAX + JSON</h2>
-<table id="demoJSON"></table>
+		<button type="button" onclick="loadData()">정보 가져오기</button>
+		<button type="button" onclick="removeTable()">지우기</button>
+	</form>
+	<br><br>
+	<h2>AJAX + XML</h2>
+	<table id="demoXML"></table>
+	<hr>
+	<h2>AJAX + JSON</h2>
+	<table id="demoJSON"></table>
 
 
-<script>
-var api_key = "자신의 키값 입력";  // 자신의 키값 입력하기!
+	<script>
+		var api_key = "484e536751686d6336306d484d7576";
 
-function removeTable(){
-	document.getElementById('demoXML').removeChild(document.getElementById('demoXML').childNodes[0]);
-	document.getElementById('demoJSON').removeChild(document.getElementById('demoJSON').childNodes[0]);
-}
+		function removeTable() {
+			document.getElementById('demoXML').removeChild(document.getElementById('demoXML').childNodes[0]);
+			document.getElementById('demoJSON').removeChild(document.getElementById('demoJSON').childNodes[0]);
+		}
 
-function loadData() {
+		function loadData() {
+			let date = document.getElementById('stdr_de_id').value.trim().split('-').join("");
+			let start = document.getElementById('start_index').value.trim();
+			let end = document.getElementById('end_index').value.trim();
+			let url;
 
-	// TODO
-	
-}
 
-function parseXML(xmlDOM) {
 
-	// TODO
+			// XML
+			url = `http://openapi.seoul.go.kr:8088/${api_key}/xml/SPOP_DAILYSUM_JACHI/${start}/${end}/${date}`
+			fetch(url)
+				.then(response => response.text())
+				.then(text => {
+					let xmlDom = new DOMParser().parseFromString(text, "text/xml");
+					parseXML(xmlDom);
+				});
 
-}
+			// JSON
+			url = `http://openapi.seoul.go.kr:8088/${api_key}/json/SPOP_DAILYSUM_JACHI/${start}/${end}/${date}`
+			fetch(url)
+				.then(response => response.json())
+				.then(jsObj => parseJSON(jsObj))
+		}
 
-function parseJSON(jsonObj){
+		function parseXML(xmlDOM) {
+			const table = [];
+			table.push("<tr><th>날짜</th><th>구ID</th><th>총생활인구수</th><th>일최대이동인구수</th></tr>");
 
-	// TODO
+			for (row of xmlDOM.getElementsByTagName('row')) {
+				table.push(`
+				<tr>
+					<td>${row.querySelector('STDR_DE_ID').innerHTML}</td>
+					<td>${row.querySelector('SIGNGU_CODE_SE').innerHTML}</td>
+					<td>${row.querySelector('TOT_LVPOP_CO').innerHTML}</td>
+					<td>${row.querySelector('DAIL_MXMM_MVMN_LVPOP_CO').innerHTML}</td>
+				</tr>
+				`)
+			}
+			document.getElementById('demoXML').innerHTML = table.join('\n');
+		}
 
-}
-</script>
+		function parseJSON(jsObj) {
+			const table = [];
+			table.push("<tr><th>날짜</th><th>구ID</th><th>총생활인구수</th><th>일최대이동인구수</th></tr>");
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			for (row of jsObj.SPOP_DAILYSUM_JACHI.row) {
+				table.push(`
+				<tr>
+					<td>${row.STDR_DE_ID}</td>
+					<td>${row.SIGNGU_CODE_SE}</td>
+					<td>${row.TOT_LVPOP_CO}</td>
+					<td>${row.DAIL_MXMM_MVMN_LVPOP_CO}</td>
+				</tr>
+				`);
+			}
+			document.getElementById('demoJSON').innerHTML = table.join('\n');
+		}
+	</script>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
-</html>
 
+</html>

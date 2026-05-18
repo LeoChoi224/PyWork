@@ -29,12 +29,34 @@ var url2 = 'JS/note.xml';
 <script>
 function loadCdData() {
 
-	// TODO
+	fetch(url1)   // Promise<Response> 리턴
+    .then(response => response.text())  // Promise<string> 리턴
+    .then(text => {
+      // alert(text);
+      // xml DOM 객체 <= xml text
+      let xmlObj = new DOMParser().parseFromString(text, 'text/xml');
+      myFunction(xmlObj);      
+    })
+    ;
 
 }
 function myFunction(xmlDOM) {
   
-	// TODO
+  const table = [];
+  table.push("<tr><th>Artist</th><th>Title</th></tr>");
+
+    for(x of xmlDOM.getElementsByTagName("CD")){
+      table.push(`
+        <tr>
+          <td>${x.getElementsByTagName('ARTIST')[0].firstChild.nodeValue}</td>
+          <td>${x.getElementsByTagName('TITLE')[0].firstChild.nodeValue}</td>
+        </tr>
+      `);
+  }
+
+  document.getElementById('demo').innerHTML = table.join('\n');
+
+
 	
 }
 </script>

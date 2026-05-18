@@ -46,22 +46,71 @@ end: <input type="number" id="end" value="5"/><br>
 
 
 <script>
-var api_key = "당신의 키값을 입력하세요";
+var api_key = "484e536751686d6336306d484d7576";
 
 function removeTable(){
-	// TODO
+	document.getElementById('demoXML').removeChild(document.getElementById('demoXML').childNodes[0]);
+	document.getElementById('demoJSON').removeChild(document.getElementById('demoJSON').childNodes[0]);
 }
 
 function loadData() {
-	// TODO
+	let start = document.getElementById('start').value.trim();
+	let end = document.getElementById('end').value.trim();
+	let url;
+
+	// XML
+	url = `http://openapi.seoul.go.kr:8088/${api_key}/xml/subwayStationMaster/${start}/${end}/`
+	fetch(url)
+		.then(response => response.text())
+		.then(text => {
+			let xmlDom = new DOMParser().parseFromString(text, "text/xml");
+			parseXML(xmlDom);
+		});
+
+	// JSON
+	url = `http://openapi.seoul.go.kr:8088/${api_key}/json/subwayStationMaster/${start}/${end}/`
+	fetch(url)
+		.then(response => response.json())
+		.then(jsObj => parseJSON(jsObj))
 }
 
 function parseXML(xmlDOM) {
-	// TODO
+	const table = [];
+    table.push("<tr><th>역명</th><th>아이디</th><th>호선</th><th>위도</th><th>경도</th></tr>");
+
+	for(row of xmlDOM.getElementsByTagName('row')){
+		table.push(`
+		<tr>
+			<td>${row.querySelector('BLDN_NM').innerHTML}</td>
+			<td>${row.querySelector('BLDN_ID').innerHTML}</td>
+			<td>${row.querySelector('ROUTE').innerHTML}</td>
+			<td>${row.querySelector('LOT').innerHTML}</td>
+			<td>${row.querySelector('LAT').innerHTML}</td>
+		</tr>
+		`);
+	}
+	document.getElementById('demoXML').innerHTML = table.join('\n');
 }
 
-function parseJSON(jsonObj){
-	// TODO	 
+function parseJSON(jsObj){
+
+	const table = [];
+    table.push("<tr><th>역명</th><th>아이디</th><th>호선</th><th>위도</th><th>경도</th></tr>");
+
+	for(row of jsObj.subwayStationMaster.row){
+		table.push(`
+		<tr>
+			<td>${row.BLDN_NM}</td>
+			<td>${row.BLDN_ID}</td>
+			<td>${row.ROUTE}</td>
+			<td>${row.LOT}</td>
+			<td>${row.LAT}</td>
+		</tr>
+		`);
+	}
+
+
+    document.getElementById('demoJSON').innerHTML = table.join('\n');
 }
 </script>
 

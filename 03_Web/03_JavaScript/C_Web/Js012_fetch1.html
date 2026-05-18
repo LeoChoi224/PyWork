@@ -98,8 +98,13 @@ var info = document.getElementById('info');
 var url = "JS/ajax_info.txt";
 function loadDoc() {
 
-	// TODO
-
+	fetch(url)   // Promise<Response>  리턴
+		// .then(위 비동기 작업이 성공적으로 종료되었을때 수행하는 콜백)
+		// .then((response) => console.log(response))
+		// .then((response) => console.log(response.status, response.statusText))   // 200 'OK'
+		.then( response => response.text())  // Promise<String> 리턴
+		.then( text => info.innerHTML = text )
+		;
 }
 </script>
 

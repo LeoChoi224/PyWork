@@ -53,7 +53,7 @@ http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=f
 
 
 <script>
-var api_key = "당신의 키값은?";  // 자신의 키값 입력하기!
+var api_key = "faa944c6fcf98df3122cc442fbce9e9f";
 var req_url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json";
 
 function removeTable(){
@@ -65,23 +65,93 @@ function loadData() {
 
 	// 한글의 경우 url encoding 필요  (encodeURI(), encodeURIComponent() 등 사용..)
 	// ※ fetch API 는 자체적으로 인코딩 된다
-	// TODO
+	let frm = document.forms.frm;
+	let movieNm = frm.movieNm.value.trim();
 	
 	
 	// 유효성 검사
-	// TODO
+	// 영화명
+	if(movieNm == ""){
+		alert("영화명을 반드시 입력해야 합니다");
+		frm.movieNm.focus();
+		return;
+	}
+
+	// 개봉년도
+	let openStartDt = frm.openStartDt.value.trim();
+	let openStartDtPat = /^[0-9]{4}$/;
+	if(!openStartDtPat.test(openStartDt)){
+		alert('날짜 포맷이 맞지 않습니다')
+		frm.openStartDt.focus();
+		return;
+	}
+	// 출력ROW
+	let itemPerPage = frm.itemPerPage.value.trim();
+	if(isNaN(itemPerPage) || itemPerPage < 1 || itemPerPage > 10){
+		alert("출력ROW는 1~10사이의 정수이어야 합니다")
+		frm.itemPerPage.focus();
+		return;
+	}
+	// 출력페이지
+	let curPage =frm.curPage.value;
+	if(isNaN(curPage) || curPage < 1 ){
+		alert("페이지는 1이상의 정수이어야 합니다")
+		frm.curPage.focus();
+		return;
+	}	
 	
-	// JSON
-	// TODO
+	// JSON 요청 url
+	// fetch api 에서는 줄바꿈, 인코딩 모두 지원
+	let url = `${req_url}?key=${api_key}
+				&movieNm=${movieNm}
+				&openStartDt=${openStartDt}
+				&itemPerPage=${itemPerPage}
+				&curPage=${curPage}`;
+
+	fetch(url)
+		.then(response => response.json())
+		.then(jsonObj => parseJSON(jsonObj));2
 	
 }
 
 function parseJSON(jsonObj){
-	// TODO
+   
+    let table = [];
+    table.push("<tr><td>영화명</td><td>개봉일</td><td>감독(들)</td><td>제작사(들)</td></tr>");
+
+    for(e of jsonObj.movieListResult.movieList){
+        table.push(`
+            <tr>
+                <td>${e.movieNm}</td>
+                <td>${e.openDt}</td>    
+                <td>${e.directors.map(e => e.peopleNm).join(", ")}</td>
+                <td>${e.companys.map(e => e.companyNm).join(", ")}</td>
+            </tr>
+        `);
+
+    }
+    document.getElementById('demoJSON').innerHTML = table.join('\n');
 }
+
 </script>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
