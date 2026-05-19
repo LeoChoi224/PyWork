@@ -33,6 +33,8 @@ http://openapi.seoul.go.kr:8088/키값을넣으세요/json/CardSubwayStatsNew/1/
 날짜 (yyyyMMdd): <input type="text" name="date" id="date" value="20260501"/><br><br>
 
 <button type="button" onclick="loadData()">승하차정보 가져오기</button>
+<button type="button" onclick="loadAsync()">승하차정보 가져오기<br>async/await</button>
+<button type="button" onclick="loadPromiseAll()">승하차정보 가져오기<br>Promise.all()</button>
 <button type="button" onclick="removeTable()">지우기</button>
 </form>
 <br><br>
@@ -48,11 +50,11 @@ http://openapi.seoul.go.kr:8088/키값을넣으세요/json/CardSubwayStatsNew/1/
 var api_key = "484e536751686d6336306d484d7576";
 
 function removeTable(){
-
-	// TODO
-
+    document.getElementById('demoXML').innerHTML = "";
+    document.getElementById('demoJSON').innerHTML = "";
 }
 
+// 🟦 방법1: Promise 와 .then() chaining 방식
 function loadData() {
 
 	let date = document.getElementById('date').value.trim();
@@ -65,18 +67,76 @@ function loadData() {
 		.then(text => {
 			let xmlDom = new DOMParser().parseFromString(text, "text/xml");
 			parseXML(xmlDom);
-		});
+		})
+		.catch(error => console.log(error))
+		;
 
 	// JSON
 	url = `http://openapi.seoul.go.kr:8088/${api_key}/json/CardSubwayStatsNew/1/5/${date}`;
 	fetch(url)
 		.then(response => response.json())
 		.then(jsObj => parseJSON(jsObj))
+		.catch(error => console.log(error))
+		;
+
+} // end loadData()
+
+// 🟦 방법2 : async / await 사용
+//   .then() 체이닝 부분만 async / await 로 변경
+async function loadAsync() {
+	let date = document.getElementById('date').value.trim();
+	let url;
+
+	try {
+		// XML
+		url = `http://openapi.seoul.go.kr:8088/${api_key}/xml/CardSubwayStatsNew/1/5/${date}`;
+		// await 비동기 호출. - 비동기 작업이 끝날때까지 blocking
+		const xmlResponse = await fetch(url);
+		const xmlText = await xmlResponse.text();
+		const xmlDom = new DOMParser().parseFromString(xmlText, "text/xml");
+		parseXML(xmlDom);
+
+		// JSON
+		url = `http://openapi.seoul.go.kr:8088/${api_key}/json/CardSubwayStatsNew/1/5/${date}`;
+		const jsonResponse = await fetch(url);
+		const jsObj = await jsonResponse.json();
+		parseJSON(jsObj)
+			
+	} catch(error) {
+		console.log('💥데이터를 가져오는 중 오류 발생: ', error);
+	}
+
+
+} // end loadData()
+
+// 🟦 방법3 : Promise.all() 로 비동기 호출 병렬 실행.
+async function loadPromiseAll() {
+	let date = document.getElementById('date').value.trim();
+	const xmlUrl = `http://openapi.seoul.go.kr:8088/${api_key}/xml/CardSubwayStatsNew/1/5/${date}`;
+	const jsonUrl = `http://openapi.seoul.go.kr:8088/${api_key}/json/CardSubwayStatsNew/1/5/${date}`;
+
+	try {
+
+		const [xmlResponse, jsonResponse] = await Promise.all([
+			fetch(xmlUrl),
+			fetch(jsonUrl),
+		]);
+
+		const xmlText = await xmlResponse.text();
+		const xmlDom = new DOMParser().parseFromString(xmlText, "text/xml");
+		parseXML(xmlDom);
+
+		const jsObj = await jsonResponse.json();
+		parseJSON(jsObj)
+			
+	} catch(error) {
+		console.log('💥데이터를 가져오는 중 오류 발생: ', error);
+	}
+
 
 } // end loadData()
 
 function parseXML(xmlDOM) {
-
     const table = [];
     table.push("<tr><th>호선</th><th>역명</th><th>승차인원</th><th>하차인원</th></tr>");
 
@@ -90,12 +150,10 @@ function parseXML(xmlDOM) {
 		</tr>
 		`);
 	}
-
     document.getElementById('demoXML').innerHTML = table.join('\n');
 }
 
 function parseJSON(jsObj){
-
 	const table = [];
     table.push("<tr><th>호선</th><th>역명</th><th>승차인원</th><th>하차인원</th></tr>");
 
@@ -109,8 +167,6 @@ function parseJSON(jsObj){
 		</tr>
 		`);
 	}
-
-
     document.getElementById('demoJSON').innerHTML = table.join('\n');
 }
 </script>
@@ -118,20 +174,5 @@ function parseJSON(jsObj){
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

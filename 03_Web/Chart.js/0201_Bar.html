@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Type</title>
+</head>
+<!--
+    https://www.chartjs.org/
+    2023.06 현재 최신 버젼 4.3.x
+
+    공식]
+    https://www.chartjs.org/docs/latest/charts/bar.html
+    https://github.com/chartjs/Chart.js/blob/master/docs/charts/bar.md
+
+    Bar Chart
+    https://www.chartjs3.com/docs/chart/chart-types/bar-chart/
+-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <h2>Bar Chart</h2>
+    <div>
+        <!-- Chart 가 그려질 canvas -->
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+</body>
+<script>
+    // Chart 가 그려질 element
+    const ctx = document.getElementById('myChart');
+
+    // new Chart(ctx, config);
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [
+                {
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1,
+                },
+            ],
+        },
+    });
+
+    /*
+       기본적인 config object 구조   https://www.chartjs.org/docs/latest/configuration/
+    
+       const config = {
+            type: 'line'
+            data: {}    // data structure  → https://www.chartjs.org/docs/latest/general/data-structures.html
+            options: {}
+            plugins: []
+        }
+    */
+</script>
+
+<script>
+    // TODO
+</script>
+
+<script>
+    // 데이터 변화에 따른 chart 의 변화를 보자    
+
+    function updateData(ms) {
+        // TODO
+    }
+
+    function asyncP() {
+        // TODO
+    }
+
+    asyncP();
+
+</script>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</html>

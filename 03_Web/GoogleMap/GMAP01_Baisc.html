@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Basic Google Map</title>
+</head>
+<!-- 
+기본
+ -->
+<body>
+<h1>My First Google Map</h1>
+
+<!-- Map Container 와 크기 지정 -->
+<div id="googleMap" style="width:100%;height:400px;"></div>
+<hr>
+<div id="googleMap1" style="width:100%;height:400px;"></div>¬ø
+
+<script>
+function myMap() {
+	let lat, lng;  // 위도, 경도
+    
+    // 좌표값
+    [lat, lng] = [37.499553, 127.035888];  // 역삼역
+
+    // 구글맵 property 지정
+    const mapProp = {
+        // 지도중심
+        center: new google.maps.LatLng(lat, lng),
+        // zoom level
+        zoom: 17,
+    };
+
+    var map = new google.maps.Map(document.getElementById('googleMap'), mapProp);
+
+    var map1 = new google.maps.Map(document.getElementById('googleMap1'), mapProp);
+
+}
+
+</script>
+
+<!-- ↓key=API키, callback=함수 지정 -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh6NbJf0p8fGxGp18QhSQKlz5oYcsdOeo&callback=myMap"></script>
+
+</body>
+</html>

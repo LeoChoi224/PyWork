@@ -80,7 +80,7 @@ https://docs.google.com/presentation/d/1m9QCl1-yA3a7gSLHwAqetzLiUw84-0_0DLLfEfuC
     <script>
         // 🚨 보안 경고: 실제 환경에서는 이 API 키를 클라이언트 코드에 직접 노출하지 마십시오!
         //      서버 측에서 안전하게 처리하는 것을 강력히 권장합니다.
-        const API_KEY = "너의키값은?";
+        const API_KEY = "AIzaSyD_ItbsE5xi4GtnQqNt0TUIHk_rdrQ9lQA";
         const MODEL_NAME = "gemini-2.5-flash"; // 스트리밍을 지원하는 모델
 
         // 스트리밍 엔드포인트: streamGenerateContent
@@ -131,10 +131,46 @@ https://docs.google.com/presentation/d/1m9QCl1-yA3a7gSLHwAqetzLiUw84-0_0DLLfEfuC
                 }
 
                 // 응답 본문을 ReadableStream으로 가져옵니다.
-                // TODO
+                const reader = response.body
+                    .pipeThrough(new TextDecoderStream())
+                    .getReader()
+
+                outputElement.textContent = "";
 
                 // 스트림을 비동기적으로 읽습니다.
-                // TODO
+                let textContent = "";
+
+                while(true){
+                    // value: 생성된 토큰,  done: 생성종료 여부
+                    const {value, done} = await reader.read();  
+                    if(done) break;  // 스트림 종료
+
+                    // 확인
+                    // outputElement.textContent += '🎃' + value;
+                    // 각 value 마다 앞에 한글다를 빼면 JSON parser 가 가능한 object 다.
+
+                   chunk = value.slice(1).trim();
+                    if(chunk){
+                        try{
+                            const data = JSON.parse(chunk);
+                            const textChunk = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+
+                            // outputElement.textContent += '🎃' + value;
+                            textContent += textChunk;
+                            outputElement.innerHTML = marked.parse(textContent);
+
+                            // 출력 요소의 하단으로 스크롤 되게 하기
+                            outputElement.scrollIntoView({block: 'end', behavior: 'smooth'});
+
+                        } catch(e){
+                            console.error("JSON 파싱 오류 또는 데이터 포맷 오류:", e, chunk);
+                        }
+
+                    } // end if
+
+                } // end while
+
+
 
             } catch (error) {
                 console.error("Fetch 또는 스트림 처리 중 오류 발생:", error);

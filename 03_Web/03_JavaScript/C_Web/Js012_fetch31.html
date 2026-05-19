@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemini API 단일 응답 예시 (Non-Streaming)</title>
 
-    <script></script> <!-- TODO: Markdown 을 HTML 로 변환 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Markdown 을 HTML 로 변환 -->
     <script src="https://kit.fontawesome.com/51772bd9bd.js" crossorigin="anonymous"></script>
 
     <style>
@@ -75,7 +75,7 @@ https://docs.google.com/presentation/d/1m9QCl1-yA3a7gSLHwAqetzLiUw84-0_0DLLfEfuC
     <script>
         // 🚨 보안 경고: 실제 환경에서는 이 API 키를 클라이언트 코드에 직접 노출하지 마십시오!
         //      서버 측에서 안전하게 처리하는 것을 강력히 권장합니다.
-        const API_KEY = "너의키값은?";
+        const API_KEY = "AIzaSyD_ItbsE5xi4GtnQqNt0TUIHk_rdrQ9lQA";
         const MODEL_NAME = "gemini-2.5-flash"; // 사용할 모델 이름
 
         // 스트리밍이 아닌 단일 응답 엔드포인트: generateContent
@@ -94,8 +94,50 @@ https://docs.google.com/presentation/d/1m9QCl1-yA3a7gSLHwAqetzLiUw84-0_0DLLfEfuC
                 return;
             }
 
-            // TODO
+            // 로딩중..
+            outputElement.innerHTML = "<i class='fas fa-spinner fa-spin'></i>응답 생성 중... 잠시 기다려주십시오."
+            outputElement.classList.add('loading');
+
+            // request body (요청 본문)  <- post 방식으로 요청하게 된다.
+            const requestBody = {
+                contents: [{
+                    parts: [{text: prompt}],
+                }],
+            };
+
+            try {
+                // 1. fetch api 사용하여 요청
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(requestBody),
+                });
+
+                outputElement.classList.remove('loading');
+
+                // 2. http 상태코드 확인
+                if(!response.ok){
+                    const errorJson = await response.json();
+                    const errorMessage = errorJson.error.message || `HTTP 오류: ${response.status}`;  // 호출실패하면 응답에 error 키가 있다.
+                    outputElement.textContent = `API 요청 실패: ${errorMessage}`;
+                    console.error("API Error Response:", errorJson);
+                    return;
+                }
+
+                // 3. 전체 응답 JSON 파싱
+                const data = await response.json();
+
+                const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text || 
+                    "응답에서 텍스트를 찾을 수 없습니다.";
             
+                // 5. 최종 결과 표시
+                outputElement.innerHTML = marked.parse(generatedText);  // Markdown -> HTML
+
+            } catch(error){
+                console.error("Fetch 또는 JSON 처리 중 오류 발생:", error);
+                outputElement.textContent = `오류 발생: ${error.message}`;
+            }
+
         } // end generateContent()
     </script>
 </body>

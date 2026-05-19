@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doughnut and Pie Charts</title>
+</head>
+<!--
+    https://www.chartjs.org/docs/latest/charts/doughnut.html
+    https://github.com/chartjs/Chart.js/blob/master/docs/charts/doughnut.md
+
+    샘플]
+    https://www.chartjs.org/docs/latest/samples/other-charts/doughnut.html
+-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <h2>Doughnut & Pie Chart</h2>
+    <div style="width:400px; height:400px;">
+        <canvas id="MyChart1"></canvas>
+    </div>
+    <script>
+        const myChart1 = document.getElementById('MyChart1');
+
+        const labels = ['Red', 'Blue', 'Yellow'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: '지지도',
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+
+        const config1 = {
+            // type: TODO
+            data: data,
+        };
+
+        const chart1 = new Chart(myChart1, config1);
+    </script>
+
+
+</body>
+
+</html>

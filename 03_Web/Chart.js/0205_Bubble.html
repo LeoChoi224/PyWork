@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Chart</title>
+</head>
+<!--
+    https://www.chartjs.org/docs/latest/charts/bubble.html
+    https://github.com/chartjs/Chart.js/blob/master/docs/charts/bubble.md
+
+    샘플]
+    https://www.chartjs.org/docs/latest/samples/other-charts/bubble.html
+-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <h2>Doughnut & Pie Chart</h2>
+    <div style="width:600px; height:400px;">
+        <canvas id="MyChart1"></canvas>
+    </div>
+    <script>
+        const myChart1 = document.getElementById('MyChart1');
+
+        const labels = ['Red', 'Blue', 'Yellow'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: '# of Votes',
+                data: [
+                    // {x, y, radius}
+                    { x: 1, y: 15, r: 2 },
+                    { x: 2, y: 5, r: 5 },
+                    { x: 3, y: 10, r: 7 },
+                    { x: 4, y: 7, r: 9 },
+                    { x: 5, y: 3, r: 11 },
+                    { x: 6, y: 9, r: 15 },
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                ],
+                borderWidth: 1,
+
+                clip: { /* TODO */ },
+
+            }]
+        };
+
+
+        const config1 = {
+            // type: TODO,
+            data: data,
+            options: {
+                /* TODO */
+            },
+        };
+
+        const chart1 = new Chart(myChart1, config1);
+    </script>
+
+
+</body>
+
+</html>

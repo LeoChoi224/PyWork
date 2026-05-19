@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>일별박스오피스 - 영화진흥위원회</title>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		table {
+			width: 100%;
+		}
+
+		th,
+		td {
+			padding: 5px;
+		}
+	</style>
+</head>
+<!--
+■ 영화진흥위원회 : 일별 박스 오피스
+http://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do
+
+http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml  (XML)
+http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json  (JSON)
+	key : (발급키)
+	targetDt : (날짜yyyyMMdd)
+	multiMovieYn : 영화구분,  "Y" : 다양성 영화 "N" : 상업영화 (default : 전체)
+	repNationCd : 국내국외영화구분, "K": 한국영화 "F" : 외국영화 (default : 전체)
+	itemPerPage : 결과 row 의 개수 (default : "10", 최대 : "10")
+	
+샘플 기본 url
+
+XML 버젼
+http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=f5eef3421c602c6cb7ea224104795888&targetDt=20120101
+
+JSON 버젼
+http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20120101
+
+↑ 위 기본 url 에 더하여 '영화구분', '국내국외영화구분' '출력ROW' 가 반영된 검색결과가 표시되어야 합니다
+-->
+
+<body>
+	<h1>일별박스오피스</h1>
+	<form name="frm">
+		<!-- 날짜: <input type="date" name="targetDt" value="연도-월-일"><br> -->
+		날짜: <input type="text" name="targetDt" placeholder="연도-월-일"><br>
+		영화구분: <select name="multiMovieYn">
+			<option value="">전체</option>
+			<option value="N">상업영화</option>
+			<option value="Y">다양성영화</option>
+		</select><br>
+
+		국내국외영화구분: <select name="repNationCd">
+			<option value="">전체</option>
+			<option value="K">한국영화</option>
+			<option value="F">외국영화</option>
+		</select><br>
+
+		출력ROW : <input type="number" name="itemPerPage" value="10">
+		<br><br>
+
+		<button type="button" onclick="loadData()">정보 가져오기</button>
+		<button type="button" onclick="removeTable()">지우기</button>
+	</form>
+
+	<hr>
+
+	<h2>검색결과</h2>
+	<table id="demoJSON"></table>
+
+	<script>
+		var api_key = "faa944c6fcf98df3122cc442fbce9e9f";
+		var req_url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+
+		function removeTable() {
+			document.getElementById('demoJSON').removeChild(document.getElementById('demoJSON').childNodes[0]);
+		}
+
+		function loadData() {
+			let frm = document.forms.frm;
+			let multiMovieYn = frm.multiMovieYn.value.trim();
+			let repNationCd = frm.repNationCd.value.trim();
+
+			// 유효성 검사
+			// 날짜
+			let targetDt = frm.targetDt.value.trim();
+			let targetDtPat = /^\d{4}-\d{2}-\d{2}$/;
+			let [year, month, day] = targetDt.split('-').map(Number);
+			let date = new Date(year, month - 1, day);
+			if (
+				!targetDtPat.test(targetDt) ||
+				date.getFullYear() !== year ||
+				date.getMonth() !== month - 1 ||
+				date.getDate() !== day
+			) {
+				alert("날짜포맷이 맞지 않습니다.");
+				frm.targetDtText.focus();
+				return;
+			} else {
+				targetDt = targetDt.split('-').join('');
+			}
+
+			// 출력ROW
+			let itemPerPage = frm.itemPerPage.value.trim();
+			if (isNaN(itemPerPage) || itemPerPage < 1 || itemPerPage > 10) {
+				alert("출력ROW는 1~10 사이 숫자만 가능합니다");
+				frm.itemPerPage.focus();
+				return;
+			}
+
+			// JSON 요청 url
+			let url = `${req_url}?key=${api_key}
+				&targetDt=${targetDt}
+				&itemPerPage=${itemPerPage}
+				&multiMovieYn=${multiMovieYn}
+				&repNationCd=${repNationCd}`;
+
+			fetch(url)
+				.then(response => response.json())
+				.then(jsonObj => parseJSON(jsonObj));
+		}
+
+		function parseJSON(jsonObj) {
+
+			let table = [];
+			table.push("<tr><td>순위</td><td>영화명</td><td>누적관객수</td><td>전일대비순위증감</td></tr>");
+
+			console.log(typeof(jsonObj.boxOfficeResult.dailyBoxOfficeList));
+			console.log(jsonObj.boxOfficeResult.dailyBoxOfficeList);
+
+			for (e of jsonObj.boxOfficeResult.dailyBoxOfficeList) {
+				table.push(`
+            <tr>
+                <td>${e.rank}</td>
+                <td>${e.movieNm}</td>
+                <td>${e.audiAcc}</td>    
+                <td>${e.rankInten}</td>    
+            </tr>
+        `);
+
+			}
+			document.getElementById('demoJSON').innerHTML = table.join('\n');
+		}
+
+
+	</script>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>GoogleMap - Event</title>
+</head>
+<body>
+<h1>Google Map - Event</h1>
+
+<!-- Map Container 와 크기 지정 -->
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+function myMap() {
+	
+	let lat, lng;
+	[lat, lng] = [37.499553, 127.035888];  // 역삼역
+	
+	const mapProp = {
+	    center:new google.maps.LatLng(lat, lng),
+	    zoom:17,
+	};
+	const map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	
+	var myPos1 = {lat: lat, lng: lng};
+	var marker1 = new google.maps.Marker({position: myPos1});
+	marker1.setMap(map);
+
+	// 마커를 클릭하면 Zoom 레벨을 조정
+	google.maps.event.addListener(marker1, 'click', function(){
+		// alert(map.getZoom());
+		map.setZoom(map.getZoom() - 1);
+		map.setCenter(marker1.getPosition());
+	});
+
+}
+
+</script>
+
+<!-- ↓key=API키, callback=함수 지정 -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh6NbJf0p8fGxGp18QhSQKlz5oYcsdOeo&callback=myMap"></script>
+
+</body>
+</html>

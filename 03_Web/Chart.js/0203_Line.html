@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line Chart</title>
+</head>
+<!--
+    https://www.chartjs.org/docs/latest/charts/line.html
+    https://github.com/chartjs/Chart.js/blob/master/docs/charts/line.md
+
+    샘플]
+    Line Chart 외 : https://www.chartjs.org/docs/latest/samples/line/line.html
+
+    Area Chart 외 : https://www.chartjs.org/docs/latest/samples/area/line-datasets.html
+-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <h2>Line Chart</h2>
+    <div>
+        <canvas id="MyChart1"></canvas>
+    </div>
+    <script>
+        const myChart1 = document.getElementById('MyChart1');
+
+        const labels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: '월매출',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                backgroundColor: 'rgb(75, 192, 192)',
+                tension: 0.2,
+            }]
+        };
+
+        const config1 = {
+            type: 'line',
+            data: data,
+        };
+
+        const chart1 = new Chart(myChart1, config1);
+    </script>
+
+
+    <h2>Vertical Line Chart</h2>
+    <div>
+        <canvas id="MyChart3"></canvas>
+    </div>
+
+    <script>
+        const myChart3 = document.getElementById('MyChart3');
+        const config3 = {
+            type: 'line',
+            data: data,
+            options: {
+                indexAxis: 'y',
+            }
+        };
+        const chart3 = new Chart(myChart3, config3);
+    </script>
+
+</body>
+
+</html>

@@ -93,8 +93,7 @@
                 </tr>
             </table>
         </form>
-        <form class="inner_table hidden hidden hidden" name="frm2" action="https://www.w3schools.com/action_page.php"
-            method="get">
+        <form class="inner_table hidden" name="frm2" action="https://www.w3schools.com/action_page.php" method="get">
             <table>
                 <tr>
                     <th>이메일</th>
@@ -126,7 +125,7 @@
     let frms = document.querySelectorAll("form.inner_table");
     let radios = document.querySelectorAll("#receiptOption input");
     let btn = document.querySelector("#btn");
-    let checked = ""
+    let checked = radios[0]
 
     for (e of radios) {
         e.addEventListener("click", function () {
@@ -153,10 +152,11 @@
         });
     }
 
+
     // submit버튼 이벤트 추가
     btn.addEventListener("click", function () {
         // 구매자명 + 금액
-        if (checked.value === "구매자명+금액" || checked === "") { // radio 기본값으로 제출시 checked는 비어있음
+        if (checked.value === "구매자명+금액") { // radio 기본값으로 제출시 checked는 비어있음
             let input = document.querySelectorAll("form[name=frm1] input")
 
             if (input[0].value.length <= 0) {
@@ -164,6 +164,10 @@
             } else if (parseInt(input[1].value) <= 0 || input[1].value.length <= 0) {
                 alert("결제금액을 입력하세요.") || input[1].focus();
             } else {
+                sessionStorage.setItem("radio", "구매자명+금액");
+                sessionStorage.setItem("name", input[0].value);
+                sessionStorage.setItem("price", input[1].value);
+
                 document.frm1.submit()
             }
         }
@@ -171,6 +175,8 @@
         else if (checked.value === "이메일") {
             let input = document.querySelector("form[name=frm2] input")
             if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(input.value)) {
+                sessionStorage.setItem("radio", "이메일");
+                sessionStorage.setItem("email", input.value);
                 document.frm2.submit();
             } else {
                 alert("이메일을 입력하세요.") || input.focus();
@@ -188,11 +194,42 @@
                     return;
                 }
             }
-            if (isTrue) { document.frm3.submit() }
+            if (isTrue) {
+                sessionStorage.setItem("radio", "카드번호");
+                for (let i = 0; i < input.length; i++) {
+                    sessionStorage.setItem("card" + i, input[i].value);
+                }
+                document.frm3.submit(checked)
+            }
         }
     });
 
-    // 뒤로가기시 전 페이지 기억
+    window.addEventListener("load", function () {
+        let savedRadio = sessionStorage.getItem("radio");
+        if (savedRadio === "구매자명+금액") {
+            document.frm1.name.value = sessionStorage.getItem("name");
+            document.frm1.price.value = sessionStorage.getItem("price");
+        }
+        else if (savedRadio === "이메일") {
+            document.querySelector('input[value="이메일"]').checked = true;
+            document.frm1.classList.add("hidden");
+            document.frm2.classList.remove("hidden");
+            document.frm2.email.value =
+                sessionStorage.getItem("email");
+        }
+        else if (savedRadio === "카드번호") {
+            document.querySelector('input[value="카드번호"]').checked = true;
+            document.frm1.classList.add("hidden");
+            document.frm3.classList.remove("hidden");
+            let inputs = document.querySelectorAll(
+                "form[name=frm3] input"
+            );
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value =
+                    sessionStorage.getItem("card" + i);
+            }
+        }
+    });
 
 </script>
 
