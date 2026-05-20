@@ -1,0 +1,25 @@
+/* 전체 디자인 및 화면 전환용 CSS */
+
+/* 화면 숨김/표시를 위한 핵심 CSS */
+.view {
+    display: block;
+}
+.view.active {
+    display: block;
+}
+
+/* 기본적인 레이아웃 정리 */
+body {
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}

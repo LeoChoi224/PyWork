@@ -1,0 +1,349 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/9AKN9jgCXqziM2fEFyLDOTUMCrS.jpg",
+            "genre_ids": [
+                35,
+                18
+            ],
+            "id": 331251,
+            "title": "스물",
+            "original_language": "ko",
+            "original_title": "스물",
+            "overview": "아무것도 하지 않는 잉여의 삶을 지향하는 인기절정의 백수, 만화가가 되겠다는 꿈을 위해 쉴 틈 없이 준비하는 생활력 강한 재수생, 대기업 입사가 목표인 최강 스펙의 엄친아이지만 술만 마시면 돌변하는 새내기 대학생까지. 인생의 가장 부끄러운 순간을 함께 한 스무살 동갑내기 세 친구의 자체발광 코미디!",
+            "popularity": 1.8302,
+            "poster_path": "/hzKynyDi7NwG5Yxn3JC9eNWM9Io.jpg",
+            "release_date": "2015-03-25",
+            "softcore": false,
+            "video": false,
+            "vote_average": 7.159,
+            "vote_count": 113
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/hOT0xOoDrlCaOgP01tYHMC3V1QK.jpg",
+            "genre_ids": [
+                18,
+                10749
+            ],
+            "id": 69600,
+            "title": "스물 넷",
+            "original_language": "ko",
+            "original_title": "스물 넷",
+            "overview": "소집해제가 얼마 안 남은 구청 공익요원 준이는 오래 된 세탁소에서 아르바이트를 하며 하루하루를 무료하게 살아가는 친구다. 그에게는 구청 공무원인 미영과의 불륜 관계마저 무미건조하게 느껴질 뿐이다. 그러던 어느날의 꿈에 구청 주차장에서 한가롭게 풀을 뜯어먹는 사슴과 눈이 마주치고 사슴의 그 슬픈, 알 수 없는 눈동자에 묘한 끌림을 느낀 준이는 가끔씩 그것이 꿈이 아니었을지도 모른다는 생각을 한다.",
+            "popularity": 0.4434,
+            "poster_path": "/jIPo6RsFYflI7XmEuYf0JbOEaEr.jpg",
+            "release_date": "2002-03-15",
+            "softcore": false,
+            "video": false,
+            "vote_average": 5.333,
+            "vote_count": 12
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/6rNxYGVbgWggnyBzxNnyPdolZmL.jpg",
+            "genre_ids": [
+                18,
+                10749
+            ],
+            "id": 432704,
+            "title": "두 번째 스물",
+            "original_language": "ko",
+            "original_title": "두 번째 스물",
+            "overview": "마흔 살의 다른 말은 두 번째 스물 그 말을 웃어 넘겼던 민하 앞에 거짓말처럼 옛사랑 민구가 나타났다. 첫눈에 반했던 만남 미치도록 뜨거웠던 연애 엇갈림 속 맞이했던 이별... 두 번째 스물에 찾아온 운명 같은 재회 일주일 동안 이탈리아 여행을 함께하게 된 두 사람 “우리 아직 사랑일까?”",
+            "popularity": 0.8066,
+            "poster_path": "/ddFsMDfioW8RvPIGWBTmJmwykot.jpg",
+            "release_date": "2016-11-03",
+            "softcore": false,
+            "video": false,
+            "vote_average": 5.0,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 415518,
+            "title": "스물 아홉살",
+            "original_language": "ko",
+            "original_title": "스물 아홉살",
+            "overview": "청년실업의 고통과 물질만능주의 연애사상 속에서 29살 청년의 진실한 사랑 찾기가 시작된다.",
+            "popularity": 0.0143,
+            "poster_path": "/itdiSt74i8Qqsf1qGk1oPW8SicF.jpg",
+            "release_date": "2011-03-07",
+            "softcore": false,
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                16
+            ],
+            "id": 1693112,
+            "title": "스물 즈음에",
+            "original_language": "en",
+            "original_title": "스물 즈음에",
+            "overview": "",
+            "popularity": 0.0143,
+            "poster_path": "/rtKZ1vnnaGEQilGEvY3R9YFObFf.jpg",
+            "release_date": "2016-01-01",
+            "softcore": false,
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/6rqIDd7JCqT75tHAH8nAc1Y6lmL.jpg",
+            "genre_ids": [
+                16,
+                35,
+                18
+            ],
+            "id": 852719,
+            "title": "스물, 한 살",
+            "original_language": "en",
+            "original_title": "Twenty Something",
+            "overview": "성인이 되는 건 힘든 일이다. 하루는  잘 되다 가도 어떤 날은 어른 흉내 내는 어린아이들이 되어 코트 속에 자신을 감추고 들키지 않으려 조마조마 한다. 지아도 21살 생일에 이와 같은 상황에 처하고 만다. 이 이야기는 어른이 되는 과정에서 겪는 불확실함들을 보여주며 우리 모두 어른이 되기 위해 연기하는 것뿐임을 말해준다.",
+            "popularity": 0.4449,
+            "poster_path": "/zLaGPqNxhkxkzEqPd6hb58FB8t4.jpg",
+            "release_date": "2021-08-27",
+            "softcore": false,
+            "video": false,
+            "vote_average": 7.199,
+            "vote_count": 93
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 1292848,
+            "title": "스물 셋 지윤",
+            "original_language": "ko",
+            "original_title": "스물 셋 지윤",
+            "overview": "BIFAN2024 한국 단편 선정작",
+            "popularity": 0.0634,
+            "poster_path": null,
+            "release_date": "",
+            "softcore": false,
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/vrsJz5JHpUf1nhbEr8ObysjdIV2.jpg",
+            "genre_ids": [
+                35
+            ],
+            "id": 359805,
+            "title": "패티와의 스물 하룻밤",
+            "original_language": "fr",
+            "original_title": "21 nuits avec Pattie",
+            "overview": "무더운 여름, 꺄롤린은 엄마의 장례식을 위해 프랑스 남부의 작은 시골마을로 향한다. 이 곳에서 꺄롤린은 음담패설을 즐기는 패티를 알게 되고, 곧 열리는 파티로 온 마을이 떠들썩 한 가운데 어느 날, 엄마의 시체가 사라지고 마는데!",
+            "popularity": 0.3752,
+            "poster_path": "/kIIpIyEHAViLp4Ib048wdIaGk1w.jpg",
+            "release_date": "2015-11-25",
+            "softcore": false,
+            "video": false,
+            "vote_average": 5.7,
+            "vote_count": 95
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/77kQEVmu3ybmhUfdRrZeESH7UsX.jpg",
+            "genre_ids": [
+                10749,
+                35,
+                14
+            ],
+            "id": 462743,
+            "title": "다시 또 스물",
+            "original_language": "th",
+            "original_title": "20 ใหม่ ยูเทิร์นวัย หัวใจรีเทิร์น",
+            "overview": "",
+            "popularity": 0.7689,
+            "poster_path": "/bkfOMTXsDphnMWHCNOi3ok66Tdt.jpg",
+            "release_date": "2016-11-24",
+            "softcore": false,
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 15
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/gZ5ywOKe1Fha7F1d4GseFuS00F3.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 277622,
+            "title": "스물 일곱살의 록스타",
+            "original_language": "en",
+            "original_title": "The 27 Club",
+            "overview": "지미 헨드릭스, 커트 코베인은 27세에 생을 마감했다. 록스타 엘리엇은 27세의 나이에 자살을 선택한 가장 절친한 밴드 멤버였던 친구의 장례식장으로 떠난다. 엘리엇은 요절한 음악인들의 뒤를 따라‘27클럽’에 가입하게 될 것인가, 아니면 치유의 길을 찾게 될 것인가?",
+            "popularity": 0.188,
+            "poster_path": "/jNqhGKQA3t6lI1yaOdwlzmSZNqZ.jpg",
+            "release_date": "2008-04-26",
+            "softcore": false,
+            "video": false,
+            "vote_average": 5.7,
+            "vote_count": 3
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                35
+            ],
+            "id": 334863,
+            "title": "지나, 여배우, 나이는 스물 아홉",
+            "original_language": "en",
+            "original_title": "Gina, An Actress, Age 29",
+            "overview": "배우로서의 경력을 시작하고자 하는 지나는 단역이라도 배역을 받고 싶은 간절한 마음에 양심을 저버리면서까지 노조를 저지하려는 제안을 받아들인다. 그러나 결국 자신의 결심, 그리고 실수를 통해 자신의 내면을 발견하는 동시에 야망보다 앞서는 진실의 가치를 발견한다.",
+            "popularity": 0.1438,
+            "poster_path": "/f91Wi4Mndj8yWLNceedl93d5RoX.jpg",
+            "release_date": "2001-01-20",
+            "softcore": false,
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 4
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                18
+            ],
+            "id": 349704,
+            "title": "인간시장, 작은 악마-스물 두 살의 자서전",
+            "original_language": "ko",
+            "original_title": "인간시장 - 작은 악마 스물두살의 자서전",
+            "overview": "총찬이는 휴학을 하고 고시공부에 열중한다. 오랜만에 고향에 내려갔다가 소꼽친구인 다혜를 만난 총찬은 어린 시절 의남매를 맺은 은주누나가 억울하게 남편에게 버림을 받고 교도소까지 갔다는 소식을 듣게 된다. 크게 분노한 총찬은 은주의 남편 김용근을 찾아가 은주에게 억울한 누명을 쓰게 한 사실을 시인하게 한다.  결국 김용근은 경찰에 자수하고 은주는 풀려난다. 그후, 장총찬은 다혜와 사랑에 빠지고, 사이비 종교에 빠진 친구 진욱의 누이동생도 구한다.  (임재원)  총찬이는 휴학을 하고 고시공부에 열중한다. 오랜만에 고향에 내려갔다가 소꼽친구인 다혜를 만난 총찬은 어린 시절 의남매를 맺은 은주누나가 억울하게 남편에게 버림을 받고 교도소까지 갔다는 소식을 듣게 된다. 크게 분노한 총찬은 은주의 남편 김용근을 찾아가 은주에게 억울한 누명을 쓰게 한 사실을 시인하게 한다.  결국 김용근은 경찰에 자수하고 은주는 풀려난다. 그후, 장총찬은 다혜와 사랑에 빠지고, 사이비 종교에 빠진 친구 진욱의 누이동생도 구한다.  (임재원)",
+            "popularity": 0.3937,
+            "poster_path": "/kfTWWEo0EP65IuXRJtH5CJtoa2V.jpg",
+            "release_date": "1983-07-09",
+            "softcore": false,
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 1
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8HUygm4Q0roZqxnERTrkHEwNN8M.jpg",
+            "genre_ids": [
+                99,
+                10402
+            ],
+            "id": 955137,
+            "title": "아이유 다큐멘터리 조각집 : 스물아홉 살의 겨울",
+            "original_language": "ko",
+            "original_title": "아이유 다큐멘터리 조각집 : 스물아홉 살의 겨울",
+            "overview": "아이유 다큐멘터리 조각집 블루레이",
+            "popularity": 0.308,
+            "poster_path": "/tyxaDaXKnjW8WwNb3MMQNDsg4BI.jpg",
+            "release_date": "2022-03-23",
+            "softcore": false,
+            "video": false,
+            "vote_average": 9.0,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 349634,
+            "title": "스물하나의 비망록",
+            "original_language": "ko",
+            "original_title": "스물하나의 비망록",
+            "overview": "의대교수 손창규의 아들 영빈은 의대생 청조와 사귀게 된다. 청조는 돈만 알고 무식한 아버지와 사이가 좋지 않은 어머니 사이에서의 불행한 성장으로 성격이 불안정하다. 어느 날 청조의 아버지 조사장은 고아출신 대학생 마라토너 태환을 용달차로 치는 사고를 낸다. 그것을 계기로 청조는 태환을 만나 사랑으로 발전한다. 영빈과 태환 사이에서 삼각관계가 된 청조는 결국 둘 다와 헤어지게 된다.  몇 년이 지나고 청조는 마라토너로서 성공한 태환과 의사 대신 연극배우가 된 영빈을 만나 깊은 감회의 눈시울을 적신다.  (임재원)  의대교수 손창규의 아들 영빈은 의대생 청조와 사귀게 된다. 청조는 돈만 알고 무식한 아버지와 사이가 좋지 않은 어머니 사이에서의 불행한 성장으로 성격이 불안정하다. 어느 날 청조의 아버지 조사장은 고아출신 대학생 마라토너 태환을 용달차로 치는 사고를 낸다. 그것을 계기로 청조는 태환을 만나 사랑으로 발전한다. 영빈과 태환 사이에서 삼각관계가 된 청조는 결국 둘 다와 헤어지게 된다.  몇 년이 지나고 청조는 마라토너로서 성공한 태환과 의사 대신 연극배우가 된 영빈을 만나 깊은 감회의 눈시울을 적신다.  (임재원)",
+            "popularity": 0.0286,
+            "poster_path": null,
+            "release_date": "1983-10-22",
+            "softcore": false,
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 531703,
+            "title": "스물여덟, 하늘을 날다",
+            "original_language": "zh",
+            "original_title": "3904英呎",
+            "overview": "호텔 프런트에서 일하는 선후이신, 남자 친구 왕웨이와 결혼을 전제로 만나고 있지만 울적한 마음이 좀처럼 가시지 않는다. 여행을 떠난 두 사람. 선후이신은 여행지에서 항공 아카데미 설명회를 듣고 어릴 적 꿈을 떠올리는데…",
+            "popularity": 0.2735,
+            "poster_path": "/chCvrTCf60YMdTgSw6vXp0ZlYYH.jpg",
+            "release_date": "2017-12-08",
+            "softcore": false,
+            "video": false,
+            "vote_average": 5.0,
+            "vote_count": 1
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/du97oSrKz9wBPgQU51L6g5B2AB8.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 1577085,
+            "title": "일흔다섯 스물하나",
+            "original_language": "ko",
+            "original_title": "일흔다섯 스물하나",
+            "overview": "",
+            "popularity": 0.0614,
+            "poster_path": "/mfTYpkWtrwycnzzCGqyKSpXkWX1.jpg",
+            "release_date": "2024-01-05",
+            "softcore": false,
+            "video": false,
+            "vote_average": 9.3,
+            "vote_count": 3
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [
+                18
+            ],
+            "id": 1468186,
+            "title": "스물다섯 번째 편지",
+            "original_language": "ko",
+            "original_title": "스물다섯 번째 편지",
+            "overview": "고향으로 돌아온 유영이 과거 연인이었던 진서를 만나게 되면서 혼란을 겪는다.",
+            "popularity": 0.0214,
+            "poster_path": null,
+            "release_date": "2024-11-09",
+            "softcore": false,
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/or5iuVbEWQqTUP4OyO18ztbP1IW.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 43339,
+            "title": "24개의 눈동자",
+            "original_language": "ja",
+            "original_title": "二十四の瞳",
+            "overview": "1928년, 쇼도지마의 분교에 젊은 여선생이 부임한다. 그녀는 점점 섬의 생활에 융화되며 12명에 불과한 학생들은 선생님께 가능한의 애정을 표한다. 학생 중 한 명인 마츠에는 우동 집에서 일을 하고 고토에는 집에 혼자 남겨진 채 폐병으로 죽어가는 등 섬의 생활은 가난하기만 하다. 전쟁이 시작되며 오이시 선생의 남편도 학생들도 차례차례 전쟁에서 죽어 가고, 오이시 선생의 딸마저도 나무에서 떨어져 죽어버린다. 패전 다음해, 오이시 선생은 다시 섬의 분교로 돌아와 옛 제자의 아이들의 담임이 되는데...",
+            "popularity": 1.4448,
+            "poster_path": "/rMSpbPE3qDbD20PEvH9RHaHkLsM.jpg",
+            "release_date": "1954-09-15",
+            "softcore": false,
+            "video": false,
+            "vote_average": 7.696,
+            "vote_count": 92
+        }
+    ],
+    "total_pages": 1,
+    "total_results": 18
+}

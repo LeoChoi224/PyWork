@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "ai_analysis": "사용자는 어둡고 진지한 분위기의 액션 영화와 고전 명작 시리즈물을 선호하는 경향이 있음.",
+  "recommendation": {
+    "primary_genre_id": 28,
+    "primary_genre_name": "Action",
+    "secondary_genre_id": 80,
+    "secondary_genre_name": "Crime",
+    "search_keywords": [
+      "dark knight",
+      "gotham",
+      "vigilante",
+      "detective"
+    ],
+    "target_release_year_range": {
+      "start": 2010,
+      "end": 2026
+    }
+  },
+  "reason": "최근 검색한 '더 배트맨(2022)'을 기반으로 탐정 요소가 가미된 범죄 액션 장르와 관련 키워드를 추출했습니다."
+}
