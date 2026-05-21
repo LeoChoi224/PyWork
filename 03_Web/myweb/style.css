@@ -4,6 +4,7 @@
 .view {
     display: block;
 }
+
 .view.active {
     display: block;
 }
@@ -16,10 +17,28 @@ body {
     padding: 20px;
     text-align: center;
 }
+
 form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-width: 400px;
     margin: 0 auto;
+}
+
+.loading {
+    color: orange;
+}
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table {
+    width: 100%;
+}
+th,
+td {
+    padding: 5px;
 }

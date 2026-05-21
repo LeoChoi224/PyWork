@@ -117,3 +117,6 @@ target/
 # IPython
 profile_default/
 ipython_config.py
+
+# 미니 프로젝트 키 보관
+config.js

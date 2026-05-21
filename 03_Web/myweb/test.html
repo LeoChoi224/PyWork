@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<!--
+■ 영화진흥위원회 : 영화목록조회
+http://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do
+http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json
+
+■ 넷플릭스
+■ OpenAI
+■ Google Cloud Translation
+
+샘플url
+http://
+-->
+
+<body>
+    <h1>영화 검색</h1>
+    <form name="frm">
+        영화명: <input type="text" name="movieNm" placeholder="검색할 영화명 입력.." value="">
+
+        <button type="button" onclick="searchMovie()">검색</button>
+        <button type="button" onclick="popularPerson()">인기 배우 목록</button>
+        <button type="button" onclick="loadData()">인기 목록</button>
+        <button type="button" onclick="removeTable()">초기화</button>
+        <br><br>
+        <hr>
+
+        <h2>검색결과</h2>
+        <table id="demoJSON"></table>
+    </form>
+
+    <script>
+        const url = "https://api.themoviedb.org/3/";
+        // `discover/movie?include_adult=false&include_video=false&language=ko-KR&page=5&sort_by=popularity.desc%27%20&api_key=${CONFIG.TMDB_KEY}`;
+
+        function removeTable() {
+            document.getElementById('demoJSON').removeChild(document.getElementById('demoJSON').childNodes[0]);
+        }
+
+        function searchMovie() {
+            let frm = document.forms.frm;
+            const search_url = `${url}search/collection?query=${frm.movieNm.value}&language=ko-KR&api_key=${CONFIG.TMDB_KEY}`;
+
+            fetch(search_url)
+                .then(response => response.json())
+                .then(jsonObj => parseJSON(jsonObj));
+        }
+        function popularPerson() {
+            let frm = document.forms.frm;
+            const person_url = `${url}person/popular?language=ko-KR&api_key=${CONFIG.TMDB_KEY}&page=1`;
+
+            fetch(person_url)
+                .then(response => response.json())
+                .then(jsonObj => parseJSON(jsonObj));
+        }
+        function loadData() {
+            let frm = document.forms.frm;
+            const rep_url = `${url}discover/movie?include_adult=false&include_video=false&language=ko-KR&page=5&sort_by=popularity.desc&api_key=${CONFIG.TMDB_KEY}`;
+            // 유효성 검사
+
+            // JSON 요청 url
+            //     let url = `${req_url}?key=${api_key}
+            // &movieNm=${movieNm}
+            // &openStartDt=${openStartDt}
+            // &itemPerPage=${itemPerPage}
+            // &curPage=${curPage}`;
+
+            fetch(rep_url)
+                .then(response => response.json())
+                .then(jsonObj => parseJSON(jsonObj));
+
+        }
+
+        function parseJSON(jsonObj) {
+            let table = [];
+            table.push("<tr><td>영화명</td><td>이미지</td></tr>");
+
+            for (e of jsonObj.results) {
+                // 포스터 경로가 있으면 <img> 태그를 만들고, 없으면 '이미지 없음' 글자를 띄웁니다.
+                let posterImg = e.poster_path
+                    ? `<img src="https://image.tmdb.org/t/p/w200${e.poster_path}" alt="${e.title} 포스터">`
+                    : "이미지 없음";
+                table.push(`
+            <tr>
+                <td>${e.name}</td>    
+                <td>${posterImg}</td>
+            </tr>
+        `);
+
+            }
+            document.getElementById('demoJSON').innerHTML = table.join('\n');
+        }
+    </script>
+    <script src="config.js"></script>
+</body>
+
+</html>

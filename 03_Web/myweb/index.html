@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 맞춤형 콘텐츠 추천</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Markdown 을 HTML 로 변환 -->
+    <script src="https://kit.fontawesome.com/51772bd9bd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,13 +33,16 @@
                     <option value="male">남성</option>
                     <option value="female">여성</option>
                 </select>
-                <input type="number" id="age" placeholder="나이">
-                <input type="text" id="mbti" placeholder="MBTI (예: INFP)">
-                <textarea id="mood" placeholder="오늘 기분이 어떠신가요? (예: 우울해서 펑펑 울고 싶어)"></textarea>
+                <input type="number" id="age" placeholder="나이" value="31">
+                <input type="text" id="mbti" placeholder="MBTI (예: ISTP)" value="ISTP">
+                <textarea id="mood" placeholder="오늘 기분이나 요청사항을 입력하세요. (예: 우울해서 펑펑 울고 싶어, 배꼽 빠지게 웃긴 영화 추천해줘)"></textarea>
                 <!-- <button type="submit">AI에게 추천받기</button> -->
-                <button type="button" onclick="requestAiRecommendation()">AI에게 추천받기</button>
+                <button type="button" onclick="getSearchTagsFromAI()">AI에게 추천받기</button>
             </form>
         </section>
+
+        <h2>응답:</h2>
+        <div id="output"></div>
 
         <!-- 3. 로딩 페이지 (API 통신 중) -->
         <section id="page-loading" class="view hidden">
@@ -75,6 +80,7 @@
         </section> -->
     </main>
 
+    <script src="config.js"></script>
     <script src="api.js"></script>
     <script src="app.js"></script>
 </body>
