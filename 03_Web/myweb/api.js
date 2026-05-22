@@ -149,35 +149,38 @@ async function getSearchTagsFromAI() {
 // }
 
 /**
- * keyword Id 가져오기
+ * 키워드 Id 가져오기
 */
-async function getKeywordIdFromTMDB(tags) {
-    if (!tags || !tags.keywords || tags.keywords.length === 0) {
+async function getKeywordIdFromTMDB(aiTagsObject) {
+    console.log("2. TMDB API로 키워드 ID 검색");
+
+    if (!aiTagsObject || !aiTagsObject.keywords || aiTagsObject.keywords.length === 0) {
         console.error("전달된 키워드가 없습니다.");
         return [];
     }
-    console.log("2. TMDB API로 키워드 ID 검색");
 
-    const keywords = [];
-    for (let i = 0; i < tags.keywords.length; i++) {
-        let tmdbSearchKeywordUrl =`
-        ${CONFIG.TMDB_URL}search/keyword?
-        query=${tags.keywords[i]}
-        &api_key=${CONFIG.TMDB_KEY}`;
+    const keywordIds = [];
 
+    for (const keywordObj of aiTagsObject.keywords) {
+        const keyword = keywordObj.en;
+        const url = `
+${CONFIG.TMDB_URL}search/keyword
+?query=${encodeURIComponent(keyword)}
+&api_key=${CONFIG.TMDB_KEY}
+`;
         try {
-            const response = await fetch(tmdbSearchKeywordUrl);
+            const response = await fetch(url);
             const data = await response.json();
 
             const keywordId = data?.results?.[0]?.id;
-            keywordId && keywords.push(keywordId);
+            keywordId && keywordIds.push(keywordId);
 
         } catch (error) {
-        console.error("TMDB 호출 오류:", error);
-        return []; 
+            console.error("TMDB 호출 오류:", error);
+            return [];
         }
     }
-    return keywords;
+    return keywordIds;
 }
 
 /**
@@ -268,175 +271,3 @@ async function runRecommendationFlow(userInfo) {
     return { candidates, finalPicks }; // app.js로 데이터 전달
 }
 
-
-
-
-// AI 한테 받은 값들로 tmdb 에서 값을 가져와 화면에 뿌리기
-// async function getCandidatesFromTMDB(tags) {
-//     if (!tags || !tags.keywords || tags.keywords.length === 0) {
-//         console.error("전달된 태그나 키워드가 없습니다.");
-//         return [];
-//     }
-//     console.log("2. TMDB API로 후보군 20개 검색");
-//     // TODO: TMDB의 /discover/movie API에 tags.genre_ids를 넣어서 호출
-//     // Return 예시: [{ id: 1, title: "영화A", overview: "..." }, ... 20개]
-//     // 첫 번째 한글 키워드를 검색어로 지정 (예: "시한부")
-//     const first_genres_id = GENRES[tags.keywords[0]];
-//     const second_genres_id = GENRES[tags.keywords[1]];
-//     console.log(`TMDB 검색에 사용할 핵심 키워드: [${tags.keywords[0]}=${first_genres_id}, ${tags.keywords[1]}=${second_genres_id}]`);
-
-//     const tmdbSearchUrl =
-//         `${CONFIG.TMDB_URL}discover/movie?
-//     include_adult=false
-//     &language=ko-KR
-//     &page=1
-//     &with_genres=${first_genres_id}|${second_genres_id}
-//     &sort_by=popularity.desc
-//     &api_key=${CONFIG.TMDB_KEY}`;
-//     // &with_keywords=1|2
-			
-//     try {
-//         const response = await fetch(tmdbSearchUrl);
-//         const data = await response.json();
-//         const candidates = data.results || [];
-//         parseJSON(data);
-//         console.log(candidates)
-//         // console.log(`TMDB에서 '${searchKeyword}' 후보 영화 ${candidates.length}개 찾음 완료.`);
-//         // return candidates;
-
-//     } catch (error) {
-//         console.error("TMDB 호출 오류:", error);
-//         return [];
-//     }
-//     // outputElement.innerHTML = marked.parse(displayHTML);
-//     // outputElement.scrollIntoView({ block: 'end', behavior: 'smooth' });
-//     // return [{ id: 101, title: "테스트 영화", overview: "슬픈 영화입니다." }];
-// }
-/**
-* Fetch API를 사용하여 Gemini API에 스트리밍 요청을 보내고 응답을 처리합니다.
-**/
-// async function requestAiRecommendation() {
-//     let frm = document.forms.infoForm;
-
-//     // 프롬프트에 맞춤 리팩터링
-//     let mbti = frm.mbti.value ? `mbti: ${frm.mbti.value.trim()},` : "";
-//     let gender = frm.gender.value.trim() == "male" ? "성별: 남자," : "성별: 여자,";
-//     let age = frm.age.value.trim() ? `나이: ${frm.age.value.trim()}` : "";
-//     let mood = frm.mood.value.trim() ? `추가 요청사항은 "${frm.mood.value.trim()}" 이고,` : "";
-
-//     const outputElement = document.getElementById('output');
-//     const promptInput =
-//         `내가 좋아할만한 영화를 추천 받고싶어.
-//         내 정보는 ${mbti} ${gender} ${age}이야. ${mood} 이 정보로 영화 추천해줘`;
-
-//     console.log(promptInput);
-//     outputElement.innerHTML = "<i class='fas fa-spinner fa-spin'></i>응답 생성 중... 잠시 기다려주십시오."
-//     outputElement.classList.add('loading');
-
-//     // request body (요청 본문)
-//     // const prompt = promptInput.value.trim();
-//     const requestBody = {
-//         contents: [{
-//             parts: [{ text: promptInput }]
-//         }],
-//     };
-
-//     try {
-//         // 1. Fetch API를 사용하여 요청을 보냅니다.
-//         const response = await fetch(CONFIG.GEMINI_API_ENDPOINT, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(requestBody)
-//         });
-
-//         outputElement.classList.remove('loading');
-
-//         // 2. HTTP 상태 코드 확인
-//         if (!response.ok) {
-//             const errorJson = await response.json();
-//             const errorMessage = errorJson?.error?.message || `HTTP 오류: ${response.status}`;  // 호출실패하면 응답에 error 키가 있다.
-//             outputElement.textContent = `API 요청 실패: ${errorMessage}`;
-//             console.error("API Error Response:", errorJson);
-//             return;
-//         }
-
-//         // 응답 본문을 ReadableStream으로 가져옵니다.
-//         const reader = response.body
-//             .pipeThrough(new TextDecoderStream())
-//             .getReader()
-
-//         outputElement.textContent = "";
-
-//         // 스트림을 비동기적으로 읽습니다.
-//         let textContent = "";
-
-//         while (true) {
-//             // value: 생성된 토큰,  done: 생성종료 여부
-//             const { value, done } = await reader.read();
-//             if (done) break;  // 스트림 종료
-
-//             // 들어온 텍스트 조각을 모아둡니다.
-//             textContent += value;
-
-//             // 제미나이 스트리밍 응답 덩어리에서 "text": "..." 부분만 정규식으로 안전하게 뽑아내는 팁입니다.
-//             // JSON 전체를 통째로 파싱하려 하면 대괄호나 쉼표 때문에 무조건 깨집니다.
-//             const regex = /"text"\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"/g;
-//             let match;
-//             let displayHTML = "";
-
-//             // 텍스트 조각만 추출해서 화면에 누적 렌더링
-//             while ((match = regex.exec(textContent)) !== null) {
-//                 // 유니코드 변환 및 줄바꿈 처리 처리 후 마크다운 파싱
-//                 let cleanText = match[1].replace(/\\n/g, '\n').replace(/\\"/g, '"');
-//                 displayHTML += cleanText;
-//             }
-
-//             outputElement.innerHTML = marked.parse(displayHTML);
-//             outputElement.scrollIntoView({ block: 'end', behavior: 'smooth' });
-
-//         } // end while
-//     } catch (error) {
-//         console.error("Fetch 또는 스트림 처리 중 오류 발생:", error);
-//         outputElement.textContent = `오류 발생: ${error.message}`;
-//     }
-// } // end streamGeminiResponse()
-
-// /**
-//  * API 키를 저장할 객체 🚨[미니 프로젝트 전용] 추후 삭제 코드
-//  * Live server 사용시 숨김 파일을 읽어오지 못함 참고용으로 코드 는 그대로 남겨둠
-//  */
-// const CONFIG = {
-//     TMDB_KEY: "",
-//     OPENAI_KEY: "",
-//     GEMINI_KEY: ""
-// };
-
-// /**
-//  * 환경변수 파일을 읽어오는 함수
-//  */
-// async function loadEnv() {
-//     try {
-//         // 상위 폴더에 있는 .env 파일을 fetch로 가져옴
-//         const response = await fetch('../.env');
-//         const text = await response.text();
-
-//         // 줄바꿈으로 쪼개서 키와 값을 분리
-//         text.split('\n').forEach(line => {
-//             const [key, value] = line.split('=');
-//             if (key && value) {
-//                 if (key.trim() === 'TMDB_API_KEY') CONFIG.TMDB_KEY = value.trim();
-//                 if (key.trim() === 'OPENAI_API_KEY') CONFIG.OPENAI_KEY = value.trim();
-//                 if (key.trim() === 'GEMINI_API_KEY') CONFIG.GEMINI_KEY = value.trim();
-//             }
-//         });
-
-//         console.log("환경 변수 로드 완료!");
-//     } catch (error) {
-//         console.error(".env 파일을 읽어오는데 실패했습니다:", error);
-//     }
-//     // 🚀 앱 시작 시 가장 먼저 실행되도록 설정
-//     // 예: 
-//     // loadEnv().then(() => { runRecommendationFlow(userInfo); });
-// } // end loadEnv()
