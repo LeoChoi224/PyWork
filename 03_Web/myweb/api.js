@@ -1,11 +1,6 @@
 /**
  * OpenAI 및 TMDB API 호출 핵심 로직
  */
-const TMDB_url = "https://api.themoviedb.org/3/";
-const OPENAI_MODEL_NAME = "gpt-4o";
-const OPENAI_API_ENDPOINT = "https://api.openai.com/v1/chat/completions";
-const GEMINI_MODEL_NAME = "gemini-2.5-flash";
-const GEMINI_API_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL_NAME}:streamGenerateContent?key=${CONFIG.GEMINI_KEY}`;
 
 /**
  * 사용자 정보 받기 & 검증
@@ -42,27 +37,28 @@ async function getSearchTagsFromAI() {
 
     const outputElement = document.getElementById('output');
 
-    const promptInput = `
-너는 사용자의 개인 정보와 현재 심리 상태를 분석하여(입력된 정보로만 분석), TMDB(The Movie Database) API 검색에 가장 적합한 검색용 '장르'와 '소재 키워드'를 한글로 추출하는 데이터 분석가야.
+    const promptInput = analyzeUser(inputData);
+//     `
+// 너는 사용자의 개인 정보와 현재 심리 상태를 분석하여(입력된 정보로만 분석), TMDB(The Movie Database) API 검색에 가장 적합한 검색용 '장르'와 '소재 키워드'를 한글로 추출하는 데이터 분석가야.
 
-[사용자 정보]
-- MBTI: ${inputData.mbti}
-- 성별 및 나이: ${inputData.gender}, ${inputData.age}
-- 현재 기분/요청사항: "${inputData.mood}"
+// [사용자 정보]
+// - MBTI: ${inputData.mbti}
+// - 성별 및 나이: ${inputData.gender}, ${inputData.age}
+// - 현재 기분/요청사항: "${inputData.mood}"
 
-[임무]
-위 정보를 바탕으로 사용자의 취향과 현재 기분에 완벽히 부합하는 영화를 TMDB에서 검색할 수 있도록 아래 [출력 형식]을 엄격히 준수하여 사용자기 읽기좋은 한글 텍스트로 답변해줘. 다른 설명이나 마크다운 기호(\`\`\`json)는 절대 붙이지 마.
+// [임무]
+// 위 정보를 바탕으로 사용자의 취향과 현재 기분에 완벽히 부합하는 영화를 TMDB에서 검색할 수 있도록 아래 [출력 형식]을 엄격히 준수하여 사용자기 읽기좋은 한글 텍스트로 답변해줘. 다른 설명이나 마크다운 기호(\`\`\`json)는 절대 붙이지 마.
 
-[출력 형식]
-### 📊 사용자 맞춤 심리 분석
-(여기에 사용자의 MBTI와  와 연령대(나이 x, 예: 30대 초반), 성별, 현재 기분 상태를 요약한 다정한 분석 글을 3줄 이내로 작성해줘)
+// [출력 형식]
+// ### 📊 사용자 맞춤 심리 분석
+// (여기에 사용자의 MBTI와  와 연령대(나이 x, 예: 30대 초반), 성별, 현재 기분 상태를 요약한 다정한 분석 글을 3줄 이내로 작성해줘)
 
----
+// ---
 
-### 🎬 검색 매칭 태그
-**추천 장르**: (여기에 TMDB 기준 추천 장르 명칭 2개를 쉼표로 구분해서 작성해. 예: 드라마, 액션)\n
-**추천 키워드**: (여기에 검색 효율이 좋은 구체적인 영화 소재 한글 키워드 4개를 쉼표로 구분해서 작성해. 예: 시한부, 슬픈 이별, 가족애, 눈물샘)
-`;
+// ### 🎬 검색 매칭 태그
+// **추천 장르**: (여기에 TMDB 기준 추천 장르 명칭 2개를 쉼표로 구분해서 작성해. 예: 드라마, 액션)\n
+// **추천 키워드**: (여기에 검색 효율이 좋은 구체적인 영화 소재 한글 키워드 4개를 쉼표로 구분해서 작성해. 예: 시한부, 슬픈 이별, 가족애, 눈물샘)
+// `;
 
     console.log(promptInput);
     outputElement.innerHTML = "<i class='fas fa-spinner fa-spin'></i>응답 생성 중... 잠시 기다려주십시오."
@@ -77,7 +73,7 @@ async function getSearchTagsFromAI() {
 
     try {
         // 1. Fetch API를 사용하여 요청을 보냅니다.
-        const response = await fetch(GEMINI_API_ENDPOINT, {
+        const response = await fetch(CONFIG.GEMINI_API_ENDPOINT, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -186,7 +182,7 @@ async function getKeywordIdFromTMDB(tags) {
     const keywords = [];
     for (let i = 0; i < tags.keywords.length; i++) {
         let tmdbSearchKeywordUrl =`
-        ${TMDB_url}search/keyword?
+        ${CONFIG.TMDB_URL}search/keyword?
         query=${tags.keywords[i]}
         &api_key=${CONFIG.TMDB_KEY}`;
 
@@ -215,22 +211,24 @@ async function getCandidatesFromTMDB(tags) {
     }
     console.log("3. TMDB API로 후보군 20개 검색");
 
-    const first_genres_id = GENRES[tags.genres[0]];
-    const second_genres_id = GENRES[tags.genres[1]];
-    console.log(`TMDB 검색에 사용할 장르: [${tags.genres[0]}=${first_genres_id}, ${tags.genres[1]}=${second_genres_id}]`);
+    // const first_genres_id = GENRES[tags.genres[0]];
+    // const second_genres_id = GENRES[tags.genres[1]];
+    const genreIds = [];
+    tags.genres.forEach(genres => genreIds.push(GENRES[genres]))
+    console.log(`TMDB 검색에 사용할 장르: [${tags.genres[0]}=${genreIds[0]}, ${tags.genres[1]}=${genreIds[1]}]`);
     
     
 
     const tmdbSearchUrl =`
-    ${TMDB_url}discover/movie?
+    ${CONFIG.TMDB_URL}discover/movie?
     include_adult=false
     &language=ko-KR
     &page=1
-    &with_genres=${first_genres_id}|${second_genres_id}
-    &with_keywords=${keywords[0]}|${keywords[1]}
+    &with_genres=${genreIds.join('|')}
+    &with_keywords=${keywords.join('|')}
     &sort_by=popularity.desc
     &api_key=${CONFIG.TMDB_KEY}`;
-			
+    
     try {
         const response = await fetch(tmdbSearchUrl);
         const data = await response.json();
@@ -309,7 +307,7 @@ async function runRecommendationFlow(userInfo) {
 //     console.log(`TMDB 검색에 사용할 핵심 키워드: [${tags.keywords[0]}=${first_genres_id}, ${tags.keywords[1]}=${second_genres_id}]`);
 
 //     const tmdbSearchUrl =
-//         `${TMDB_url}discover/movie?
+//         `${CONFIG.TMDB_URL}discover/movie?
 //     include_adult=false
 //     &language=ko-KR
 //     &page=1
@@ -366,7 +364,7 @@ async function runRecommendationFlow(userInfo) {
 
 //     try {
 //         // 1. Fetch API를 사용하여 요청을 보냅니다.
-//         const response = await fetch(GEMINI_API_ENDPOINT, {
+//         const response = await fetch(CONFIG.GEMINI_API_ENDPOINT, {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json'
