@@ -3,11 +3,11 @@
  */
 
 const PROMPTS = {
-  /**
-   * 사용자 취향 분석
-   */
-  analyzeUser(inputData) {
-    return `
+    /**
+     * 사용자 취향 분석
+     */
+    analyzeUser(inputData) {
+        return `
 너는 사용자의 개인 정보와 현재 심리 상태를 분석하여(입력된 정보로만 분석), TMDB(The Movie Database) API 검색에 가장 적합한 검색용 '장르'와 '소재 키워드'를 한글로 추출하는 데이터 분석가야.
 
 [사용자 정보]
@@ -55,20 +55,98 @@ const PROMPTS = {
   ]
 }
 `;
-  },
-  /**
-   * 최종 영화 추천
-   */
-  recommendMovie(inputData) {
-    return `
+    },
+    /**
+     * 최종 영화 추천
+     */
+    recommendMovie(
+        inputData,
+        aiTagsObject,
+        classicCandidates,
+        recentCandidates
+    ) {
+        return `
+너는 사용자의 성향과 현재 감정 상태를 분석하고,
+TMDB(The Movie Database)에서 추출한 영화 후보군 중에서
+가장 적합한 작품을 최종 추천하는 영화 큐레이터 AI야.
+
+[사용자 정보]
+- MBTI: ${inputData.mbti}
+- 성별 및 나이: ${inputData.gender}, ${inputData.age}
+- 현재 기분/요청사항: "${inputData.mood}"
+
+[사용자 심리 분석]
+${aiTagsObject.analysis}
+
+[사용자 맞춤 추천 장르]
+${aiTagsObject.genres.join(", ")}
+
+[사용자 맞춤 추천 키워드]
+${aiTagsObject.keywords.map(k => k.ko).join(", ")}
+
+[TMDB 명작 영화 후보군]
+${classicCandidates.map(movie => `
+- ${movie.title} (${movie.id})
+`).join("")}
+
+[TMDB 최신 인기 영화 후보군]
+${recentCandidates.map(movie => `
+- ${movie.title} (${movie.id})
+`).join("")}
+
+[임무]
+위 사용자 정보를 바탕으로
+사용자에게 가장 잘 어울리는 영화를 명작 영화 후보군에거 2개, 최신 인기 영화 후보군에서 1개 총 3개의 영화를 추천해줘.
+
+[중요 규칙]
+1. 반드시 제공된 후보군 내부 영화만 선택
+2. 존재하지 않는 영화 생성 금지
+3. 반드시 명작 영화 후보군에서 2개 선택
+4. 반드시 최신 인기 영화 후보군에서 1개 선택
+5. 추천 순위를 1위, 2위, 3위로 정렬
+6. 추천 이유는 사용자의 성향/기분과 연결해서 작성
+7. 추천 이유는 사용자에게 자연스럽고 친근한 한국어로 작성
+8. 추천 이유는 2줄 이하로 짧고 강렬하게 작성
+9. 영화 제목(title)과 id는 반드시 후보군 데이터를 그대로 사용
+10. 반드시 JSON만 출력
+11. 설명 금지
+12. markdown 금지
+13. JSON 외 텍스트 출력 금지
+
+[출력 형식]
+{
+  "recommendations": [
+    {
+      "rank": 1,
+      "type": "classic",
+      "id": 123,
+      "title": "영화 제목",
+      "reason": "추천 이유"
+    },
+    {
+      "rank": 2,
+      "type": "classic",
+      "id": 456,
+      "title": "영화 제목",
+      "reason": "추천 이유"
+    },
+    {
+      "rank": 3,
+      "type": "recent",
+      "id": 789,
+      "title": "영화 제목",
+      "reason": "추천 이유"
+    }
+  ]
+}
 
 `;
-  },
-  /**
-  * 사용자 취향 분석 - 예전 버전
-  */
-  oldAnalyzeUser(inputData) {
-    return `
+    },
+    /**
+    * 사용자 취향 분석 - 예전 버전
+    */
+    oldAnalyzeUser(inputData) {
+        return `
 너는 사용자의 개인 정보와 현재 심리 상태를 분석하여(입력된 정보로만 분석), TMDB(The Movie Database) API 검색에 가장 적합한 검색용 '장르'와 '소재 키워드'를 한글로 추출하는 데이터 분석가야.
 
 [사용자 정보]
@@ -89,69 +167,6 @@ const PROMPTS = {
 **추천 장르**: (여기에 TMDB 기준 추천 장르 명칭 2개를 쉼표로 구분해서 작성해. 예: 드라마, 액션)\n
 **추천 키워드**: (여기에 검색 효율이 좋은 구체적인 영화 소재 한글 키워드 4개를 쉼표로 구분해서 작성해. 예: 시한부, 슬픈 이별, 가족애, 눈물샘)
 `;
-  },
+    },
 };
 
-
-
-
-// const promptInput = `
-// 너는 영화 추천 전문가이자 TMDB 검색 최적화 전문가야.
-
-// [사용자 정보]
-// - MBTI: ${inputData.mbti}
-// - 성별 및 나이: ${inputData.gender}, ${inputData.age}
-// - 현재 기분/요청사항: "${inputData.mood}"
-
-// [중요 규칙]
-// 1. 사용자가 보기 좋은 한글 키워드(ko) 생성
-// 2. TMDB 검색에 적합한 영어 키워드(en) 생성
-// 3. 영어 키워드는 반드시 TMDB 영화 메타데이터 스타일로 작성
-// 4. 반드시 JSON만 출력
-// 5. 설명 금지
-// 6. markdown 금지
-
-// [출력 예시]
-// {
-//   "analysis": "감성적이고 몰입감 있는 이야기를 선호하는 상태입니다.",
-//   "genres": [
-//     {
-//       "ko": "드라마",
-//       "id": 18
-//     },
-//     {
-//       "ko": "공포",
-//       "id": 27
-//     }
-//   ],
-//   "keywords": [
-//     {
-//       "ko": "좀비",
-//       "en": "zombie"
-//     },
-//     {
-//       "ko": "학교",
-//       "en": "school"
-//     },
-//     {
-//       "ko": "생존",
-//       "en": "survival"
-//     },
-//     {
-//       "ko": "감염",
-//       "en": "virus"
-//     }
-//   ]
-// }
-// `;
-// /**
-//  * 사용자에게 보여줄 텍스트 생성
-//  */
-// const displayText = `
-// 📊 사용자 분석
-// ${aiTagsObject.analysis}
-// 🎬 추천 장르
-// ${aiTagsObject.genres.map(g => g.ko).join(", ")}
-// 🏷 추천 키워드
-// ${aiTagsObject.keywords.map(k => k.ko).join(", ")}
-// `;

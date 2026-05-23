@@ -38,7 +38,7 @@ async function typeText(element, text, speed = 30) {
             setTimeout(resolve, speed)
         );
     }
-}
+} // end typeText()
 
 /**
  * AI에게 사용자 정보를 보내 분석을 받고, 실시간 화면 표시 후 태그 객체 리턴
@@ -108,8 +108,9 @@ ${aiTagsObject.keywords.map(k => k.ko).join(", ")}
 `;
 
         // 화면은 일부러 천천히 출력
-        typeText(outputElement, displayText, 20);
+        typeText(outputElement, displayText, 50);
 
+        // 키워드, 장르 ID 추출
         const keywordIds = await getKeywordIdFromTMDB(aiTagsObject);
         const genreIds = [];
         aiTagsObject.genres.forEach(genres => genreIds.push(GENRES[genres]))
@@ -133,6 +134,10 @@ ${aiTagsObject.keywords.map(k => k.ko).join(", ")}
                     keywordIds
                 )
             );
+
+        const fianl = await getFinalRecommendations(inputData, aiTagsObject, classicCandidates, recentCandidates);
+        console.log("아마도 최종", fianl);
+
         return aiTagsObject;
 
     } catch (error) {
@@ -140,7 +145,6 @@ ${aiTagsObject.keywords.map(k => k.ko).join(", ")}
         outputElement.textContent = `오류 발생: ${error.message}`;
         return null;
     }
-
 } // end streamGeminiResponse()
 
 // OpenAI 버전
@@ -184,7 +188,7 @@ ${CONFIG.TMDB_URL}search/keyword
         }
     }
     return keywordIds;
-}
+} // 둥 getKeywordIdFromTMDB()
 
 /**
  * 추출된 태그로 TMDB API를 호출하여 영화/드라마 리스트(후보군)를 추림
@@ -203,14 +207,14 @@ async function getCandidatesFromTMDB(aiTagsObject, url) {
 
         const candidates = buildMovieCandidateList(data.results || []);
         console.log(candidates)
-        renderMoviePreview(candidates); // 개발 단계에서 확인용으로 화면에 뿌리기
+        // renderMoviePreview(candidates); // 개발 단계에서 확인용으로 화면에 뿌리기
         return candidates;
 
     } catch (error) {
         console.error("TMDB 호출 오류:", error);
         return [];
     }
-}
+} // end getCandidatesFromTMDB()
 
 /**
  * 영화 이름으로 추천 후보 리스트 가공
@@ -223,6 +227,67 @@ function buildMovieCandidateList(results) {
             release_date: movie.release_date,
         };
     });
+} // end buildMovieCandidateList()
+
+/**
+ * 후보군 리스트와 사용자 정보를 다시 OpenAI에 보내어 최종 3개를 고르고 이유를 작성받음
+*/
+// 제미나이 코드
+async function getFinalRecommendations(inputData, aiTagsObject, classicCandidates, recentCandidates) {
+    console.log("4. 최종 3개 영화를 추천 요청");
+
+    if (!inputData) return null; // 유효성 검사 실패 시 중단
+
+    const outputElement = document.getElementById('movie-output');
+
+    const promptInput = PROMPTS.recommendMovie(inputData, aiTagsObject, classicCandidates, recentCandidates);
+    console.log(promptInput);
+
+    // request body (요청 본문)
+    const requestBody = {
+        contents: [{
+            parts: [{ text: promptInput }]
+        }],
+        generationConfig: {
+            responseMimeType: "application/json",
+            temperature: 0.7 // 숫자가 작을수록 기계적, 클수록 창의적, 1 이상은 너무 랜덤
+        }
+    };
+
+    try {
+        // 스트리밍 말고 응답 자체는 빨리 완성시킴
+        const response = await fetch(CONFIG.GEMINI_API_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        const data = await response.json();
+
+        // HTTP 상태 코드 확인
+        if (!response.ok) {
+            outputElement.innerHTML = `<span style="color: red;">API 요청 실패 (HTTP ${response.status})</span>`;
+            return null;
+        }
+
+        // Gemini 응답 텍스트 추출
+        const rawText =
+            data.candidates?.[0]?.content?.parts?.[0]?.text;
+        console.log("AI 최종 답변 텍스트:\n", rawText);
+
+        // JSON 파싱
+        const recommendationResult = JSON.parse(rawText);
+        console.log("최종 추천 영화 3개 자바스크립트 오브젝트:", recommendationResult);
+
+        return recommendationResult;
+
+    } catch (error) {
+        console.error("Fetch 또는 스트림 처리 중 오류 발생:", error);
+        outputElement.textContent = `오류 발생: ${error.message}`;
+        return null;
+    }
 }
 
 /**
@@ -246,17 +311,7 @@ function renderMoviePreview(movieList) {
     }
 
     table.push("</table>")
-    document.getElementById('movie-output').innerHTML += table.join('\n');
-}
-
-/**
- * [Step 3] 후보군 리스트와 사용자 정보를 다시 OpenAI에 보내어 최종 3개를 고르고 이유를 작성받음
- */
-async function getFinalRecommendations(userInfo, candidates) {
-    console.log("3. AI가 최종 후보 3개 선정 및 추천 이유 작성");
-    // TODO: OpenAI API 호출 (prompt: 사용자 정보와 이 20개 리스트를 줄게. 여기서 3개만 고르고 이유를 적어줘 JSON으로)
-    // Return 예시: [{ id: 101, reason: "주인공의 상황이 당신과 비슷해서 위로가 될 거예요." }]
-    return [{ id: 101, reason: "이유입니다." }];
+    document.getElementById('test-output').innerHTML += table.join('\n');
 }
 
 /**
