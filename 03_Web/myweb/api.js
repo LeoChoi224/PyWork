@@ -91,7 +91,7 @@ async function getSearchTagsFromAI() {
         // Gemini 응답 텍스트 추출
         const rawText =
             data.candidates?.[0]?.content?.parts?.[0]?.text;
-        console.log("AI 최종 답변 텍스트:\n", rawText);
+        console.log("AI 분석 및 추천 답변 텍스트:\n", rawText);
 
         // JSON 파싱
         const aiTagsObject = JSON.parse(rawText);
@@ -281,11 +281,76 @@ async function getFinalRecommendations(inputData, aiTagsObject, classicCandidate
         const recommendationResult = JSON.parse(rawText);
         console.log("최종 추천 영화 3개 자바스크립트 오브젝트:", recommendationResult);
 
-        return recommendationResult;
+        detailedRecommendations = [];
+        for (const movie of recommendationResult.recommendations) {
+            const detail = await getMovieDetail(movie.id);
+            detailedRecommendations.push({
+                movie: detail,
+                ai_reason: movie.reason
+            });
+        }
+
+        console.log(detailedRecommendations);
+        renderMoviePreview(detailedRecommendations);
+
+        return detailedRecommendations;
 
     } catch (error) {
         console.error("Fetch 또는 스트림 처리 중 오류 발생:", error);
         outputElement.textContent = `오류 발생: ${error.message}`;
+        return null;
+    }
+}
+
+/**
+ * TMDB 영화 상세 정보 조회
+ */
+async function getMovieDetail(movieId) {
+    console.log("5. 최종 3개 영화의 상세 정보를 요청");
+
+    const url = `
+${CONFIG.TMDB_URL}movie/${movieId}
+?api_key=${CONFIG.TMDB_KEY}
+&language=ko-KR
+&append_to_response=credits,videos,similar
+`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`TMDB 요청 실패: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return {
+            id: data.id,
+            title: data.title,
+            original_title: data.original_title,
+            poster_path: data.poster_path,
+            backdrop_path: data.backdrop_path,
+            overview: data.overview,
+            tagline: data.tagline,
+            release_date: data.release_date,
+            runtime: data.runtime,
+            vote_count: data.vote_count,
+            genres: data.genres,
+            production_countries:
+                data.production_countries,
+            spoken_languages:
+                data.spoken_languages,
+            director:
+                data.credits?.crew?.find(
+                    person => person.job === "Director"
+                ),
+            cast:
+                data.credits?.cast?.slice(0, 10),
+            videos:
+                data.videos?.results,
+            similar:
+                data.similar?.results?.slice(0, 4)
+        };
+    } catch (error) {
+        console.error("영화 상세 조회 실패:", error);
         return null;
     }
 }
@@ -297,15 +362,16 @@ function renderMoviePreview(movieList) {
     let table = [];
     table.push("<hr><table><tr><td>영화명</td><td>이미지</td></tr>");
 
-    for (const movie of movieList) {
+    for (const m of movieList) {
         // 포스터 경로가 있으면 <img> 태그를 만들고, 없으면 '이미지 없음' 글자를 띄웁니다.
-        let posterImg = movie.poster_path
-            ? `<img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title} 포스터">`
+        let posterImg = m.movie.poster_path
+            ? `<img src="https://image.tmdb.org/t/p/w200${m.movie.poster_path}" alt="${m.movie.title} 포스터">`
             : "이미지 없음";
         table.push(`
             <tr>
-                <td>${movie.title}</td>    
+                <td>${m.movie.title}</td>    
                 <td>${posterImg}</td>
+                <td>${m.ai_reason}</td>
             </tr>
         `);
     }
@@ -313,6 +379,33 @@ function renderMoviePreview(movieList) {
     table.push("</table>")
     document.getElementById('test-output').innerHTML += table.join('\n');
 }
+
+// /**
+//  * 개발 단계에서 확인용으로 화면에 뿌리기
+//  */
+// function renderMoviePreview(movieList) {
+//     let table = [];
+//     table.push("<hr><table><tr><td>영화명</td><td>이미지</td></tr>");
+
+//     for (const movie of movieList) {
+//         // 포스터 경로가 있으면 <img> 태그를 만들고, 없으면 '이미지 없음' 글자를 띄웁니다.
+//         let posterImg = movie.poster_path
+//             ? `<img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title} 포스터">`
+//             : "이미지 없음";
+//         table.push(`
+//             <tr>
+//                 <td>${movie.title}</td>    
+//                 <td>${posterImg}</td>
+//             </tr>
+//         `);
+//     }
+
+//     table.push("</table>")
+//     document.getElementById('test-output').innerHTML += table.join('\n');
+// }
+
+
+
 
 /**
  * 전체 흐름을 제어하는 메인 API 함수
