@@ -22,6 +22,41 @@ CONFIG.GEMINI_API_ENDPOINT =
 `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.GEMINI_MODEL_NAME}:streamGenerateContent?key=${CONFIG.GEMINI_KEY}`;
 
 /**
+ * 인기 영화 기준 최신 조건 x
+ */
+const TMDB_CLASSIC_URL = (genreIds, keywordIds) => {
+    return `
+    ${CONFIG.TMDB_URL}discover/movie?
+    include_adult=false
+    &language=ko-KR
+    &page=1
+    &with_genres=${genreIds.join('|')}
+    &with_keywords=${keywordIds.join('|')}
+    &sort_by=vote_count.desc
+    &vote_count.gte=1000
+    &api_key=${CONFIG.TMDB_KEY}
+    `;
+}
+
+/**
+ * 최신 영화 기준 최근 2년
+ */
+const TMDB_RECENT_URL = (genreIds, keywordIds) => {
+    return `
+    ${CONFIG.TMDB_URL}discover/movie?
+    include_adult=false
+    &language=ko-KR
+    &page=1
+    &with_genres=${genreIds.join('|')}
+    &with_keywords=${keywordIds.join('|')}
+    &primary_release_date.gte=2024-01-01
+    &sort_by=popularity.desc
+    &vote_count.gte=300
+    &api_key=${CONFIG.TMDB_KEY}
+    `;
+}
+
+/**
  * 장르
  */
 const GENRES = {
