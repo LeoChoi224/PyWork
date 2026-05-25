@@ -1,5 +1,5 @@
 /**
- * 프롬프트 
+ * AI 프롬프트 템플릿 정의
  */
 
 const PROMPTS = {
@@ -146,14 +146,14 @@ ${recentCandidates.map(movie => `
     /**
     * 사용자 취향 분석 - 예전 버전
     */
-    oldAnalyzeUser(inputData) {
+    oldAnalyzeUser(userInfo) {
         return `
 너는 사용자의 개인 정보와 현재 심리 상태를 분석하여(입력된 정보로만 분석), TMDB(The Movie Database) API 검색에 가장 적합한 검색용 '장르'와 '소재 키워드'를 한글로 추출하는 데이터 분석가야.
 
 [사용자 정보]
-- MBTI: ${inputData.mbti}
-- 성별 및 나이: ${inputData.gender}, ${inputData.age}
-- 현재 기분/요청사항: "${inputData.mood}"
+- MBTI: ${userInfo.mbti}
+- 성별 및 나이: ${userInfo.gender}, ${userInfo.age}
+- 현재 기분/요청사항: "${userInfo.mood}"
 
 [임무]
 위 정보를 바탕으로 사용자의 취향과 현재 기분에 완벽히 부합하는 영화를 TMDB에서 검색할 수 있도록 아래 [출력 형식]을 엄격히 준수하여 사용자기 읽기좋은 한글 텍스트로 답변해줘. 다른 설명이나 마크다운 기호(\`\`\`json)는 절대 붙이지 마.

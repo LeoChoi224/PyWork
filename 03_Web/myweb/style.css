@@ -1,12 +1,12 @@
 /* 전체 디자인 및 화면 전환용 CSS */
 
 /* 화면 숨김/표시를 위한 핵심 CSS */
-.view {
+.active {
     display: block;
 }
 
-.view.active {
-    display: block;
+.hidden {
+    display: none;
 }
 
 /* 기본적인 레이아웃 정리 */
