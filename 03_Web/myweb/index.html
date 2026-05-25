@@ -33,34 +33,30 @@
                     <option value="male">남성</option>
                     <option value="female">여성</option>
                 </select>
-                <input type="number" id="age" placeholder="나이" value="31">
-                <input type="text" id="mbti" placeholder="MBTI (예: ISTP)" value="ISTP">
+                <input type="number" id="age" placeholder="나이">
+                <input type="text" id="mbti" placeholder="MBTI (예: ISTP)">
                 <textarea id="mood" placeholder="오늘 기분이나 요청사항을 입력하세요. (예: 우울해서 펑펑 울고 싶어, 배꼽 빠지게 웃긴 영화 추천해줘)"></textarea>
                 <!-- <button type="submit">AI에게 추천받기</button> -->
-                <button type="button" onclick="getSearchTagsFromAI()">AI에게 추천받기</button>
+                <button type="button" id="recommend-btn">AI에게 추천받기</button>
             </form>
         </section>
 
-        <h2>응답:</h2>
-        <div id="analysis-output"></div>
-        <div id="movie-output"></div>
-        <div id="test-output"></div>
-
+        
         <!-- 3. 로딩 페이지 (API 통신 중) -->
         <section id="page-loading" class="view hidden">
             <h2>AI가 데이터를 분석 중입니다... ⏳</h2>
-            <p>1. 사용자 감정 분석 및 태그 추출 중...</p>
-            <p>2. TMDB 데이터베이스 검색 중...</p>
-            <p>3. 최종 맞춤형 콘텐츠 선정 중...</p>
+            <div id="analysis-output"></div>
         </section>
-
+        
         <!-- 4. 추천 결과 페이지 -->
         <section id="page-result" class="view hidden">
             <h2>✨ AI의 추천 결과 ✨</h2>
+            <div id="movie-output"></div>
+            <div id="test-output"></div>
             <div id="result-container">
                 <!-- 자바스크립트로 영화 카드들이 여기에 생성됩니다 -->
             </div>
-            <button id="restart-btn" onclick="getUserInput()">다시 추천받기</button>
+            <button id="restart-btn">다시 추천받기</button>
         </section>
 
         <!-- 5. 영화 상세 페이지 -->
@@ -82,10 +78,27 @@
         </section> -->
     </main>
 
-    <script src="config.js"></script>
-    <script src="prompts.js"></script>
-    <script src="api.js"></script>
-    <script src="app.js"></script>
+    <script src="js/config/config.js"></script>
+
+    <script src="js/constants/genres.js"></script>
+
+    <script src="js/prompts/prompts.js"></script>
+
+    <script src="js/utils/validator.js"></script>
+    <script src="js/utils/formatter.js"></script>
+    <script src="js/utils/mapper.js"></script>
+    <script src="js/utils/image.util.js"></script>
+    <script src="js/utils/storage.js"></script>
+
+    <script src="js/ui/ui.js"></script>
+
+    <script src="js/api/gemini.api.js"></script>
+    <script src="js/api/openai.api.js"></script>
+    <script src="js/api/tmdb.api.js"></script>
+
+    <script src="js/services/recommendation.service.js"></script>
+    
+    <script src="js/app.js"></script>
 </body>
 
 </html>
