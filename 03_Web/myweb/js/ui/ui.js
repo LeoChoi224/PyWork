@@ -17,32 +17,46 @@ async function typeText(element, text, speed = 30) {
 } // end typeText()
 
 /**
- * 특정 페이지 표시
+ * 결과 페이지 표시
  */
-function showPage(pageId) {
+function showResultSection() {
+    // 메인 숨기기
     document
-        .querySelectorAll(".view")
-        .forEach(page => {
-            page.classList.remove("active");
-            page.classList.add("hidden");
-        });
-    const targetPage =
-        document.getElementById(pageId);
-    targetPage.classList.remove("hidden");
-    targetPage.classList.add("active");
-} // end showPage()
+        .getElementById("main")
+        .classList.add("hidden");
+
+    // 시작 버튼 숨기기
+    document
+        .getElementById("start-btn")
+        .classList.add("hidden");
+
+    // 결과 표시
+    document
+        .getElementById("result-section")
+        .classList.remove("hidden");
+} // end showResultSection()
 
 /**
  * 로딩 UI 출력
  */
 function renderLoading(message = "로딩 중...") {
-    const output =
-        document.getElementById("analysis-output");
-    output.innerHTML = `
-        <i class="fas fa-spinner fa-spin"></i>
-        ${message}
+    const loadingContainer =
+        document.getElementById("loading-container");
+
+    // 기존 입력 영역 숨김
+    const titleEl = document.getElementById("modal-title");
+    if (titleEl) {
+        titleEl.textContent = "AI 추천 결과";
+    }
+    document.getElementById("user-form").style.display = "none";
+
+    loadingContainer.innerHTML = `
+            <div class="loading-box">
+                <i class="fas fa-spinner fa-spin"></i>
+                ${message}
+            </div>
     `;
-    output.classList.add("loading");
+    loadingContainer.classList.add("loading");
 } // end renderLoading()
 
 /**
@@ -50,7 +64,7 @@ function renderLoading(message = "로딩 중...") {
  */
 function clearLoading() {
     document
-        .getElementById("analysis-output")
+        .getElementById("loading-container")
         .classList.remove("loading");
 } // end clearLoading()
 
@@ -58,46 +72,38 @@ function clearLoading() {
  * 에러 출력
  */
 function renderError(message) {
-    const output =
-        document.getElementById("analysis-output");
-    output.innerHTML = `
-        <span style="color:red;">
+    const loadingContainer =
+        document.getElementById("loading-container");
+    if (!loadingContainer) {
+        console.error(message);
+        return;
+    }
+    loadingContainer.innerHTML = `
+        <p style="color:red;">
             ${message}
-        </span>
+        </p>
     `;
 } // end renderError()
 
 /**
- * AI 분석 결과 출력
- */
-async function renderAnalysis(aiTagsObject) {
-    const output =
-        document.getElementById("analysis-output");
-    const displayText =
-        formatAnalysisText(aiTagsObject);
-
-    console.log("사용자에게 보여줄 텍스트", displayText);
-    typeText(output, displayText, 70);
-} // end renderAnalysis()
-
-/**
  * 영화 카드 렌더링
  */
-function renderMovieCards(movieList) {
+function renderMovieCards(movieList, displayText) {
     const container =
         document.getElementById("movie-output");
     let html = [];
+    html.push(displayText);
     for (const item of movieList) {
         const movie = item.movie;
         html.push(`
-            <div class="movie-card">
+            <article class="movie-card">
                 <img
                     src="${buildPosterUrl(movie.poster_path)}"
                     alt="${movie.title}"
                 >
                 <h3>${movie.title}</h3>
                 <p>${item.ai_reason}</p>
-            </div>
+            </article>
         `);
     }
     container.innerHTML = html.join('\n');
@@ -107,9 +113,49 @@ function renderMovieCards(movieList) {
  * 결과 화면 초기화
  */
 function clearResult() {
-    document.getElementById("analysis-output").innerHTML = "";
-    document.getElementById("movie-output").innerHTML = "";
+    const analysis = document.getElementById("loading-container");
+    const movie = document.getElementById("movie-output");
+    if (analysis) analysis.innerHTML = "";
+    if (movie) movie.innerHTML = "";
 } // end clearResult()
+
+/**
+ * 초기 메인 화면 영화 포스터 목록 렌더링
+ */
+function renderPosterGrid(movieList) {
+    const topContainer = document.getElementById("poster-grid-top");
+    const bottomContainer = document.getElementById("poster-grid-bottom");
+
+    // topContainer.innerHTML = "";
+    // bottomContainer.innerHTML = "";
+
+    // 첫 줄 8개
+    const topMovies = movieList.slice(0, 8);
+    // 둘째 줄 9개
+    const bottomMovies = movieList.slice(8, 17);
+
+    // 첫 줄 렌더링
+    topMovies.forEach((movie) => {
+        topContainer.innerHTML += `
+            <article class="item thumb span-1">
+                <a href="${buildPosterUrl(movie.poster_path, "original")}" class="image">
+                    <img src="${buildPosterUrl(movie.poster_path, "w342")}" alt="${movie.title}">
+                </a>
+            </article>
+        `;
+    });
+
+    // 둘째 줄 렌더링
+    bottomMovies.forEach((movie) => {
+        bottomContainer.innerHTML += `
+            <article class="item thumb span-1">
+                <a href="${buildPosterUrl(movie.poster_path, "original")}" class="image">
+                    <img src="${buildPosterUrl(movie.poster_path, "w342")}" alt="${movie.title}">
+                </a>
+            </article>
+        `;
+    });
+}
 
 /**
  * 개발 단계에서 확인용으로 화면에 뿌리기

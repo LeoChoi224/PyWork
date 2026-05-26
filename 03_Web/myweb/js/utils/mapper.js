@@ -3,6 +3,18 @@
  */
 
 /**
+ * 프롬프트에 맞춤 리팩터링
+ */
+function buildUserInfo() {
+    return {
+    mbti: mbti ? mbti : "미 입력",
+    gender: frm.gender.value == "male" ? "남자" : "여자",
+    age: frm.age.value ? `${frm.age.value}세` : "미 입력",
+    mood: frm.mood.value.trim() ? `${frm.mood.value.trim()}` : "미 입력",
+    };
+}
+
+/**
  * 영화 이름으로 추천 후보 리스트 가공
  */
 function buildMovieCandidateList(results) {
