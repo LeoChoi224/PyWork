@@ -12,6 +12,7 @@ const CONFIG = {
     /**
      * Url, Model
      */
+    AI_PROVIDER: "openai", // "gemini" | "openai"
     TMDB_URL: "https://api.themoviedb.org/3/",
     OPENAI_MODEL_NAME: "gpt-4o",
     OPENAI_API_ENDPOINT: "https://api.openai.com/v1/chat/completions",
