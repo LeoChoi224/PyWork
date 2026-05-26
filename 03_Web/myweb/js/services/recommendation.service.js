@@ -49,7 +49,9 @@ async function analyzeUserTags(userInfo) {
     const promptInput = PROMPTS.analyzeUser(userInfo);
     console.log(promptInput);
 
-    await callGemini(promptInput);
+    const data = CONFIG.AI_PROVIDER == "openai"
+    ? await callOpenAi(promptInput)
+    : await callGemini(promptInput);
 
     if (!data) return null;
 
@@ -89,7 +91,9 @@ async function pickFinalMovies(userInfo, aiTagsObject, classicCandidates, recent
         recentCandidates
     );
     
-    await callGemini(promptInput);
+    const data = CONFIG.AI_PROVIDER == "openai"
+    ? await callOpenAi(promptInput)
+    : await callGemini(promptInput);
     
     if (!data) return null;
 
