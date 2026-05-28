@@ -145,8 +145,8 @@ async function runRecommendationFlow() {
         // 4) 둘 다 완료될 때까지 대기
         const [, recommendations] = await Promise.all([typingPromise, recommendationsPromise]);
 
-        // 타이핑 끝난 후 2초 대기 추가
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // 타이핑 끝난 후 1초 대기 추가
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         if (!recommendations?.length) {
             return { ok: false, message: "추천 결과가 없습니다." };
