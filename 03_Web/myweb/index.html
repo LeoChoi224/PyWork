@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>AI 영화 추천</title>
+	<title>AI 영화 추천 - 롯데시네묵</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Markdown 을 HTML 로 변환 -->
@@ -23,19 +23,29 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<!-- header -->
+		<!-- Header -->
 		<section id="header">
-			<!-- 좌측 로고, 우측 네비게이션바 -->
+			<!-- 왼쪽에서 슥 나오는 사이드바 메뉴 (초기 상태는 화면 왼쪽 밖에 숨김) -->
+			<div id="mySidebar" class="sidebar">
+				<a href="javascript:void(0)" class="closebtn" id="close-sidebar">&times;</a>
+				<div class="sidebar-links">
+					<a href="#" data-nav="main"><i class="fa-solid fa-house"></i> 메인</a>
+					<a href="#" data-nav="input"><i class="fa-solid fa-sliders"></i> 정보입력</a>
+					<a href="#" data-nav="bookmark"><i class="fa-solid fa-bookmark"></i> 북마크</a>
+				</div>
+			</div>
+
+			<!-- 상단 고정 헤더 바 (로고 좌측 끝 / 햄버거 우측 끝) -->
 			<div class="site-header">
-				<a href="#" class="site-logo" id="nav-main">AI 영화 추천</a>
-				<nav class="site-nav" aria-label="주요 메뉴">
-					<ul>
-						<li><a href="#" id="nav-main-link" data-nav="main">메인</a></li>
-						<li><a href="#" id="nav-open-form" data-nav="taste">취향분석</a></li>
-						<li><a href="#" id="nav-bookmark" data-nav="bookmark">북마크</a></li>
-						<li><a href="#" id="nav-search" data-nav="search">영화검색</a></li>
-					</ul>
-				</nav>
+				<!-- 우측 햄버거 버튼 끝 -->
+				<button class="openbtn" id="open-sidebar">☰</button>
+				
+				<!-- 좌측 로고 끝 -->
+				<div class="site-logo">
+					<a href="#" id="nav-home">
+						<img src="images/CineMook_logo.png" alt="씨네묵 로고">
+					</a>
+				</div>
 			</div>
 		</section>
 
@@ -47,7 +57,7 @@
 			<div class="items" id="poster-grid-top">
 
 				<div class="item intro span-2">
-					<h1>AI 영화 추천</h1>
+					<h1>롯데시네묵</h1>
 					<p>나이, MBTI, 오늘의 기분에 맞는<br />
 						당신만을 위한 영화를 찾아드립니다.</p>
 				</div>
@@ -61,7 +71,29 @@
 			<button id="start-btn" class="button">시작하기</button>
 		</section>
 
-		<!-- 북마크 -->
+		<!-- 추천 결과 영역 -->
+		<section id="result-section" class="hidden">
+			<div id="result-layout">
+				<div id="movie-output" class="movie-row"></div>
+			</div>
+		</section>
+
+		<!-- 상세 페이지 영역 -->
+		<section id="page-detail" class="page-panel hidden">
+			<div id="detail-container"></div>
+		</section>
+
+		<!-- 트레일러 페이지 영역 -->
+		<section id="page-trailer" class="page-panel hidden">
+			<button class="button" id="back-to-detail-btn">
+				← 상세 정보로
+			</button>
+			<div class="trailer-bottom-buttons">
+				<div id="trailer-container"></div>
+			</div>
+		</section>
+
+		<!-- 북마크 페이지 영역 -->
 		<section id="page-bookmark" class="page-panel hidden">
 			<h2>북마크</h2>
 			<p id="bookmark-empty">저장한 영화가 없습니다.</p>
@@ -69,7 +101,7 @@
 		</section>
 
 		<!-- 영화검색 -->
-		<section id="page-search" class="page-panel hidden">
+		<!-- <section id="page-search" class="page-panel hidden">
 			<h2>영화 검색</h2>
 			<form id="search-form">
 				<input type="search" id="search-input" placeholder="영화 제목 검색" autocomplete="off" />
@@ -77,11 +109,6 @@
 			</form>
 			<div id="search-results"></div>
 		</section>
-		<div>
-			<section id="result-section" class="hidden">
-				<div id="movie-output"></div>
-			</section>
-		</div>
 
 		<!-- Footer -->
 		<section id="footer">
@@ -97,7 +124,7 @@
 								class="label">Instagram</span></a></li>
 					<li><a href="https://www.facebook.com/profile.php?id=100006671653630&locale=ko_KR"
 							class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="https://github.com/LeoChoi224" class="icon brands fa-dribbble"><span
+					<li><a href="https://github.com/LeoChoi224" class="icon brands fa-github"><span
 								class="label">github</span></a></li>
 					<li><a href="mailto:leochoi224@gmail.com" class="icon solid fa-envelope"><span
 								class="label">Email</span></a></li>
@@ -108,12 +135,6 @@
 				</ul>
 			</section>
 		</section>
-		<div>
-			<section id="result-section" class="hidden">
-				<div id="movie-output"></div>
-			</section>
-		</div>
-
 
 	</div>
 
@@ -163,12 +184,6 @@
 		</div>
 	</div> <!-- modal-root 끝 -->
 
-	<!-- 추천 결과 영역 -->
-	<div>
-		<section id="result-section" class="hidden">
-			<div id="movie-output"></div>
-		</section>
-	</div>
 
 	<!-- html5 up Scripts -->
 	<script src="assets/js/jquery.min.js"></script>

@@ -31,5 +31,5 @@ async function callOpenAi(promptInput) {
     const data = await response.json();
 
     // OpenAI 응답 텍스트 추출
-    return data.choices?.[0]?.message?.content;
+    return data.choices?.[0]?.message?.content ?? null;
 }

@@ -27,6 +27,8 @@ async function callGemini(promptInput) {
         const detail = await response.text().catch(() => "");
         throw new Error(`Gemini API 요청 실패 (HTTP ${response.status})`);
     }
-    
-    return await response.json();
+    const data = await response.json();
+
+    // Gemini 응답 텍스트 추출
+    return data?.candidates?.[0]?.content?.parts?.[0]?.text ?? null;
 }
