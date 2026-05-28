@@ -3,7 +3,7 @@
  */
 
 /**
- * 
+ * 에러 출력
  */
 function showFlowError(message) {
     const el = document.getElementById("loading-container")
@@ -50,8 +50,8 @@ async function analyzeUserTags(userInfo) {
     console.log(promptInput);
 
     const data = CONFIG.AI_PROVIDER == "openai"
-    ? await callOpenAi(promptInput)
-    : await callGemini(promptInput);
+        ? await callOpenAi(promptInput)
+        : await callGemini(promptInput);
 
     if (!data) return null;
 
@@ -90,11 +90,11 @@ async function pickFinalMovies(userInfo, aiTagsObject, classicCandidates, recent
         classicCandidates,
         recentCandidates
     );
-    
+
     const data = CONFIG.AI_PROVIDER == "openai"
-    ? await callOpenAi(promptInput)
-    : await callGemini(promptInput);
-    
+        ? await callOpenAi(promptInput)
+        : await callGemini(promptInput);
+
     if (!data) return null;
 
     const rawText = extractAiText(data);
@@ -114,13 +114,11 @@ async function pickFinalMovies(userInfo, aiTagsObject, classicCandidates, recent
     return detailedRecommendations;
 }
 /**
- * 전체 흐름 — 여기서만 순서 제어
+ * 전체 흐름 제어
  */
 async function runRecommendationFlow() {
     const userInfo = getUserInput();
-    if (!userInfo) {
-        return { ok: false, message: "입력값을 확인해 주세요." };
-    }
+    
     try {
         // 1) AI 분석
         const aiTagsObject = await analyzeUserTags(userInfo);
@@ -128,33 +126,40 @@ async function runRecommendationFlow() {
             return { ok: false, message: "AI 분석에 실패했습니다." };
         }
         console.log("AI 분석 및 추천 답변 텍스트:\n", aiTagsObject);
-
         clearLoading();
-        // 2) 화면 타이핑(병렬) + TMDB는 await로 진행
+
+        // 2) 화면 타이핑(병렬)
         const displayText = formatAnalysisText(aiTagsObject);
         const loadingContainer = document.getElementById("loading-container");
-        if (loadingContainer) {
-            typeText(loadingContainer, displayText, 30);
-        }
-        const { classicCandidates, recentCandidates } =
-            await fetchMovieCandidates(aiTagsObject);
-        // 3) 최종 추천
-        const recommendations = await pickFinalMovies(
-            userInfo,
-            aiTagsObject,
-            classicCandidates,
-            recentCandidates
-        );
+        const typingPromise = typeText(loadingContainer, displayText, 30);
+
+        // 3) TMDB + 최종 추천은 await로 진행
+        const recommendationsPromise = (async () => {
+            const { classicCandidates, recentCandidates } =
+                await fetchMovieCandidates(aiTagsObject);
+            return await pickFinalMovies(
+                userInfo, aiTagsObject, classicCandidates, recentCandidates
+            );
+        })();
+
+        // 4) 둘 다 완료될 때까지 대기
+        const [, recommendations] = await Promise.all([typingPromise, recommendationsPromise]);
+
+        // 타이핑 끝난 후 2초 대기 추가
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
         if (!recommendations?.length) {
             return { ok: false, message: "추천 결과가 없습니다." };
         }
+
         return {
             ok: true,
             userInfo,
             aiTagsObject,
             displayText,
-            recommendations,
+            recommendations
         };
+
     } catch (error) {
         console.error(error);
         showFlowError(`오류 발생: ${error.message}`);

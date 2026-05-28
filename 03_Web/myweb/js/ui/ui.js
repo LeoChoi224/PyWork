@@ -6,13 +6,14 @@
  * 텍스트를 타이핑 애니메이션처럼 천천히 출력
  */
 async function typeText(element, text, speed = 30) {
+    if (!element) return;
     element.innerHTML = "";
+    const plain = String(text ?? "").replace(/\r\n/g, "\n");
 
-    for (let i = 0; i < text.length; i++) {
-        element.innerHTML += text[i];
-        await new Promise(resolve =>
-            setTimeout(resolve, speed)
-        );
+    for (let i = 0; i < plain.length; i++) {
+        const ch = plain[i];
+        element.innerHTML += (ch === "\n") ? "<br>" : ch;
+        await new Promise((resolve) => setTimeout(resolve, speed));
     }
 } // end typeText()
 
@@ -89,18 +90,18 @@ function renderError(message) {
  * 영화 카드 렌더링
  */
 function renderMovieCards(movieList, displayText) {
-    const container =
-        document.getElementById("movie-output");
+    const container = document.getElementById("movie-output");
+    if (!container) return;
+
     let html = [];
     html.push(displayText);
     for (const item of movieList) {
         const movie = item.movie;
         html.push(`
-            <article class="movie-card">
-                <img
-                    src="${buildPosterUrl(movie.poster_path)}"
-                    alt="${movie.title}"
-                >
+            <article class="movie-card"
+                data-movie-id="${movie.id}">
+                <img src="${buildPosterUrl(movie.poster_path)}"
+                    alt="${movie.title}">
                 <h3>${movie.title}</h3>
                 <p>${item.ai_reason}</p>
             </article>
@@ -137,7 +138,8 @@ function renderPosterGrid(movieList) {
     // 첫 줄 렌더링
     topMovies.forEach((movie) => {
         topContainer.innerHTML += `
-            <article class="item thumb span-1">
+            <article class="item thumb span-1"
+                data-movie-id="${movie.id}">
                 <a href="${buildPosterUrl(movie.poster_path, "original")}" class="image">
                     <img src="${buildPosterUrl(movie.poster_path, "w342")}" alt="${movie.title}">
                 </a>
@@ -148,13 +150,149 @@ function renderPosterGrid(movieList) {
     // 둘째 줄 렌더링
     bottomMovies.forEach((movie) => {
         bottomContainer.innerHTML += `
-            <article class="item thumb span-1">
+            <article class="item thumb span-1"
+                data-movie-id="${movie.id}">
                 <a href="${buildPosterUrl(movie.poster_path, "original")}" class="image">
                     <img src="${buildPosterUrl(movie.poster_path, "w342")}" alt="${movie.title}">
                 </a>
             </article>
         `;
     });
+}
+
+/**
+ * 상세 페이지 렌더링
+ */
+function renderDetailPage(movie) {
+    const container = document.getElementById("detail-container");
+    if (!container) return;
+
+    const releaseYear = movie.release_date?.split("-")[0] || "-";
+    const runtimeHour = Math.floor(movie.runtime / 60);
+    const runtimeMinute = movie.runtime % 60;
+    container.innerHTML = `
+        <div
+            class="detail-layout"
+            style="--backdrop-url:
+            url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')
+            ">
+            <!-- 좌측 -->
+            <section class="detail-left">
+                <img class="detail-poster"
+                    src="${buildPosterUrl(movie.poster_path, "w500")}"
+                    alt="${movie.title}">
+            </section>
+            <!-- 우측 -->
+            <section class="detail-right">
+                <div class="detail-top">
+                    <h1 class="detail-title">${movie.title}</h1>
+                    <button class="bookmark-btn" data-bookmark-id="${movie.id}">
+                        <i class="fa-regular fa-bookmark"></i>
+                        북마크
+                    </button>
+                </div>
+                <div class="detail-meta">
+                    ${releaseYear}
+                    · ⭐ ${movie.vote_average.toFixed(1)}
+                    · ${runtimeHour}시간 ${runtimeMinute}분
+                </div>
+                <div class="detail-info-grid">
+                    <div class="detail-label">감독</div>
+                    <div class="detail-value">${movie.director}</div>
+                    <div class="detail-label">배우</div>
+                    <div class="detail-value">${movie.cast.join(", ")}</div>
+                    <div class="detail-label">장르</div>
+                    <div class="detail-value">
+                        ${movie.genres
+            .map(g => g.name)
+            .join(", ")}
+                    </div>
+                    <div class="detail-label">줄거리</div>
+                    <div class="detail-value detail-overview">${movie.overview}</div>
+                </div>
+                <div class="detail-bottom-buttons">
+                    <button
+                        class="button primary"
+                        id="watch-trailer-btn"
+                        data-trailer-key="${movie.trailerKey || ""}">
+                        🎬 트레일러 보러가기
+                    </button>
+
+                    <button
+                        type="button"
+                        id="back-from-detail-btn"
+                        class="button">
+                        ← 추천 목록으로
+                    </button>
+                </div>
+            </section>
+        </div>
+    `;
+}
+
+
+/**
+ * 상세 페이지 표시
+ */
+function showDetailPage() {
+    // 기존 페이지 숨김
+    document.getElementById("main")?.classList.add("hidden");
+    document.getElementById("result-section")?.classList.add("hidden");
+    document.getElementById("page-bookmark")?.classList.add("hidden");
+
+    // 상세 페이지 표시
+    document.getElementById("page-detail")?.classList.remove("hidden");
+}
+
+/**
+ * 상세 페이지 숨기기
+ */
+function hideDetailPage() {
+    // 상세 페이지 숨김
+    document.getElementById("page-detail")?.classList.add("hidden");
+
+    // 결과 페이지 복귀
+    document.getElementById("result-section")?.classList.remove("hidden");
+}
+
+
+/**
+ * 트레일러 페이지 렌더링
+ */
+function renderTrailerPage(movie) {
+    const container = document.getElementById("trailer-container");
+    if (!container) return;
+
+    container.innerHTML = `
+        <div class="trailer-layout">
+            <iframe class="trailer-frame"
+                src="https://www.youtube.com/embed/${movie.trailerKey}"
+                title="${movie.title}" allowfullscreen>
+            </iframe>
+           
+        </div>
+    `;
+}
+
+/**
+ * 트레일러 페이지 표시
+ */
+function showTrailerPage() {
+    // 결과 페이지 숨김
+    document.getElementById("page-detail")?.classList.add("hidden");
+
+    // 트레일러 페이지 표시
+    document.getElementById("page-trailer")?.classList.remove("hidden");
+}
+
+/**
+ * 트레일러 페이지 숨기기
+ */
+function hideTrailerPage() {
+    // 트레일러 페이지 숨김
+    document.getElementById("page-trailer")?.classList.add("hidden");
+    // 결과 페이지 복귀
+    document.getElementById("page-detail")?.classList.remove("hidden");
 }
 
 /**

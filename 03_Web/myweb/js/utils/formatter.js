@@ -3,12 +3,15 @@
  */
 
 function formatAnalysisText(aiTagsObject) {
-    return `
-📊 사용자 분석
-${aiTagsObject.analysis}
-🎬 추천 장르
-${aiTagsObject.genres.join(", ")}
-🏷 추천 키워드
-${aiTagsObject.keywords.map(k => k.ko).join(", ")}
-`;
+    const keywords = aiTagsObject.keywords.map((k) => k.ko).join(", ");
+    return [
+        "📊 사용자 분석",
+        aiTagsObject.analysis,
+        "",
+        "🎬 추천 장르",
+        aiTagsObject.genres.join(", "),
+        "",
+        "🏷 추천 키워드",
+        keywords,
+    ].join("\n");
 }
