@@ -159,11 +159,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 북마크 카드 클릭 이벤트
     document.addEventListener("click", async (e) => {
+        // 북마크 상단 버튼 영역 클릭이면 무시
+        if (e.target.closest(".bookmark-top-bar")) {
+            return;
+        }
+
         const bookmarkCard = e.target.closest(".bookmark-card");
         if (!bookmarkCard) return;
 
         previousPage = "bookmark";
-
         const movieId = bookmarkCard.dataset.movieId;
         if (!movieId) return;
 
@@ -200,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const trailerBtn = e.target.closest("#watch-trailer-btn");
         if (trailerBtn) {
             if (!currentDetailMovie?.trailerKey) {
-                alert("트레일러가 없습니다.");
+                alert("등록된 예고편이 없습니다.");
                 return;
             }
 
@@ -256,14 +260,23 @@ document.addEventListener("DOMContentLoaded", () => {
     /**
      * 북마크 전체 삭제
      */
-    document.getElementById("clear-bookmark-btn")?.addEventListener("click", () => {
+    document.getElementById("clear-bookmark-btn")?.addEventListener("click", (e) => {
+
+        console.log("삭제 버튼 클릭됨");
+
+        e.preventDefault();
+        e.stopPropagation();
+
         const ok = confirm("북마크를 모두 삭제하시겠습니까?");
         if (!ok) return;
 
+        // localStorage 전체 삭제
         BookmarkManager.clearAll();
-
+        // 북마크 페이지 즉시 갱신
         renderBookmarkPage();
+        // 메인 포스터 즉시 갱신
         renderPosterGrid(BookmarkManager.getMainGridMovies());
+        console.log("북마크 전체 삭제 완료");
     });
 
 
@@ -372,6 +385,7 @@ function goBack() {
     document.getElementById("page-detail")?.classList.add("hidden");
     document.getElementById("page-bookmark")?.classList.add("hidden");
     document.getElementById("page-trailer")?.classList.add("hidden");
+    document.getElementById("start-btn")?.classList.add("hidden");
 
     // 이전 페이지 복귀
     if (previousPage === "main") {

@@ -1279,6 +1279,7 @@ label {
 .loading-box .fa-spinner {
 	font-size: 1.2em;
 }
+
 .site-header {
 	display: flex;
 	align-items: center;
@@ -1287,12 +1288,14 @@ label {
 	padding: 1rem 0 1.5rem;
 	flex-wrap: wrap;
 }
+
 .site-logo {
 	color: #fff;
 	font-weight: 700;
 	text-decoration: none;
 	font-size: 1.1rem;
 }
+
 .site-nav ul {
 	display: flex;
 	flex-wrap: wrap;
@@ -1301,28 +1304,34 @@ label {
 	margin: 0;
 	padding: 0;
 }
+
 .site-nav a {
 	color: rgba(255, 255, 255, 0.75);
 	text-decoration: none;
 	font-size: 0.9rem;
 }
+
 .site-nav a:hover,
 .site-nav a.is-active {
 	color: #fff;
 }
+
 .page-panel {
 	padding: 2rem 0;
 	color: #fff;
 }
+
 .page-panel.hidden {
 	display: none;
 }
+
 #search-form {
 	display: flex;
 	gap: 0.75rem;
 	margin-bottom: 1.5rem;
 	flex-wrap: wrap;
 }
+
 #search-input {
 	flex: 1;
 	min-width: 200px;
@@ -1332,16 +1341,19 @@ label {
 	background: rgba(255, 255, 255, 0.06);
 	color: #fff;
 }
+
 #result-section {
 	padding: 2rem 1.5rem;
 	max-width: 1200px;
 	margin: 0 auto;
 }
+
 #movie-output {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 	gap: 1.5rem;
 }
+
 .movie-card {
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1349,21 +1361,25 @@ label {
 	overflow: hidden;
 	color: #fff;
 }
+
 .movie-card img {
 	width: 100%;
 	height: auto;
 	display: block;
 }
+
 .movie-card h3 {
 	margin: 0.75rem 1rem 0.25rem;
 	font-size: 1rem;
 }
+
 .movie-card p {
 	margin: 0 1rem 1rem;
 	font-size: 0.9rem;
 	color: rgba(255, 255, 255, 0.75);
 	line-height: 1.5;
 }
+
 .analysis-summary {
 	grid-column: 1 / -1;
 	margin-bottom: 1rem;
@@ -1381,10 +1397,12 @@ label {
 	margin: 0 auto;
 	padding: 4rem 3rem;
 }
+
 /* 좌측 포스터 */
 .detail-left {
 	width: 35%;
 }
+
 .detail-poster {
 	width: 100%;
 	border-radius: 1rem;
@@ -1397,6 +1415,7 @@ label {
 	display: flex;
 	flex-direction: column;
 }
+
 /* 제목 + 북마크 */
 .detail-top {
 	display: flex;
@@ -1404,17 +1423,20 @@ label {
 	align-items: center;
 	margin-bottom: 1rem;
 }
+
 .detail-title {
 	font-size: 2.4rem;
 	font-weight: 700;
 	margin: 0;
 }
+
 /* 메타 정보 */
 .detail-meta {
 	font-size: 1rem;
 	opacity: 0.75;
 	margin-bottom: 2rem;
 }
+
 /* 상세 정보 */
 .detail-info-grid {
 	display: grid;
@@ -1423,17 +1445,21 @@ label {
 	column-gap: 1rem;
 	margin-bottom: 3rem;
 }
+
 .detail-label {
 	font-weight: 700;
 	color: #ffffffcc;
 }
+
 .detail-value {
 	color: #ffffffdd;
 	line-height: 1.7;
 }
+
 .detail-overview {
 	white-space: pre-line;
 }
+
 /* 버튼 */
 .detail-bottom-buttons {
 	display: flex;
@@ -1452,6 +1478,7 @@ label {
 	cursor: pointer;
 	transition: 0.2s;
 }
+
 .bookmark-btn:hover {
 	background: rgba(255, 255, 255, 0.1);
 }
@@ -1461,10 +1488,12 @@ label {
 	.detail-layout {
 		flex-direction: column;
 	}
+
 	.detail-left,
 	.detail-right {
 		width: 100%;
 	}
+
 	.detail-title {
 		font-size: 2rem;
 	}
@@ -1477,6 +1506,7 @@ label {
 	position: relative;
 	overflow: hidden;
 }
+
 .detail-layout::before {
 	content: "";
 	position: absolute;
@@ -1489,6 +1519,7 @@ label {
 	opacity: 0.18;
 	z-index: 0;
 }
+
 /* 내용 위로 */
 .detail-left,
 .detail-right {
@@ -1502,27 +1533,30 @@ label {
 ========================= */
 #page-trailer {
 	width: 80vw;
-    height: 80vh;
-    overflow: hidden;
+	height: 80vh;
+	overflow: hidden;
 	position: relative;
 }
+
 .trailer-layout {
 	width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
+
 /* 영상 */
 .trailer-frame {
 	width: 80vw;
-    height: 80vh;
-    border: none;
+	height: 80vh;
+	border: none;
 	display: block;
 	pointer-events: auto;
 }
+
 /* 하단 버튼 */
 /* .trailer-bottom-buttons {
 } */
@@ -1530,302 +1564,330 @@ label {
 /* ==========================================================================
    상단 헤더 & 좌측 사이드바 네비게이션 최적화 (통째로 교체용)
    ========================================================================== */
-   
-   /* 1. 상단 바: HTML 순서에 따라 [햄버거 왼쪽 끝 / 로고 오른쪽 끝] 자동 배치 */
-   .site-header {
-	   position: fixed !important;
-	   top: 0 !important;
-	   left: 0 !important;
-	   width: 100vw !important;
-	   height: 90px !important; /* 로고와 버튼 크기에 맞춰 안정적으로 확보 */
-	   display: flex !important;
-	   justify-content: space-between !important; /* 양 끝으로 밀어내기 */
-	   align-items: center !important;
-	   padding: 0 30px !important; /* 양 끝 여백 */
-	   z-index: 99999 !important; /* 템플릿의 그 어떤 요소보다 무조건 위 */
-	   box-sizing: border-box !important;
-	}
-	
-	/* 햄버거 버튼 스타일 (왼쪽 끝 배치) */
-	.openbtn {
-		background: transparent !important;
-		border: none !important;
-		color: #fff !important;
-		font-size: 45px !important; /* 시인성을 위해 크기 살짝 다듬음 */
-		cursor: pointer !important;
-		padding: 5px 10px !important;
-		line-height: 1 !important;
-		transition: color 0.2s !important;
-		z-index: 100000 !important;
-		display: inline-block !important;
-	}
-	
-	.openbtn:hover {
-		color: #ef8376 !important; /* HTML5 UP 포인트 컬러 */
-	}
-	
-	/* 로고 스타일 (오른쪽 끝 배치) */
-	.site-logo {
-		display: block !important;
-		height: 100% !important;
-		display: flex !important;
-		align-items: center !important;
-	}
-	
-	.site-logo img {
-		height: 130px !important; /* 상단 바(90px) 안에서 딱 예쁘게 보일 크기로 조절 */
-		width: auto !important;
-		display: block !important;
-		cursor: pointer !important;
-	}
-	
-	
-	/* 2. 좌측 사이드바 스타일 (왼쪽 완전 고정 및 transform 슬라이드) */
-	.sidebar {
-		height: 100vh !important;
-		width: 300px !important; /* 사이드바 너비 */
-		position: fixed !important;
-		z-index: 100001 !important; /* 헤더와 햄버거를 모두 덮으며 최상위 등장 */
-		top: 0 !important;
-		left: 0 !important; /* 기준점은 왼쪽 고정 */
-		background-color: #1a1a1a !important;
-		overflow-x: hidden !important;
-		overflow-y: auto !important;
-		padding-top: 80px !important;
-		box-shadow: 5px 0 25px rgba(0, 0, 0, 0.7) !important;
-		
-		/* [핵심] 평소에는 왼쪽 화면 밖(-100%)으로 완전히 숨김 */
-		transform: translateX(-100%) !important; 
-		transition: transform 0.3s ease-in-out !important; /* 부드러운 하드웨어 가속 슬라이드 */
-	}
-	
-	/* 사이드바 활성화 상태 (스크립트에서 active 클래스가 붙으면 대기) */
-	.sidebar.active {
-		transform: translateX(0) !important; /* 제자리(0)로 들어오면서 화면 좌측에 등장 */
-	}
-	
-	/* 닫기 버튼 (X) */
-	.sidebar .closebtn {
-		position: absolute !important;
-		top: 20px !important;
-		right: 25px !important;
-		font-size: 36px !important;
-		color: #818181 !important;
-		text-decoration: none !important;
-		transition: color 0.2s !important;
-		line-height: 1 !important;
-	}
-	
-	.sidebar .closebtn:hover {
-		color: #fff !important;
-	}
-	
-	/* 메뉴 링크 스타일 */
-	.sidebar-links {
-		display: flex !important;
-		flex-direction: column !important;
-		padding: 20px 0 !important;
-	}
-	
-	.sidebar-links a {
-		padding: 18px 30px !important;
-		text-decoration: none !important;
-		font-size: 1.1rem !important;
-		color: #999 !important;
-		display: flex !important;
-		align-items: center !important;
-		gap: 15px !important; /* 아이콘과 글자 사이 여백 */
-		transition: all 0.2s !important;
-		border-left: 3px solid transparent !important;
-		box-sizing: border-box !important;
-	}
-	
-	.sidebar-links a:hover {
-		color: #fff !important;
-		background: rgba(255, 255, 255, 0.03) !important;
-		border-left-color: #ef8376 !important; /* 호버 시 좌측 포인트 선 생성 */
-	}
-	
-	/* 상단바 고정(90px)으로 인해 메인 콘텐츠 영역이 파묻히지 않도록 강제 밀어내기 */
-	#main {
-		padding-top: 120px !important; 
-	}
-	
-	/* ==========================================================================
+
+/* 1. 상단 바: HTML 순서에 따라 [햄버거 왼쪽 끝 / 로고 오른쪽 끝] 자동 배치 */
+.site-header {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100vw !important;
+	height: 90px !important;
+	/* 로고와 버튼 크기에 맞춰 안정적으로 확보 */
+	display: flex !important;
+	justify-content: space-between !important;
+	/* 양 끝으로 밀어내기 */
+	align-items: center !important;
+	padding: 0 30px !important;
+	/* 양 끝 여백 */
+	z-index: 99999 !important;
+	/* 템플릿의 그 어떤 요소보다 무조건 위 */
+	box-sizing: border-box !important;
+}
+
+/* 햄버거 버튼 스타일 (왼쪽 끝 배치) */
+.openbtn {
+	background: transparent !important;
+	border: none !important;
+	color: #fff !important;
+	font-size: 45px !important;
+	/* 시인성을 위해 크기 살짝 다듬음 */
+	cursor: pointer !important;
+	padding: 5px 10px !important;
+	line-height: 1 !important;
+	transition: color 0.2s !important;
+	z-index: 100000 !important;
+	display: inline-block !important;
+}
+
+.openbtn:hover {
+	color: #ef8376 !important;
+	/* HTML5 UP 포인트 컬러 */
+}
+
+/* 로고 스타일 (오른쪽 끝 배치) */
+.site-logo {
+	display: block !important;
+	height: 100% !important;
+	display: flex !important;
+	align-items: center !important;
+}
+
+.site-logo img {
+	height: 130px !important;
+	/* 상단 바(90px) 안에서 딱 예쁘게 보일 크기로 조절 */
+	width: auto !important;
+	display: block !important;
+	cursor: pointer !important;
+}
+
+
+/* 2. 좌측 사이드바 스타일 (왼쪽 완전 고정 및 transform 슬라이드) */
+.sidebar {
+	height: 100vh !important;
+	width: 300px !important;
+	/* 사이드바 너비 */
+	position: fixed !important;
+	z-index: 100001 !important;
+	/* 헤더와 햄버거를 모두 덮으며 최상위 등장 */
+	top: 0 !important;
+	left: 0 !important;
+	/* 기준점은 왼쪽 고정 */
+	background-color: #1a1a1a !important;
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+	padding-top: 80px !important;
+	box-shadow: 5px 0 25px rgba(0, 0, 0, 0.7) !important;
+
+	/* [핵심] 평소에는 왼쪽 화면 밖(-100%)으로 완전히 숨김 */
+	transform: translateX(-100%) !important;
+	transition: transform 0.3s ease-in-out !important;
+	/* 부드러운 하드웨어 가속 슬라이드 */
+}
+
+/* 사이드바 활성화 상태 (스크립트에서 active 클래스가 붙으면 대기) */
+.sidebar.active {
+	transform: translateX(0) !important;
+	/* 제자리(0)로 들어오면서 화면 좌측에 등장 */
+}
+
+/* 닫기 버튼 (X) */
+.sidebar .closebtn {
+	position: absolute !important;
+	top: 20px !important;
+	right: 25px !important;
+	font-size: 36px !important;
+	color: #818181 !important;
+	text-decoration: none !important;
+	transition: color 0.2s !important;
+	line-height: 1 !important;
+}
+
+.sidebar .closebtn:hover {
+	color: #fff !important;
+}
+
+/* 메뉴 링크 스타일 */
+.sidebar-links {
+	display: flex !important;
+	flex-direction: column !important;
+	padding: 20px 0 !important;
+}
+
+.sidebar-links a {
+	padding: 18px 30px !important;
+	text-decoration: none !important;
+	font-size: 1.1rem !important;
+	color: #999 !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 15px !important;
+	/* 아이콘과 글자 사이 여백 */
+	transition: all 0.2s !important;
+	border-left: 3px solid transparent !important;
+	box-sizing: border-box !important;
+}
+
+.sidebar-links a:hover {
+	color: #fff !important;
+	background: rgba(255, 255, 255, 0.03) !important;
+	border-left-color: #ef8376 !important;
+	/* 호버 시 좌측 포인트 선 생성 */
+}
+
+/* 상단바 고정(90px)으로 인해 메인 콘텐츠 영역이 파묻히지 않도록 강제 밀어내기 */
+#main {
+	padding-top: 120px !important;
+}
+
+/* ==========================================================================
 	   상단 헤더 & 좌측 사이드바 네비게이션 최적화 (통째로 교체용)
 	   ========================================================================== */
-	   /* 결과 카드 내부 북마크 아이콘 스타일 */
+/* 결과 카드 내부 북마크 아이콘 스타일 */
 .card-image-wrap {
-    position: relative;
+	position: relative;
 }
 
 .card-bookmark-icon-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.6) !important;
-    border: none !important;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: transform 0.2s;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: rgba(0, 0, 0, 0.6) !important;
+	border: none !important;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+	transition: transform 0.2s;
 }
 
 .card-bookmark-icon-btn:hover {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .card-bookmark-icon-btn i {
-    font-size: 18px;
-    color: #ccc;
+	font-size: 18px;
+	color: #ccc;
 }
 
 .card-bookmark-icon-btn i.bookmarked {
-    color: #ef8376 !important; /* 활성화 시 템플릿 포인트 색상 */
+	color: #ef8376 !important;
+	/* 활성화 시 템플릿 포인트 색상 */
 }
 
 /* 북마크 전용 페이지 레이아웃 스타일 */
 #page-bookmark {
-    padding: 40px;
-    max-width: 800px;
-    margin: 0 auto;
+	padding: 40px;
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 #bookmark-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-top: 20px;
 }
 
 .bookmark-item {
-    display: flex;
-    align-items: center;
-    background: #1e1e1e;
-    border-radius: 6px;
-    padding: 10px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+	display: flex;
+	align-items: center;
+	background: #1e1e1e;
+	border-radius: 6px;
+	padding: 10px 20px;
+	border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .bookmark-item img {
-    height: 80px;
-    border-radius: 4px;
-    object-fit: cover;
+	height: 80px;
+	border-radius: 4px;
+	object-fit: cover;
 }
 
 .bookmark-info {
-    flex-grow: 1;
-    margin-left: 20px;
+	flex-grow: 1;
+	margin-left: 20px;
 }
 
 .bookmark-info h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #fff;
+	margin: 0;
+	font-size: 1.2rem;
+	color: #fff;
 }
 
 .bookmark-remove-btn {
-    background: transparent !important;
-    border: none !important;
-    color: #818181;
-    font-size: 30px;
-    cursor: pointer;
-    transition: color 0.2s;
+	background: transparent !important;
+	border: none !important;
+	color: #818181;
+	font-size: 30px;
+	cursor: pointer;
+	transition: color 0.2s;
 }
 
 .bookmark-remove-btn:hover {
-    color: #ef8376;
+	color: #ef8376;
 }
 
 .no-data {
-    text-align: center;
-    color: #666;
-    padding: 5px 0;
+	text-align: center;
+	color: #666;
+	padding: 5px 0;
 }
 
 
 /* 북마크 그리드 */
 #bookmark-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 24px;
-    padding: 40px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 24px;
+	padding: 40px;
+	position: relative;
+	z-index: 1;
 }
 
 /* 반응형 */
 @media screen and (max-width: 1280px) {
-    #bookmark-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+	#bookmark-container {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
 @media screen and (max-width: 980px) {
-    #bookmark-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+	#bookmark-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media screen and (max-width: 736px) {
-    #bookmark-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+	#bookmark-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 .bookmark-card {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 /* 헤더 내부 정렬 */
 .site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 /* 좌측 버튼 영역 */
-.site-header > button {
-    flex-shrink: 0;
+.site-header>button {
+	flex-shrink: 0;
 }
 
 /* 뒤로가기 버튼 */
 .header-back-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-    margin-right: -20px;
-    padding: 0;
-    opacity: 0.85;
-    transition: 0.2s ease;
+	background: transparent;
+	border: none;
+	color: white;
+	font-size: 40px;
+	cursor: pointer;
+	margin-right: -20px;
+	padding: 0;
+	opacity: 0.85;
+	transition: 0.2s ease;
 	margin-top: 5px;
 }
 
 .header-back-btn:hover {
-    opacity: 1;
-    transform: translateX(-2px);
+	opacity: 1;
+	transform: translateX(-2px);
 	color: #ef8376;
 }
 
 /* 숨김 상태 */
 .header-back-btn.hidden {
-    display: none;
+	display: none;
 }
 
 /* 햄버거 버튼과 뒤로가기 버튼 정렬 */
 #global-back-btn,
 #open-sidebar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* 로고 영역 밀림 방지 */
 .site-logo {
-    margin-left: auto;
+	margin-left: auto;
+}
+
+.bookmark-top-bar {
+	position: relative;
+	z-index: 9999;
+}
+
+#clear-bookmark-btn {
+	position: relative;
+	z-index: 9999;
+	pointer-events: auto;
 }

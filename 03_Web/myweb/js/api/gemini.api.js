@@ -22,7 +22,6 @@ async function callGemini(promptInput) {
     });
     
     // HTTP 상태 코드 확인
-      // HTTP 상태 코드 확인
     if (!response.ok) {
         const detail = await response.text().catch(() => "");
         throw new Error(`Gemini API 요청 실패 (HTTP ${response.status})`);

@@ -152,7 +152,7 @@ function resetRecommendationModal() {
     // 제목 복구
     const titleEl = document.getElementById("modal-title");
 
-    if (titleEl) { titleEl.textContent = "영화 취향 입력"; }
+    if (titleEl) { titleEl.textContent = "사용자 정보 입력"; }
 
     // 폼 다시 표시
     const userForm = document.getElementById("user-form");
@@ -330,11 +330,11 @@ function renderDetailPage(movie) {
                 </div>
                 <div class="detail-bottom-buttons">
                     <button class="button primary" id="watch-trailer-btn" data-trailer-key="${movie.trailerKey || ""}">
-                        🎬 트레일러 보러가기
+                        예고편 보러가기
                     </button>
 <button type="button" id="back-from-detail-btn" class="button">
 
-    ← 뒤로가기
+    뒤로가기
 
 </button>
                 </div>
