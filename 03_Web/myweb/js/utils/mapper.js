@@ -3,6 +3,18 @@
  */
 
 /**
+ * 프롬프트에 맞춤 리팩터링
+ */
+function buildUserInfo() {
+    return {
+        mbti: mbti ? mbti : "미 입력",
+        gender: frm.gender.value == "male" ? "남자" : "여자",
+        age: frm.age.value ? `${frm.age.value}세` : "미 입력",
+        mood: frm.mood.value.trim() ? `${frm.mood.value.trim()}` : "미 입력",
+    };
+}
+
+/**
  * 영화 이름으로 추천 후보 리스트 가공
  */
 function buildMovieCandidateList(results) {
@@ -19,31 +31,36 @@ function buildMovieCandidateList(results) {
  * 영화 상세정보 데이터 가공
  */
 function buildMovieDetail(data, movie) {
+
+    // 감독
+    const director = data.credits?.crew
+        ?.find(person => person.job === "Director");
+
+    // 배우 5명
+    const cast = data.credits?.cast
+        ?.slice(0, 5)
+        ?.map(actor => actor.name);
+
+    // 유튜브 트레일러
+    const trailer = data.videos?.results
+        ?.find(video =>
+            video.site === "YouTube"
+            && video.type === "Trailer"
+        );
+
     return {
         id: data.id,
-        title: movie.title,
-        original_title: data.original_title,
+        title: data.title,
         poster_path: data.poster_path,
-        backdrop_path: data.backdrop_path,
         overview: data.overview,
-        tagline: data.tagline,
-        release_date: data.release_date,
+        vote_average: data.vote_average,
         runtime: data.runtime,
-        vote_count: data.vote_count,
+        release_date: data.release_date,
         genres: data.genres,
-        production_countries:
-            data.production_countries,
-        spoken_languages:
-            data.spoken_languages,
-        director:
-            data.credits?.crew?.find(
-                person => person.job === "Director"
-            ),
-        cast:
-            data.credits?.cast?.slice(0, 10),
-        videos:
-            data.videos?.results,
-        similar:
-            data.similar?.results?.slice(0, 4)
+        backdrop_path: data.backdrop_path,
+        director: director?.name || "정보 없음",
+        cast: cast || [],
+        trailerKey: trailer?.key || null,
+        similar: data.similar?.results?.slice(0, 5) || [],
     };
 }
