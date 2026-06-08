@@ -28,7 +28,7 @@ def write_log(message: str):
 # def read_root(background_tasks: BackgroundTasks):
 def read_root():
     now = datetime.now()
-    # background_tasks.add_task(write_log, f"root endpoint was accessed {datetime.now()}")
+    # background_tasks.add_task(write_log, f"root endpoint was accessed {now}")
     write_log(f"root endpoint was accessed {now}")
     return {"message": f"Hello World {now}"}        
 
