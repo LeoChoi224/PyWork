@@ -5,16 +5,16 @@
 
 # 🟡 다음은 주요 응답 클래스 리스트입니다.
 
-# • JSONResponse: 클라이언트에게 JSON 형식의 데이터를 반환합니다. 
+# - JSONResponse: 클라이언트에게 JSON 형식의 데이터를 반환합니다. 
 #   이 클래스는 파이썬의 딕셔너리나 Pydantic 모델을 JSON 문자열로 변환하여 응답 바디에 담아 전송합니다.
 
-# • HTMLResponse: 클라이언트에게 HTML 형식의 데이터를 반환합니다. 
+# - HTMLResponse: 클라이언트에게 HTML 형식의 데이터를 반환합니다. 
 #   주로 웹페이지의 내용을 반환할 때 사용합니다.
 
-# • PlainTextResponse: 클라이언트에게 단순 텍스트 형식의 응답을 반환합니다. 
+# - PlainTextResponse: 클라이언트에게 단순 텍스트 형식의 응답을 반환합니다. 
 #   이는 로깅, 간단한 메시지 전달 등에 적합합니다.
 
-# • RedirectResponse: 이 응답 클래스는 클라이언트를 지정된 다른 URL로 리디렉션하는 HTTP 응답을 생성합니다. 
+# - RedirectResponse: 이 응답 클래스는 클라이언트를 지정된 다른 URL로 리디렉션하는 HTTP 응답을 생성합니다. 
 #   이는 사용자를 다른 페이지로 유도할 때 유용합니다.
 
 from fastapi import FastAPI

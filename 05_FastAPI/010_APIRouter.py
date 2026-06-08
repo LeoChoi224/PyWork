@@ -28,9 +28,9 @@ app = FastAPI()
 # app.include_router(router1)
 
 # - URL 접두사
-#   include_router() 함수를 사용할 때 prefix 매개변수를 통해 모든 라우트에 공통으로 적용되는 URL 접두사를 설정할 수 있습니다.
+#    include_router() 함수를 사용할 때 prefix 매개변수를 통해 모든 라우트에 공통으로 적용되는 URL 접두사를 설정할 수 있습니다.
 # - 태그
-#   tags 매개변수를 통해 자동 생성되는 API 문서에 태그를 추가할 수 있습니다.
+#    tags 매개변수를 통해 자동 생성되는 API 문서에 태그를 추가할 수 있습니다.
 app.include_router(router1, prefix="/api", tags=["items"])
 app.include_router(router1, prefix="/webtoon", tags=["webtoon"])
 
@@ -41,10 +41,10 @@ app.include_router(router1, prefix="/webtoon", tags=["webtoon"])
 # 일반적으로 의존성 함수는 인증, 권한 확인, 데이터 검증 등을 수행합니다. 
 
 # - Depends(): 의존성을 설정하는 데 사용하는 함수.
-#   e.g Depends(의존성 함수)
+#    e.g Depends(의존성 함수)
 
 # - APIRouter: dependencies 매개변수를 이용하여 라우터 레벨에서 의존성을 설정할 수 있다.
-#   e.g. APIRouter(dependencies=[Depends(+)])
+#    e.g. APIRouter(dependencies=[Depends(+)])
 
 """
 예제:  

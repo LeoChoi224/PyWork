@@ -61,22 +61,22 @@ def create_item(item: Dict[str, int]):
 # 다음은 타입 힌트로 사용할 수 있는 일반적인 파이썬 데이터 타입의 목록입니다.
 
 # •기본 데이터 타입
-#   -int: 정수
+#   - int: 정수
 #   - float: 부동소수점 숫자
 #   - str: 문자열
 #   - bool: 불리언(True 또는 False)
 
 # •컬렉션 타입
-#   -List: 변경 가능한 순서가 있는 컬렉션
+#   - List: 변경 가능한 순서가 있는 컬렉션
 #       e.g List[int]는 정수의 리스트를 나타낸다.
 
-#   -Tuple: 변경 불가능한 순서가 있는 컬렉션
+#   - Tuple: 변경 불가능한 순서가 있는 컬렉션
 #       e.g Tuple[str, int]는 문자열과 정수의 튜플을 나타낸다.
 
-#   -Dict: 키와 값의 쌍을 갖는 컬렉션
+#   - Dict: 키와 값의 쌍을 갖는 컬렉션
 #       e.g Dict[str, float]는 문자열 키와 부동소수점 숫자 값의 딕셔너리를 나타낸다.
 
-#   -Set: 중복 없는 항목의 컬렉션
+#   - Set: 중복 없는 항목의 컬렉션
 #       e.g Set [bool]은 불리언 값의 세트를 나타낸다.
 
 # •특수 타입
@@ -86,23 +86,23 @@ def create_item(item: Dict[str, int]):
 
 # •typing 모듈의 고급 타입
 
-#   -Optional: 값이 있거나 None일 수 있는 타입
+#   - Optional: 값이 있거나 None일 수 있는 타입
 #       eg Optional[str]은 문자열이거나 None일 수 있음
 
-#   -Union: 여러 타입 중 하나일 수 있는 값
+#   - Union: 여러 타입 중 하나일 수 있는 값
 #       e.g Union[int, str]은 정수 또는 문자열이 될 수 있음
 
-#   -Callable: 호출 가능한 객체(함수 등)를 나타냄
+#   - Callable: 호출 가능한 객체(함수 등)를 나타냄
 #       e.g Callable[[int, int], int]는 두 정수 매개변수를 받고 정수를 반환하는 함수
 
-#   -Iterable: 반복 가능한 객체를 나타냄
+#   - Iterable: 반복 가능한 객체를 나타냄
 #       e.g Iterable[str]은 문자열을 항목으로 갖는 반복 가능 객체
 
-#   -Sequence: 시퀀스 타입을 나타냄
+#   - Sequence: 시퀀스 타입을 나타냄
 #       e.g Sequence[float]는 부동소수점 숫자의 시퀀스
 
 # •사용자 정의 타입
-#   -클래스나 다른 타입 힌트를 사용하여 사용자 정의 타입을 생성할 수 있음
+#   - 클래스나 다른 타입 힌트를 사용하여 사용자 정의 타입을 생성할 수 있음
 #   e.g 클래스 Person을 정의하고 def get_person()-> Person:과 같이 사용할 수 있음
 
 # 이러한 타입은 단독으로 사용하거나 typing 모듈의 다양한 기능과 결합하여

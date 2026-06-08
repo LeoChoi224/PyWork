@@ -13,16 +13,16 @@ def read_users(q: str = Query(default=None, max_length=5)):
                             # max_length= 최대길이 제약조건
     return {"q": q}
 # Query(default, 옵션들...)
-# -min_length: 문자열 매개변수에 대한 최소 길이를 지정합니다.
-# -max_length: 문자열 매개변수에 대한 최대 길이를 지정합니다.
-# -alias: 매개변수의 별칭을 지정합니다. 이를 통해 URL에서 사용하는 이름과 함수 내에서 사용하는 이름을 다르게 할 수 있습니다.
-# -deprecated: 매개변수가 더 이상 사용되지 않음을 명시합니다. 이는 API 문서에 표시되어 사용자가 해당 매개변수를 사용하지 않도록 경고합니다.
-# -description: 매개변수에 대한 설명을 추가합니다. 이 설명은 API 문서에 표시되어 매개변수의 사용 목적이나 기대되는 값 등을 설명할 수 있습니다.
-# -ge: (greater than or equal to) 매개변숫값이 지정된 값 이상이어야 함을 명시합니다.
-# -le: (less than or equal to) 매개변숫값이 지정된 값 이하이어야 함을 명시합니다.
-# -regex: 매개변숫값이 일치해야 하는 정규 표현식 패턴을 지정합니다.
-# -title: 매개변수의 설명 제목을 지정합니다. 이는 주로 API 문서에서 매개변수를 설명할 때 사용됩니다.
-# -example: 매개변수의 예시 값을 제공합니다. 이는 문서에서 매개변수의 예상 입력값을 보여주는 데 도움을 줍니다.
+# - min_length: 문자열 매개변수에 대한 최소 길이를 지정합니다.
+# - max_length: 문자열 매개변수에 대한 최대 길이를 지정합니다.
+# - alias: 매개변수의 별칭을 지정합니다. 이를 통해 URL에서 사용하는 이름과 함수 내에서 사용하는 이름을 다르게 할 수 있습니다.
+# - deprecated: 매개변수가 더 이상 사용되지 않음을 명시합니다. 이는 API 문서에 표시되어 사용자가 해당 매개변수를 사용하지 않도록 경고합니다.
+# - description: 매개변수에 대한 설명을 추가합니다. 이 설명은 API 문서에 표시되어 매개변수의 사용 목적이나 기대되는 값 등을 설명할 수 있습니다.
+# - ge: (greater than or equal to) 매개변숫값이 지정된 값 이상이어야 함을 명시합니다.
+# - le: (less than or equal to) 매개변숫값이 지정된 값 이하이어야 함을 명시합니다.
+# - regex: 매개변숫값이 일치해야 하는 정규 표현식 패턴을 지정합니다.
+# - title: 매개변수의 설명 제목을 지정합니다. 이는 주로 API 문서에서 매개변수를 설명할 때 사용됩니다.
+# - example: 매개변수의 예시 값을 제공합니다. 이는 문서에서 매개변수의 예상 입력값을 보여주는 데 도움을 줍니다.
 
 # Query 클래스의 이러한 옵션들을 사용함으로써 FastAPI에서는 매개변수에 대한 상세한 검증 규칙과 문서화 정보를 제공할 수 있으며, 
 # 이는 API의 사용성과 안정성을 높이는 데 기여합니다.
@@ -60,10 +60,10 @@ def read_info(info: str = Query(None, description="정보를 입력해주세요"
 # 이는 일반적으로 웹 브라우저(클라이언트)에서 웹 서버로 정보를 얻거나, 서버상의 데이터를 수정하기 위해 사용됩니다.
 
 # 🟡 HTTP 요청은 다음과 같이 구성됩니다.
-# •Method: 서버에 요청하는 작업의 유형을 정의합니다(e.g, GET, POST, PUT).
-# •URL: 요청이 지시되는 리소스의 위치를 나타냅니다.
-# •Headers: 요청에 대한 메타데이터를 포함하며 인증, 캐싱, 클라이언트 유형 등의 정보를 담습니다.
-# •Body: 일부 HTTP 메서드(POST, PUT)에서 사용되며, 전송할 데이터를 담습니다.
+# - Method: 서버에 요청하는 작업의 유형을 정의합니다(e.g, GET, POST, PUT).
+# - URL: 요청이 지시되는 리소스의 위치를 나타냅니다.
+# - Headers: 요청에 대한 메타데이터를 포함하며 인증, 캐싱, 클라이언트 유형 등의 정보를 담습니다.
+# - Body: 일부 HTTP 메서드(POST, PUT)에서 사용되며, 전송할 데이터를 담습니다.
 
 @app.get("/comments/")
 def read_comments(comment_id: int = Query(...)):
@@ -78,7 +78,7 @@ from fastapi import Body  # 요청 body
 def create_board(board: dict = Body(
         default=None,  # 옵셔녕,  기본값 설정
         example={"key": "value"},  # 문서에 표시고리 예시 값
-        media_type="application/json",  # request 의 content-type
+        media_type="application/json",  # request 의 content- type
         alias="post_alias",  # 별칭 설정
         title="Sample post",  # 문서 제목
         description="This is a sample item",  # 상세 설명
