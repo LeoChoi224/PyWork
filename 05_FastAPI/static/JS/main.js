@@ -1,0 +1,1 @@
+document.getElementById("title").innerHTML = "웰컴 투 홍묵 월드"
