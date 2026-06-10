@@ -3,7 +3,3 @@
 const score = [17, 34, 8, 23, 52, 11];
 console.log(score);
 
-
-
-
-

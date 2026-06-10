@@ -22,10 +22,6 @@
 
 // console.log('[왜 배열(array) 이 필요한가?]');
 
-
-
-
-
 /****************************************
  * 배열생성 방법
  *  방법1 : [ ... ] 
@@ -98,10 +94,6 @@ console.log([10, 20, 30,].length);
 console.log([  ,  ,10, 20, 30,  ,].length);
 console.log([  ,  ,10, 20, 30,  ,]);
 console.log([  ,  ,10, 20, 30,  ,][0]);  // undefined
-
-
-
-
 /**************************************
  * 배열원소 추가, 제거
  *  push() : 배열끝 원소 추가, 새로운 length 리턴
@@ -207,10 +199,6 @@ console.log(fruits.includes("Lemon"));
 // console.log("[join()]");
 // console.log(cars);
 
-
-
-
-
 /******************************************
  * JavaScript 에선 array 도 object 의 특별한 형태다
  *  차이점이라면 index 의 형태다.
@@ -281,9 +269,3 @@ console.log(cars.sort());  // 원본을 변경하는게, 그 원본을 리턴까
     console.log(x == y);  // true : 동일객체다
     console.log(x === y);
 }
-
-
-
-
-
-

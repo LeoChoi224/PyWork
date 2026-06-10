@@ -29,10 +29,6 @@ let arr, result;
 // arr = [1.2, 1.7, -1.2, -1.7];
 // console.log('arr: ', arr);
  
-
-
-
-
 /**********************************
  * pow(), sqrt(), abs()
  */
@@ -63,20 +59,12 @@ let arr, result;
  */
 // console.log('-'.repeat(20));
 // console.log('min() max()');
-
-
-
-
 /*******************************
  * random()
  * 0 <= x  < 1  사이의 난수(실수 number) 리턴
  */
 // console.log('-'.repeat(20));
 // console.log('random()');
-
-
-
-
 
 /************************
  * log(), log2(), log10()
@@ -95,26 +83,4 @@ let arr, result;
 
  
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  

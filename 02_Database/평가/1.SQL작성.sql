@@ -175,27 +175,3 @@ ORDER BY
     등급 ASC;
 
 SELECT * FROM t_exam01;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -69,7 +69,3 @@ console.log(array.map(Number));
 console.log(array.map(parseInt));   // [1, NaN, NaN]
    // parseInt 는 두번째 매개변수도 받는 함수다.
 
-
-
-
-

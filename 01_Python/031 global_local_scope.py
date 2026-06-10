@@ -105,10 +105,4 @@ foo()
 # ▶파이썬의 scope 정리
 # for, while, if 등 제어문 블럭	=> 함수 전체 또는 전역 scope
 # def, lambda, class  =>	새로운 scope 생성
-
-
-
-
-
-
 print('\n' * 15)

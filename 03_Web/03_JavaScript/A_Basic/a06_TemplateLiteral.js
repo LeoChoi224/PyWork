@@ -46,7 +46,3 @@ console.log(x.toString());
 console.log(`x = ${x}`);
             // template literal 도 내부적으로 문자열 연결연산(+)  
             // => 'x = ' + x.toString()
-
-
-
-

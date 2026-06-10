@@ -47,10 +47,6 @@ console.log(4 / 2.0);
 // console.log('-'.repeat(20))
 // console.log('[복합 대입연산자]')
 
-
-
-
-
 /* 
     부호연산자(+, -) sign operator
         +: 부호 연산자(수의 부호(양,음)가 바뀌지 않음)
@@ -58,10 +54,6 @@ console.log(4 / 2.0);
 */
 // console.log('-'.repeat(20))
 // console.log('[부호연산자]')
-
-
-
-
 /* 
     증감연산자 increment/decrement operator : 
     ++변수: 변수의 값을 1 증가시켜서 저장

@@ -117,10 +117,6 @@ getUTCSeconds()	Same as getSeconds(), but returns the UTC seconds
 // console.log('[Date set 메소드]')
 
 // d = new Date();
-
-
-
-
 /* 날짜 비교
     Date 객체에 대한 비교연산 가능
 */
@@ -130,19 +126,4 @@ getUTCSeconds()	Same as getSeconds(), but returns the UTC seconds
 // d1 = new Date();
 // d2 = new Date(2100, 5, 4);
 // d3 = new Date(1980, 11, 4);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
