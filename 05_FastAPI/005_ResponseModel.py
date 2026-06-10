@@ -71,8 +71,8 @@ def read_item(item_id: int):
 
 # Pydantic 모델을 정의합니다. 이 모델은 으답 데이터의 구조를 나타냅니다.
 class Product(BaseModel):
-    name: str # 이름 필드
-    price: float # 가격 필드
+    name: str  # 이름 필드
+    price: float  # 가격 필드
 
 @app.get("/product/", response_model=Product)
 def get_product():
@@ -91,7 +91,7 @@ from pydantic.generics import GenericModel
 T = TypeVar("T")
 
 class GenericItem(GenericModel, Generic[T]):
-    data: T # T 타입필드 data 선언
+    data: T  # T 타입필드 data 선언
 
 @app.get("/generic_item/", response_model=GenericItem[str])
 async def get_genric_item():

@@ -71,7 +71,7 @@ class BookDB:
         if row_count:
             print("DB 테이블을 생성하셨습니다")
 
-    # # DML 실행
+    #  # DML 실행
     # def execute(self, sql, *args):
     #     result = None
     #     try:
@@ -107,7 +107,7 @@ class BookDB:
         try:
             cursor = self.conn.cursor()
             cursor.execute(sql, args)
-            result = cursor.fetchall() # -> list[dict]
+            result = cursor.fetchall()  # -> list[dict]
 
         except Exception as e:
             logging.error(e.__class__.__name__, e)
@@ -155,7 +155,7 @@ class BookDB:
             result.append(item)
         return result
     
-    # 특정 no 의 Book 수정 <- no, title, price, publishedAt, no # TODO no 고민
+    # 특정 no 의 Book 수정 <- no, title, price, publishedAt, no  # TODO no 고민
     def modify(self, item: Book) -> Book:
         sql = "UPDATE exam_book SET no=%s, title=%s, price=%s, publishedAt=%s WHERE no=%s"
         _, row_count = self.execute(sql, item.no, item.title, item.price, item.publishedAt, item.no)

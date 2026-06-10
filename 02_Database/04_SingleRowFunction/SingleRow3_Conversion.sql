@@ -10,7 +10,7 @@ SELECT 1 + '1';
 
 SELECT now(), year(now()), month(now()), day(now());
 
--- ################################################
+--  ################################################
 -- 날짜 --> 원하는 포맷의 문자로 리턴
 -- DATE_FORMAT() 함수
 -- https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html
@@ -18,7 +18,7 @@ SELECT now(), year(now()), month(now()), day(now());
 SELECT now(), date_format(now(), '%Y%m%d');
 SELECT now(), date_format(now(), '%Y-%m-%d %H:%i:%s');
 
--- ################################################
+--  ################################################
 -- format() 함수
 -- 숫자 를 포맷팅하여 문자로 리턴
 -- FORMAT(number, decimal_places)

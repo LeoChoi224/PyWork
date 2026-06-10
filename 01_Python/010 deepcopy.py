@@ -2,10 +2,10 @@
 # 주소값을 복사하는 것이다.  (객체 복사가 아니다!)
 
 print('🟦 대입연산')
-a = 10 # a라는 값에 10이 저장되어있는 주소값을 참조한다
-b = a # 대입연산자는 주소값을 대입3
+a = 10  # a라는 값에 10이 저장되어있는 주소값을 참조한다
+b = a  # 대입연산자는 주소값을 대입3
 print(a, b)
-print(id(a), id(b)) # 변수의 주소값, 주소값이 같으면 동일 객체 참조, 다르면 다른 객체.
+print(id(a), id(b))  # 변수의 주소값, 주소값이 같으면 동일 객체 참조, 다르면 다른 객체.
 print(a == b)
 print(a is b)
 
@@ -29,15 +29,15 @@ print('\n🟦 id(), is연산자, immutable 객채')
 num1 = 10
 num2 = num1
 
-print(num1 is num2) # is 연산자, 두 변수가 같은 주소를 참조하는지 여부.
+print(num1 is num2)  # is 연산자, 두 변수가 같은 주소를 참조하는지 여부.
 
-num1 += 2 # 연산결과로 새로운 int 객체(12) 생김 (이유! int 는 immutable 하니까!)
+num1 += 2  # 연산결과로 새로운 int 객체(12) 생김 (이유! int 는 immutable 하니까!)
 print(num1 is num2)
 
 num3 = 5
 print(id(num1), id(num2), id(num3))
 
-num3 *= 2 # 연산결과로 기존의 int 객체(10) 주소를 참조 (이유! int 는 immutable 하니까!)
+num3 *= 2  # 연산결과로 기존의 int 객체(10) 주소를 참조 (이유! int 는 immutable 하니까!)
 print(id(num1), id(num2), id(num3))
 
 # 문자열(str) 의 경우
@@ -60,8 +60,8 @@ print('\n🟦 is연산자 vs == 비교연산자')
 a = [10, 20, 30]
 b = [10, 20, 30]
 
-print(a == b) # 객체가 동등한지 비교 ex) 동명이인은 이름이 같나?
-print(a is b) # 객체가 동일한지 비교 ex) 동명이인은 같은 사람인가?
+print(a == b)  # 객체가 동등한지 비교 ex) 동명이인은 이름이 같나?
+print(a is b)  # 객체가 동일한지 비교 ex) 동명이인은 같은 사람인가?
 
 
 print('\n🟦 얕은복사 (shallow copy)')
@@ -74,8 +74,8 @@ print('\n🟦 얕은복사 (shallow copy)')
 
 # 방법1  copy() 메소드 사용
 x = [10, 20, 30]
-y1 = x # 대입
-y2 = x.copy() # 얕은복사
+y1 = x  # 대입
+y2 = x.copy()  # 얕은복사
 
 print(x, y1, y2)
 print(x == y1, x == y2, y1 == y2)
@@ -88,7 +88,7 @@ print(x, y1, y2)
 # 방법2  범위지정 [:]  사용
 x = [10, 20, 30]
 y1 = x
-y2 = x[:] # 슬라이스 연산결과는 얕은 복사 발생
+y2 = x[:]  # 슬라이스 연산결과는 얕은 복사 발생
 print(x is y1, x is y2, y1 is y2)
 
 # 방법3  list() 함수 사용
@@ -107,7 +107,7 @@ print(x is y1, x is y2, y1 is y2)
 print('\n🟦 얕은 복사의 한계')
 
 x = [1, 2, ['A', 'B', 'C']]
-y = x.copy() # 얕은 복사
+y = x.copy()  # 얕은 복사
 print(x, y)
 print(x == y, x is y)
 
@@ -121,7 +121,7 @@ print('\n🟦 깊은 복사(deep copy)')
 
 import copy
 x = [1, 2, ['A', 'B', 'C']]
-copy.deepcopy(x) # 깊은 복사 발생
+copy.deepcopy(x)  # 깊은 복사 발생
 print(x, y)
 print(x == y,x is y)
 

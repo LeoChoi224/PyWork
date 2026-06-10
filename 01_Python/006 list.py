@@ -17,13 +17,13 @@ animals = [
     'dog',
     'cat',
     'bird',
-    'fish', # 마지막 원소 뒤에 콤마 붙여도 ok
+    'fish',  # 마지막 원소 뒤에 콤마 붙여도 ok
     ]
 
 # 순서가 있다 -> 인덱싱 (index)
-print(animals[0]) # 첫번째 원소는 index 0 부터 시작 0-base index
+print(animals[0])  # 첫번째 원소는 index 0 부터 시작 0-base index
 print(animals[2])
-# print(animals[4]) # IndexError: list index out of range
+# print(animals[4])  # IndexError: list index out of range
 
 print(animals[-1])  # 음수 인덱싱 가능.
 print('🟦' * 20)
@@ -46,15 +46,15 @@ print("🟦 슬라이싱(slicing)")
 animals = ['dog', 'mouse', 'cat', 'bird', 'fish']
 print(animals)
 
-print(animals[0:3]) # 0 부터 3 전까지
-print(animals[1:4]) # 1 부터 4 전까지
-print(animals[:2]) # 처음부터 2 전까지
-print(animals[2:]) # 2부터 끝까지
+print(animals[0:3])  # 0 부터 3 전까지
+print(animals[1:4])  # 1 부터 4 전까지
+print(animals[:2])  # 처음부터 2 전까지
+print(animals[2:])  # 2부터 끝까지
 
-print(animals[-2:]) # -2부터(뒤에서시작) 끝까지
-print(animals[:]) # 전체
+print(animals[-2:])  # -2부터(뒤에서시작) 끝까지
+print(animals[:])  # 전체
 
-print(animals[0:100]) # slicing 은 index 범위 벗어나도 ok
+print(animals[0:100])  # slicing 은 index 범위 벗어나도 ok
 
 i = 2
 print(animals[:i], animals[i:])
@@ -62,40 +62,40 @@ print(animals[:i], animals[i:])
 # step 값
 my_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print(my_list[1:7])
-print(my_list[1:7:2]) # step 2. 건너뛰는 값
+print(my_list[1:7:2])  # step 2. 건너뛰는 값
 
-print(my_list[3::3]) # 3부터 전체, 스템:
-print(my_list[::]) # 전체
-print(my_list[::2]) # 전체, 스템:2
+print(my_list[3::3])  # 3부터 전체, 스템:
+print(my_list[::])  # 전체
+print(my_list[::2])  # 전체, 스템:2
 
 print(my_list[5:0])  # []
-print(my_list[5:0:-1]) # 5부터 0전까지 -1 step 값
-print(my_list[::-1]) # 역순, 뒤집기 
+print(my_list[5:0:-1])  # 5부터 0전까지 -1 step 값
+print(my_list[::-1])  # 역순, 뒤집기 
 
 print('-' * 20)
 
 # slice 결과에 대입
 a = [1, 2, 3, 4, 5]
 print(a)
-a[1:4] = [20, 30, 40] # 치환됨
+a[1:4] = [20, 30, 40]  # 치환됨
 print(a)
 
 print('-' * 20)
 a = [1, 2, 3, 4, 5]
 print(a)
-a[1:4] = ['루비', '이브'] # 길이는 확장 / 축소 될 수 있다.
+a[1:4] = ['루비', '이브']  # 길이는 확장 / 축소 될 수 있다.
 print(a)
 
 print('-' * 20)
 a = [1, 2, 3, 4, 5]
 print(a)
-a[2:2] = ['루비', '이브'] # 삽입
+a[2:2] = ['루비', '이브']  # 삽입
 print(a)
 
 print('-' * 20)
 a = [1, 2, 3, 4, 5]
 print(a)
-a[1:4] = [] # 삭제
+a[1:4] = []  # 삭제
 print(a)
 
 print('🟦' * 20)
@@ -114,7 +114,7 @@ print(animals)
 # list 연산자 +, *
 
 print(fruits)
-print(animals + fruits) # list + list
+print(animals + fruits)  # list + list
 
 print(fruits * 2)
 
@@ -140,7 +140,7 @@ print(data[0])
 print(data[1])
 print(data[2])
 
-print(data[0][1]) # [][] 인덱스를 2개 사용 (2차원 리스트)
+print(data[0][1])  # [][] 인덱스를 2개 사용 (2차원 리스트)
 print(data[2][1])
 
 # data --> 2 차원 list
@@ -171,18 +171,18 @@ print(data[1][:2])
 print('🟦' * 20)
 print(animals)
 
-animals.remove('bird') # 원본 변경
+animals.remove('bird')  # 원본 변경
 print(animals)
-animals.insert(2, 'eagle') # 원본 변경
-print(animals)
-
-animals.sort() # 오름차순 정렬 # 원본 변경
+animals.insert(2, 'eagle')  # 원본 변경
 print(animals)
 
-animals.sort(reverse=True) # 내림차순 정렬
+animals.sort()  # 오름차순 정렬  # 원본 변경
 print(animals)
 
-print(animals[::-1]) # 원본 변경 안함.
+animals.sort(reverse=True)  # 내림차순 정렬
+print(animals)
+
+print(animals[::-1])  # 원본 변경 안함.
 print(animals)
 
 # sorted() 함수와 list
@@ -196,19 +196,19 @@ a = ["b", "g", "a", "d", "f", "c", "h", "e"]
 print(sorted(a))
 print(a.sort(reverse=True))
 
-x = sorted(a) # 원본 변경 안함
+x = sorted(a)  # 원본 변경 안함
 print(x)
 print(a)
 
 # in 연산자
-print("dog" in animals) # True
+print("dog" in animals)  # True
 print("shark" in animals)
 
 print('\n🟦 str 의 index, slice, in')
 # str 도 list 와 마찬가지로 iterable 객체다
 
 str2 = "hello python"
-print(str2[0]) # str 에 index 가능
+print(str2[0])  # str 에 index 가능
 print(str2[1])
 print(str2[11])
 
@@ -222,17 +222,17 @@ year = dd[:4]
 month = dd[5:7]
 day = dd[8:]
 
-print(year, month, day) # -> 2026 04 10
+print(year, month, day)  # -> 2026 04 10
 
 # in 연산자
-print("py" in str2) # 존재하면 True
-print("py" not in str2) # 존재하지 않으면 True
+print("py" in str2)  # 존재하면 True
+print("py" not in str2)  # 존재하지 않으면 True
 
 # sorted() -> 정렬된 리스트
 print(sorted(str2))
 
 print(str2)
-# str2[0] = 'Y' # str 은 immutable 하다!
+# str2[0] = 'Y'  # str 은 immutable 하다!
 
 print("\n🟦 str 과 list")
 print(animals)

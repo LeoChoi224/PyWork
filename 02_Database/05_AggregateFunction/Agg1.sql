@@ -16,7 +16,7 @@ SELECT deptno, avg(pay) FROM t_professor
 GROUP BY deptno
 ;
 
--- #5101)연습
+--  #5101)연습
 -- t_professor 테이블 : 학과별(deptno) 그리고 직급별(position)로 교수들의 평균 급여를 계산하여 출력하세요
 SELECT deptno, position, format(avg(pay), 0) FROM t_professor
 GROUP BY deptno, position
@@ -50,7 +50,7 @@ GROUP BY deptno1
 -- HAVING 최대최소몸무게차 >= 30
 ;
 
--- #5103
+--  #5103
 -- SELECT deptno,
 --     count(deptno) 총인원,
 --     avg(now() - hiredate) 근속평균,

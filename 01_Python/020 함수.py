@@ -69,14 +69,14 @@ say_anthem()
 print('🧡' * 10)
 
 # 함수도 '데이터 타입' 이다!
-print(type(say_anthem)) # function타입
+print(type(say_anthem))  # function타입
 
 uuu = say_anthem
 uuu()
 
-print('\n🟦매개변수(parameter, argument)') # 정확한 명칭은 함수 정의 시 매개변수-parameter, 함수 호출 시 인자-argument
+print('\n🟦매개변수(parameter, argument)')  # 정확한 명칭은 함수 정의 시 매개변수-parameter, 함수 호출 시 인자-argument
 
-def say_name(name): # 매개변수 name, '함수의 입력' 이라고도 함
+def say_name(name):  # 매개변수 name, '함수의 입력' 이라고도 함
     print("안녕하세요")
     print(f"제 이름은 {name}입니다.")
 
@@ -89,7 +89,7 @@ say_name('박수연')
 say_name('권용현')
 say_name('박지원')
 
-# say_name() # 호출할때 빼먹으면 에러!
+# say_name()  # 호출할때 빼먹으면 에러!
 # TypeError: say_name() missing 1 required positional argument: 'name'
 
 def say_age(age):
@@ -107,7 +107,7 @@ def say_hello(name, age):
     say_age(age)
     print('-' * 20)
 
-say_hello("박지원", 30) # 정의된 순서대로 전달 positional argument
+say_hello("박지원", 30)  # 정의된 순서대로 전달 positional argument
 say_hello("양정운", 22)
 say_hello("장희준", 27)
 
@@ -149,10 +149,10 @@ def code_everyday():
 
 code_everyday()
 
-def code_everyday(): # 함수 재정의 (덮어쓰기)
+def code_everyday():  # 함수 재정의 (덮어쓰기)
     print("파이썬 열공중")
     print("Life is short")
-    return # 함수 종료.
+    return  # 함수 종료.
     print("You need Python")
 
 code_everyday()
@@ -163,7 +163,7 @@ code_everyday()
 
 def add(a, b):
     result = a + b
-    return result # 리턴값
+    return result  # 리턴값
 
 t = add(10, 20)
 print(t)
@@ -177,7 +177,7 @@ print(add(100, add(10, 20)))
 #           ↓ return
 #  print(  130  )
 
-stopword_list = ['바보', '멍충이'] # 금지어 
+stopword_list = ['바보', '멍충이']  # 금지어 
 
 def register_comment(comment):
     for stopword in stopword_list:
@@ -197,7 +197,7 @@ print('\n🟦 함수의 리턴값은 여러개다?')
 # 여러개의 값을 리턴한것과 같은 효과를 보는것이다
 
 def sum_and_mul(a, b):
-    return a + b, a * b # 두개를 리턴한게 아니라. 두개의 값이 담긴 tuple 하나를 리턴한거다!
+    return a + b, a * b  # 두개를 리턴한게 아니라. 두개의 값이 담긴 tuple 하나를 리턴한거다!
 
 result = sum_and_mul(4, 3)
 print(result, type(result))
@@ -207,7 +207,7 @@ s, m = sum_and_mul(30, 40)
 print(f'합 {s}, 곲 {m}')
 
 # 파이썬 내장 함수 중에도 리턴값이 tuple 로 하는 함수들 많~~다.
-quotient, remainder = divmod(10, 3) # 나눈 '몫' 과 '나머지' 리턴
+quotient, remainder = divmod(10, 3)  # 나눈 '몫' 과 '나머지' 리턴
 print(quotient, remainder)
 
 print('-' * 20)
@@ -219,7 +219,7 @@ dog = {'name': '흰둥이'}
 print(get_name(dog))
 
 dog = None
-# print(get_name(dog)) # 에러
+# print(get_name(dog))  # 에러
 
 print('\n🟦 매개변수 검증에 SCE 활용 가능')
 # 매개변수 검증
@@ -338,9 +338,9 @@ print_val(10, 20, 30)
 
 score = [11, 22, 33]
 
-# print_val(score) # 에러  score -> kor 에만 전달
+# print_val(score)  # 에러  score -> kor 에만 전달
 print_val(score[0], score[1], score[2])
-print_val(*score) # -> print_val(11, 22, 33) argument unpacking
+print_val(*score)  # -> print_val(11, 22, 33) argument unpacking
 print(*(100, 200, 300))
 
 student = {"name": "Sam", "email": "sam@mail.com"}
@@ -350,9 +350,9 @@ def print_dict(name, email):
 
 print_dict(name = student['name'], email = student['email'])
 # print_dict(student)
-print_dict(**student) # dict 를 ** 로 unpacking => print_dict(name="Sam", email="sam@mail.com")
+print_dict(**student)  # dict 를 ** 로 unpacking => print_dict(name="Sam", email="sam@mail.com")
 
-print_dict(*student) # dict 를 * 로 unpacking? -> (key1, key2, ...) 형태로 호출
+print_dict(*student)  # dict 를 * 로 unpacking? -> (key1, key2, ...) 형태로 호출
 
 # log(10, 20, 30) 호출하면
 # print(10, 20, 30) 으로 동작하게 하려면?
@@ -384,10 +384,10 @@ print("\n🟦 재귀호출 (recursive call)")
 #- 장점: 프로그램을 구조적으로 작성, 복잡한 문제를 단순화! 추상화!
 #- 단점; 메모리 부담 발생
 
-# def recursive(n): # RecursionError: maximum recursion depth exceeded
+# def recursive(n):  # RecursionError: maximum recursion depth exceeded
 #     print(n, end=' ')
-#     recursive(n + 1) # 재귀호출
-#     print('종료') # 영원히 루프함
+#     recursive(n + 1)  # 재귀호출
+#     print('종료')  # 영원히 루프함
 
 # recursive(1)
 
@@ -400,13 +400,13 @@ print("\n🟦 재귀호출 (recursive call)")
 # n! = n x (n -1)!  <- factorial 을 factorial 로 정의 (재귀적 정의)
 
 def factorial(n):
-    if n == 0: return 1 # 종료 조건 0! = 1
+    if n == 0: return 1  # 종료 조건 0! = 1
 
     if n < 0:
         print('💢음수 팩토리얼은 불가!')
         return 0
     
-    return n * factorial(n - 1) # 재귀호출 결과 리턴
+    return n * factorial(n - 1)  # 재귀호출 결과 리턴
 
 for i in range(1, 11):
     print(f"{i}! = {factorial(i)}")
@@ -460,9 +460,9 @@ print(type(sum))
 print(sum([10, 20]))
 
 sum = 10 + 20
-# print(sum([10, 20])) # 에러
+# print(sum([10, 20]))  # 에러
 
-sum = __builtins__.sum # 복원
+sum = __builtins__.sum  # 복원
 print(sum([10, 30]))
 
 print('\n' * 15)

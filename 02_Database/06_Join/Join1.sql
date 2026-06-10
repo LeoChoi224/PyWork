@@ -24,7 +24,7 @@ FROM t_student s, t_department d
 -- Equi Join (등가 Join)
 -- 일반적으로 많이 쓰이는 Join 이며, 양쪽 테이블 Join 한 카티션곱에서 ‘같은조건’이 존재할 경우만 값을 가져오는 것
 
--- 예) #6101 
+-- 예)  #6101 
 -- t_student 테이블과 t_department 테이블을 사용하여 학생이름, 1전공 학과번호, 1전공 학과 이름을 출력하세요
 
 -- MySQL 구문
@@ -44,7 +44,7 @@ SELECT s.name 학생이름, s.deptno2 제2학과번호, d.dname 제2학과이름
 FROM t_student s JOIN t_department d ON s.deptno2 = d.deptno  -- JOIN 조건
 ;
 
--- 연습 #6102)
+-- 연습  #6102)
 -- t_student 테이블, t_professor 테이블 을 join하여
 -- ‘학생이름’, ‘지도교수번호’, ‘지도교수이름’ 을 출력하세요
 
@@ -63,7 +63,7 @@ ORDER BY s.profno ASC
 
 -- 3테이블 JOIN
 
--- #6103
+--  #6103
 -- t_student, t_department, t_professor 테이블 을 join 하여 
 --  학생의 이름, 1학과이름, 지도교수 이름  을 출력하세요
 
@@ -83,7 +83,7 @@ FROM
     JOIN t_professor p ON s.profno = p.profno
 ;
 
--- 연습 #6105
+-- 연습  #6105
 -- t_student - t_professor 테이블 join 하여
 -- 제1전공(deptno1) 이 101번인 학생들의
 -- 학생이름과 지도교수 이름을 출력하세요

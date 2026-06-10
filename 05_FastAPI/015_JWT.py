@@ -44,7 +44,7 @@ def create_jwt_token(data: dict):
 def verify_jwt_token(token: str):
     try:
         # 입력된 jwt token 을 SECRET_KEY 와 함께 알고리즘 사용하여 복호화
-        return jwt.decode(jwt=token, key=SECRET_KEY, algorithms=["HS256"]) # dict 리턴
+        return jwt.decode(jwt=token, key=SECRET_KEY, algorithms=["HS256"])  # dict 리턴
         # ↑ 이 함수는 여러 옵션과 함께 사용할 수 있습니다.
         # jwt.decode(token, key, algorithms, verify, options, **kwargs)  -> dict[str, Any]
         # •jwt=: 검증할 JWT 토큰 문자열입니다.

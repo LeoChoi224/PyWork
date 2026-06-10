@@ -19,10 +19,10 @@ print(type(a))
 
 print('a 값은', a, ' 입니다')
 
-a = 20 # 기존 a 변수 값 변경
+a = 20  # 기존 a 변수 값 변경
 print('a 값은', a, ' 입니다')
 
-a = 3.14 # 기존 a 변수 값 변경
+a = 3.14  # 기존 a 변수 값 변경
 print('a 값은', a, ' 입니다')
 print(type(a))
 
@@ -30,8 +30,8 @@ b = 5
 print(a + b)
 
 # NameError: name 'c' is not defined
-# print(c) # 선언한 적 없는 변수 사용 불가
-# print(A) # 변수명. 대소문자 구분. case sensitive
+# print(c)  # 선언한 적 없는 변수 사용 불가
+# print(A)  # 변수명. 대소문자 구분. case sensitive
 
 # 🟦 형변환 함수
 # int(), float(), str(), bool() ....
@@ -41,9 +41,9 @@ my_name = "김만두"
 print('제 이름은', my_name, '입니다.')
 print('제 이름은 ' + my_name + ' 입니다.')
 
-age = 10 # int 타입
+age = 10  # int 타입
 print('제 나이는', age, '살 입니다.')
-# print('제 나이는' + age + '살 입니다.') # TypeError: can only concatenate str (not "int") to str
+# print('제 나이는' + age + '살 입니다.')  # TypeError: can only concatenate str (not "int") to str
 print('제 나이는 ' + str(age) + ' 살 입니다.')
 
 num = "100"
@@ -73,11 +73,11 @@ print(int(True))
 #      finally,  for, from,  global,  if,  import,  in,  lambda,  nonlocal,  
 #      not,  or,  pass,  raise,  return,  try,  while,  with, yield
 
-# 🟦 del() : 변수 제거 # 사용할 일 거의 없음
+# 🟦 del() : 변수 제거  # 사용할 일 거의 없음
 name = "John"
 print(name, type(name))
 
-del(name) # name 변수 제거
+del(name)  # name 변수 제거
 # print(name, type(name))
 
 # 🟦 여러 변수를 한줄에 선언하기
@@ -86,7 +86,7 @@ b = 20
 c = 30
 print(a, b, c)
 
-a, b, c = 100, 200, 300 # 튜플
+a, b, c = 100, 200, 300  # 튜플
 print(a, b, c)
 
 # 🟦 기존의 변수값 증감...
@@ -110,9 +110,9 @@ a %= 2
 print('a =', a)
 
 # TypeError: 'b' is an invalid keyword argument for print()
-# print(b = 20) # 파이썬은 대입연산자 결과값이 없다.
+# print(b = 20)  # 파이썬은 대입연산자 결과값이 없다.
 
-# :=  ← walrus 연산자. # 가급적 사용 x
+# :=  ← walrus 연산자.  # 가급적 사용 x
 #  식 안에서 변수에 값을 대입하면서 동시에 사용할수 있게 함.
 print(b := 20)
 

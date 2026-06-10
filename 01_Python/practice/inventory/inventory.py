@@ -10,7 +10,7 @@ from typing import Optional
 class Inventory(BaseModel):
     id: Optional[int] = None
     name: str = Field(...)
-    price: int # 필수
+    price: int  # 필수
     stock: int = 0
     regDate: datetime = datetime.now()
 

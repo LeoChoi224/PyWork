@@ -75,7 +75,7 @@ print(a)
 a = "Hello %s" % ("자바")
 print(a)
 
-# a = "My name is %s, I'm %d yrs old" % ("자바") # TypeError: not enough arguments for format string
+# a = "My name is %s, I'm %d yrs old" % ("자바")  # TypeError: not enough arguments for format string
 a = "My name is %s, I'm %d yrs old" % ("최홍묵", 31)
 print(a)
 
@@ -88,7 +88,7 @@ print(a)
 # %%   %문자 자체
 
 import math
-pi = math.pi # 원주율값
+pi = math.pi  # 원주율값
 print('pi=', pi)
 
 print("원주율은 %f 입니다" % (pi))

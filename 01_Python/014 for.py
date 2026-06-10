@@ -18,12 +18,12 @@ for i in range(3):
 
 print('-' * 20)
 
-for i in range(5, 8): # 5, 6, 7 #5부터 8전까지
+for i in range(5, 8):  # 5, 6, 7  #5부터 8전까지
     print('hello world', i)
 
 print('-' * 20)
 
-for i in range(4, 15, 3): # 4, 7, 10, 13 #step값 3
+for i in range(4, 15, 3):  # 4, 7, 10, 13  #step값 3
     print('hello world', i)
 
 print('-' * 20)
@@ -32,7 +32,7 @@ for i in range(10, 0, -2):
     print('🐹', i)
 
 # 구구단 2단
-for i in range(1,10): # x1 ~ x9
+for i in range(1,10):  # x1 ~ x9
     print(f'2 x {i} =', 2 * i)
 
 #  연습
@@ -90,7 +90,7 @@ for key in my_dict:
 # dict.values() : value 들로만 구성된 iterable 객체 리턴
 # dict.items() : key-value 쌍들로 구성된 iterable 객체 리턴
 
-print(my_dict.items()) # ⭐️ 반환값이 튜플, 0번이 key, 1번이 value
+print(my_dict.items())  # ⭐️ 반환값이 튜플, 0번이 key, 1번이 value
 
 for item in my_dict.items():
     print(type(item), item)
@@ -106,7 +106,7 @@ for x in  range(10):
     print(x, end= ' ')
     if x == 5: break
 
-print("\n🟦 enumerate(iterable)") # 리스트를 인덱스를 쓸 수 있게 튜플로
+print("\n🟦 enumerate(iterable)")  # 리스트를 인덱스를 쓸 수 있게 튜플로
 # (index, data) 쌍의 iterable 객체 리턴 ⭐️
 print(animals)
 print(list(enumerate(animals)))

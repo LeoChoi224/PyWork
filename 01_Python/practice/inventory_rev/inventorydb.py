@@ -68,7 +68,7 @@ class InventoryDB:
         try:
             cursor = self.conn.cursor()
             cursor.execute(sql, args)
-            result = cursor.fetchall() # -> list[dict]
+            result = cursor.fetchall()  # -> list[dict]
 
         except Exception as e:
             logging.error(e.__class__.__name__, e)
@@ -82,7 +82,7 @@ class InventoryDB:
     #    리턴값 : 생성된 row => Inventory
     def save(self, item: Inventory) -> Inventory:
         sql = "INSERT INTO exam_inventory_rev(name, price, stock) VALUES (%s, %s, %s)"
-        last_row_id, row_count = self.execute(sql, item.name, item.price, item.stock) # last_row_id -> 생성된 함수 id 값이 바로 필요한 경우.예: 게시물 포스팅
+        last_row_id, row_count = self.execute(sql, item.name, item.price, item.stock)  # last_row_id -> 생성된 함수 id 값이 바로 필요한 경우.예: 게시물 포스팅
         # print('🧡', last_row_id, row_count)  # 확인용
         return self.find_by_id(last_row_id)
 

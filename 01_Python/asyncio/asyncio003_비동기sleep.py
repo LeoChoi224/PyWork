@@ -15,7 +15,7 @@ async def async_work(icon, seconds=0):
   
   end = time.time()
   print(f'{icon} 작업종료: {end - start:.3f}초 소요')
-  return f'{icon}-{seconds} 작업' # 비동기 함수의 리턴값.
+  return f'{icon}-{seconds} 작업'  # 비동기 함수의 리턴값.
 
 # asyncio.run(async_work('🍆', 3))
 
@@ -27,7 +27,7 @@ async def async_all():
 #   await task1
 #   await task2
 #   await task3
-#   results = await asyncio.gather(task1, task2, task3) # gather() 는 각 비동기 작업의 리턴값들을 리턴.
+#   results = await asyncio.gather(task1, task2, task3)  # gather() 는 각 비동기 작업의 리턴값들을 리턴.
 #   print(results)
 
     data = [('🍆', 3), ('🍊', 1), ('🥦', 2)]

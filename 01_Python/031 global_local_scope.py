@@ -13,36 +13,36 @@ print('\n🟦 global variable, global scope')
 x = 10
 
 def foo():
-    print(x) # 함수 안에서 전역변수 '사용' 가능! '읽기 동작'은 가능!
+    print(x)  # 함수 안에서 전역변수 '사용' 가능! '읽기 동작'은 가능!
 
 foo()
 print(x)
 
 print('\n🟦 local variable, local scope')
 def foo():
-    y = 10 # foo 의 지역변수
-    print(y) # foo 의 지역변수 y 출력
+    y = 10  # foo 의 지역변수
+    print(y)  # foo 의 지역변수 y 출력
 
-foo() # 함수 종료와 함꺠 지역변수는 소멸
-# print(y) # NameError: name 'y' is not defined
+foo()  # 함수 종료와 함꺠 지역변수는 소멸
+# print(y)  # NameError: name 'y' is not defined
 
 print('\n🟦 함수 안에서 전역변수를 수전(쓰기동작) 하려하면?')
 z = 10  # 전역변수
 
 def foo():
     z = 20  # z는 foo의 지역변수로 정의. 쓰기동작⭐️⭐️
-    print(z) # local 변수 z 를 읽어서 출력 
+    print(z)  # local 변수 z 를 읽어서 출력 
 
 foo()
-print(z) # 전역변수 z 는 변경되지 않았다.
+print(z)  # 전역변수 z 는 변경되지 않았다.
 
 print('\n🟦 매개변수는 local scope')
 a = 1
 
-def vartest(a): # 매개변수 a 는 local scope 
+def vartest(a):  # 매개변수 a 는 local scope 
     print('vartest] a=', a)
 
-vartest(a) # 호출할떄는 값의 복사가 발생
+vartest(a)  # 호출할떄는 값의 복사가 발생
 print('전역] a=', a)
 
 print('\n🟦 주의! UnboundLocalError')
@@ -64,7 +64,7 @@ a = 1
 
 def vartest(a):
     a = a + 1
-    return a # 변경된 지역변수 a 를 리턴
+    return a  # 변경된 지역변수 a 를 리턴
 
 a = vartest(a)  # 리턴값으로 전역변수 a 값을 변경
 print('전역] a=', a)
@@ -72,7 +72,7 @@ print('전역] a=', a)
 print("\n🟦 global 키워드 사용 (비추)")
 a = 1
 def vartest():
-    global a # 이 함수 안에서 'a' 는 전역변수 a 임을 선언.
+    global a  # 이 함수 안에서 'a' 는 전역변수 a 임을 선언.
     a = a + 1
     print('vartest] a =', a)
 
@@ -83,7 +83,7 @@ print('-' * 20)
 
 print('\n🟦 네임스페이스 (name space)')
 
-import pprint # pretty print
+import pprint  # pretty print
 
 pprint.pprint(locals())  # 전역에서 호출하면 전역 네임스페이스
 

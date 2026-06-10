@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(recommendBtn);
 
     // 입력 폼 내부 키 이벤트 전파 차단
-    document.querySelectorAll("#user-form input, #user-form textarea, #user-form select")
+    document.querySelectorAll("#user-form input,  #user-form textarea,  #user-form select")
         .forEach((el) => {
             el.addEventListener("keydown", (e) => {
                 e.stopPropagation();
