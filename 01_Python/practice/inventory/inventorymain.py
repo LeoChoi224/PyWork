@@ -37,7 +37,7 @@ def append_product():
 
     name = input("아이템 이름을 입력해주세요. ")
     price = int(input("아이템 가격을 정해주세요. ") or -1)
-    stock = int(input("몇 개 등록하시겠습니까? ") or 0) # 입력 없을 시 기본값 0, 0을 대입 안 시켜주면 ''가 대입되어 벨류에러
+    stock = int(input("몇 개 등록하시겠습니까? ") or 0)  # 입력 없을 시 기본값 0, 0을 대입 안 시켜주면 ''가 대입되어 벨류에러
 
     db.insert(name, price, stock)
     
@@ -57,11 +57,11 @@ def update_product():
 
     result = db.select_one(id)
 
-    if result is None: return # 없는 id 라면 result = None -> 리턴으로 함수 탈출
+    if result is None: return  # 없는 id 라면 result = None -> 리턴으로 함수 탈출
 
     name = input("상품명을 입력해주세요.")
     price = int(input("가격을 입력해주세요.") or -1)
-    stock = int(input("개수를 입력해주세요.") or 0) # 입력 없을 시 기본값 0, 0을 대입 안 시켜주면 ''가 대입되어 벨류에러
+    stock = int(input("개수를 입력해주세요.") or 0)  # 입력 없을 시 기본값 0, 0을 대입 안 시켜주면 ''가 대입되어 벨류에러
     
     update_result = db.update(name, price, stock, id)
     print("성공 여부", update_result)
@@ -89,13 +89,13 @@ def main():
         
         match input_num:
             case 1:
-                append_product() # 상품 입력 함수 호출
+                append_product()  # 상품 입력 함수 호출
             case 2:
-                show_product_list() # 상품 열람 함수 호출
+                show_product_list()  # 상품 열람 함수 호출
             case 3:
-                update_product() # 상품 수정 함수 호출
+                update_product()  # 상품 수정 함수 호출
             case 4:
-                delete_product() # 상품 삭제 함수 호출
+                delete_product()  # 상품 삭제 함수 호출
             case _:
                 print(f"선택하신 번호의 항목은 존재하지 않습니다.\n재입력해주십시오.")
                 continue

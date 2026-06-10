@@ -15,7 +15,7 @@ utcnow = datetime.datetime.now(datetime.timezone.utc)
 expiration= utcnow + datetime.timedelta(hours=1) 
 
 # 분 단위 만료 <- 로그인 세션에 적합하며, 금방 만료됩니다.
-expiration = utcnow + datetime.timedelta(minutes=15)  # <- 보통 금융권에서 사용
+expiration = utcnow + datetime.timedelta(minutes=15) # <- 보통 금융권에서 사용
 
 # 하루 만료 <- 주로 애플리케이션 내에서 꾸준한 사용이 이루어질 때 사용합니다.
 expiration = utcnow + datetime. timedelta(days=1)

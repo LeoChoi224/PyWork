@@ -51,7 +51,7 @@ print(result)
 result = [num * 3 if num % 2 == 0 else num for num in a]
 
 result = [
-    num * 3 if num % 2 == 0 else num # 삼항연산자 사용
+    num * 3 if num % 2 == 0 else num  # 삼항연산자 사용
     for num in a
     ]
 print(result)
@@ -126,11 +126,11 @@ print([
 print('-' * 20)
 
 print([num % 3 for num in range(10)])
-print({num % 3 for num in range(10)}) # Set Comprehension  # 중복 불가
+print({num % 3 for num in range(10)})  # Set Comprehension  # 중복 불가
 
 print('-' * 20)
 
-print({num:num % 3 for num in range(10)}) # Dict Comprehension
+print({num:num % 3 for num in range(10)})  # Dict Comprehension
 
 print({
     x: list(range(x))
@@ -156,7 +156,3 @@ print({k:v for k, v in fruits.items() if k != 'banana' })
 print({k:v for k, v in fruits.items() if 'e' not in k})
 
 print({k:v for k, v in fruits.items() if v != 'red'})
-
-
-
-

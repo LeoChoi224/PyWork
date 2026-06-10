@@ -73,7 +73,7 @@ def func(a, b):  # a: List,  b: 제곱해서 추가할 값  -> 리턴: List
 
 print(reduce(func, [1, 2, 3], []))
 
-# print(reduce(func, [1, 2, 3])) # AttributeError: 'int' object has no attribute 'append'
+# print(reduce(func, [1, 2, 3]))  # AttributeError: 'int' object has no attribute 'append'
 # reduce 기법 -> 랭체인등에서 ai 에서 돌아온 답과 새로운 내용을 합쳐서 재 질문할때 reduce를 이용
 
 #   []   | [1,   2,   3]

@@ -84,28 +84,24 @@ print('\n🟦 비교연산자, 논리연산자')
 d = 10
 
 result = d > 2
-result = d > 10 # F
-result = d >= 10 # T
-result = d == 100 # F
-result = d != 100 # T
+result = d > 10  # F
+result = d >= 10  # T
+result = d == 100  # F
+result = d != 100  # T
 
-result = True and True # T
-result = True and False # F
-result = False or False # F
-result = True ^ True # F
-result = True ^ False # T
-result = not True # F
+result = True and True  # T
+result = True and False  # F
+result = False or False  # F
+result = True ^ True  # F
+result = True ^ False  # T
+result = not True  # F
 
-result = d % 2 == 0 and d % 5 == 0 # d가 2의 배수이고, 또한 5의 배수이면 참.
+result = d % 2 == 0 and d % 5 == 0  # d가 2의 배수이고, 또한 5의 배수이면 참.
 
 if result:
     print(result, '입니다.')
 else:
     print(result, '입니다.')
-
-
-
-
 print("\n🟦 비교연산자 chaining")
 # 비교연산자는 임의로 chaining 된다
 # a <= x <= b 표현 가능
@@ -124,7 +120,7 @@ else:
     print(score, '💢유효하지 않은 점수입니다')
 
 
-print(False == True == False) # False == True and True == False
+print(False == True == False)  # False == True and True == False
 
 
 print('\n🟦 중첩된 if (nested-if)')
@@ -199,23 +195,23 @@ print("\n🟦 조건식의 참 / 거짓 판정")
 
 # None 타입 :   무조건 거짓
 
-result = 0.001 # T
-result = 0 # F
-result = 0.0 # F
-result = 'abc' # T
-result = '' # F
-result = ' ' # T
-result = not ' ' # F, not 연산 결과는 bool 타입
-result = bool("박영진") # T
-result = [1, 2, 3] # T
-result = [] # F
-result = (0) # F, int
-result = (0,) # T, tuple
-result = (0,) # T, tuple
-result = {"name": "hong"} # T
-result = {} # F
-result = None # F
-result = 2.1 + 0.2 - 2.3 # F
+result = 0.001  # T
+result = 0  # F
+result = 0.0  # F
+result = 'abc'  # T
+result = ''  # F
+result = ' '  # T
+result = not ' '  # F, not 연산 결과는 bool 타입
+result = bool("박영진")  # T
+result = [1, 2, 3]  # T
+result = []  # F
+result = (0)  # F, int
+result = (0,)  # T, tuple
+result = (0,)  # T, tuple
+result = {"name": "hong"}  # T
+result = {}  # F
+result = None  # F
+result = 2.1 + 0.2 - 2.3  # F
 
 if result:
     print('😀 참', type(result), result)
@@ -224,7 +220,7 @@ else:
 
 print('-'*20)
 
-print('\n🟦 SCE : Short-circuit evaluation') # 숏-셔킷 이벨리션
+print('\n🟦 SCE : Short-circuit evaluation')  # 숏-셔킷 이벨리션
 # 논리연산자 and, or 의 결과
 
 #논리 연산자 and, or 표현식과의 관계
@@ -242,12 +238,12 @@ print('\n🟦 SCE : Short-circuit evaluation') # 숏-셔킷 이벨리션
 # 왼쪽이 거짓인 경우 '왼쪽' 수행결과값 리턴
 
 
-result = True or False # T
-result = True and False # F
+result = True or False  # T
+result = True and False  # F
 
-result = 0 or 100 # 100
-result = 'Hello' or 'Python' # Hello
-result = 'Hello' and 'Python' # P
+result = 0 or 100  # 100
+result = 'Hello' or 'Python'  # Hello
+result = 'Hello' and 'Python'  # P
 result = [] and 'Python'
 
 if result:
@@ -340,6 +336,6 @@ if 'a' in "abc":
     print(zz)
 
 print('-' * 20)
-print(zz) # if 블럭 바깥에서도 사용 가능!
+print(zz)  # if 블럭 바깥에서도 사용 가능!
 
 i = input()

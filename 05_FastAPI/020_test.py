@@ -17,7 +17,7 @@ async def async_call(url, times):
     async with aiohttp.ClientSession() as session:   # 비동기 세션 시작
         tasks = []  # 비동기 task 들을 저장할 리스트
         for _ in range(times):
-            task = session.get(url) # 비동기 API 호출하고, task객체 리턴
+            task = session.get(url)  # 비동기 API 호출하고, task객체 리턴
             tasks.append(task)  # task 객체를 리스트에 추가
         await asyncio.gather(*tasks)  # 모든 비동기 작업이 완료될때까지 기다림
 

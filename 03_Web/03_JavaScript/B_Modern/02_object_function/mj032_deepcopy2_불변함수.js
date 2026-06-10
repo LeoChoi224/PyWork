@@ -18,11 +18,11 @@ console.log("1. spread op.");
   console.log('c', c);
   console.log(a == c);  // false
 
-  const a2 = {id: 1, name: "김정준"};
+  const a2 = { id: 1, name: "김정준" };
   const b2 = a2;
   console.log(a2 == b2);  // true 
-  
-  const b3 = {...a2};  // 새로운 객체 생성
+
+  const b3 = { ...a2 };  // 새로운 객체 생성
   console.log(a2 == b3);  // false
   console.log('b3', b3);
 
@@ -31,13 +31,13 @@ console.log("1. spread op.");
   console.log('b2', b2);
 
   // 얕은 복사 할때 id값은 그대로인데 name 값만 변경
-  const b4 = {...b3, name: '문태현'};  // name값 변경된 새로운 객체 생성
+  const b4 = { ...b3, name: '문태현' };  // name값 변경된 새로운 객체 생성
   console.log('b3', b3);
   console.log('b4', b4);
 
   // 변경하고픈 데이터가 다음과 같이 주어진다면
-  const data = {name: "박지원"};
-  const b5 = {...a2, ...data};
+  const data = { name: "박지원" };
+  const b5 = { ...a2, ...data };
   console.log('b5', b5);
 
 }
@@ -129,3 +129,4 @@ console.log("\n7 수정하기");
 
 }
 
+//────────────────────────────────────────────────────────────────────

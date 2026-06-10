@@ -40,7 +40,7 @@ def absolute(x):
 def apply_func_to_list(numbers, func):  
     # result = []
     # for number in numbers:
-    #     result.append(func(number)) # ⭐️ 매개변수로 받은 함수 호출 (이러한 동작을 callback(콜백``) 이라고 한다)
+    #     result.append(func(number))  # ⭐️ 매개변수로 받은 함수 호출 (이러한 동작을 callback(콜백``) 이라고 한다)
     # return result
 
     return [func(number) for number in numbers]
@@ -59,7 +59,7 @@ print((lambda x: x * 10)(100))
 
 print((lambda x, y: x + y)(23, 400))
 
-print((lambda : "문태현")()) # 매개변수 없는 람다
+print((lambda : "문태현")())  # 매개변수 없는 람다
 
 print((lambda a, b, c: print(f"{a}-{b}-{c}"))(44, 55, 66))
 
@@ -152,7 +152,7 @@ for line in lines[1:]:
     items = line.strip().split(',')
     # print('👿', items)  # ['140', '45', 'normal']
   
-    line_result = [] # [140.0, 45.0, 'normal']
+    line_result = []  # [140.0, 45.0, 'normal']
     for item in items:
         line_result.append(float(item) if item.isdigit() else item)
           
@@ -169,7 +169,7 @@ rows = data.split()[1:]  # 컬럼헤더 제외한 데이터들
 print(rows)
 
 lines = list(map(lambda row: row.split(','), rows))
-print('✨', lines) # 확인용
+print('✨', lines)  # 확인용
 
 result = list(map(lambda line : [float(line[0]), float(line[1]), line[2]], lines))
 
@@ -249,7 +249,7 @@ data = [1, -2, 3, -4, 5]
 
 # 양수인것만 걸러내기 filter + lambda
 
-print(list(filter(lambda x: x > 0, data))) # map 과 filter 의 차이
+print(list(filter(lambda x: x > 0, data)))  # map 과 filter 의 차이
 print(list(map(lambda x: x > 0, data)))
 
 print(list(map(lambda x: x > 0, data)))
@@ -319,7 +319,7 @@ for d in [
 ]: print(d)
 
 
-print("\n🟦 iterable 을 매개변수 받는 함수에 generator expression 사용 가능") # list expression 과 차이점: generator expression는 메모리 차지 x
+print("\n🟦 iterable 을 매개변수 받는 함수에 generator expression 사용 가능")  # list expression 과 차이점: generator expression는 메모리 차지 x
 
 # sum(iterable), max(iterable)....
 orders = [
@@ -333,7 +333,7 @@ print(sum(order['price'] for order in orders))
 # 가장 비싼 가격
 print(max(order['price'] for order in orders))
 
-print(" | ".join(order['item'] for order in orders)) # join에 generator expression 많이 사용
+print(" | ".join(order['item'] for order in orders))  # join에 generator expression 많이 사용
 
 
 print('\n' * 15)

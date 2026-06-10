@@ -10,7 +10,7 @@ print("\n🟦 Inner function (nested function)")
 def print_hello():
     hello = 'Hello, world!'
 
-    def print_message(): # 함수안에서 정의된 함수
+    def print_message():  # 함수안에서 정의된 함수
         print(hello)
 
     print_message()
@@ -26,7 +26,7 @@ def multiplexer(x):
     def something(n):
         return x * n
     
-    return something #inner func 자체를 리턴
+    return something  #inner func 자체를 리턴
 
 print(multiplexer(3))
 
@@ -60,7 +60,7 @@ def foo():
     x = 10
 
     def zoo():
-        x = 20 # zoo() 의 로컬 변수
+        x = 20  # zoo() 의 로컬 변수
     zoo()
 
     print('foo 의 x =', x)
@@ -138,10 +138,10 @@ def calc():
     
     return inner  # 내부 함수 리턴
 
-c = calc() # calc() 리턴과 함께 지역변수 a, b는 소멸되었을터?
-print(c(1), c(2), c(3), c(4), c(5)) # 그런데! a, b 가 살아서 동작한다?
+c = calc()  # calc() 리턴과 함께 지역변수 a, b는 소멸되었을터?
+print(c(1), c(2), c(3), c(4), c(5))  # 그런데! a, b 가 살아서 동작한다?
 
-print() # -----------------------------------
+print()  # -----------------------------------
 
 # 호출 횟수를 세는 함수 만들기
 
@@ -179,10 +179,4 @@ print()
 d = counter()
 for i in range(10):
     print(d(), end=' ')
-
-
-
-
-
-
 print('\n' * 15)

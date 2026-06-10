@@ -81,7 +81,7 @@ print('-' * 20)
 
 def trace(func):
     def wrapper(*args, **kwargs):
-        r = func(*args, **kwargs) # argument unpacking
+        r = func(*args, **kwargs)  # argument unpacking
         print(f"🔶{func.__name__}(args={args}), kwargs={kwargs}")
         return r
 
@@ -114,7 +114,7 @@ def laptime(func):
         print(f"{func.__name__}() 측정시작")
         start_time = time.time()
 
-        func(loop, delay) # 대상 함수 실행
+        func(loop, delay)  # 대상 함수 실행
         
         end_time = time.time()
         print(f"측정종료", end_time - start_time)
@@ -148,15 +148,6 @@ countDown() 측정시작
 측정종료 0:00:05.002277
 
 """
-
-
-
-
-
-
-
-
-
 
 
 # TODO 함수 성능 테스트용 데코레이터 만들어보기

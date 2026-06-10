@@ -11,13 +11,13 @@ while i < n:
     num = int(input())
     (two := two + 1) and (three := three + 1) if num % 3 == 0 else (two := two + 1) if num % 2 == 0 else num % 3 == 0 and (three := three + 1)
     i += 1
-# # ==================Todo====================
+#  # ==================Todo====================
 # while i < n:
 #     num = int(input())
 #     two_cnt, three_cnt = (two := two + 1), (three := three + 1)
 #     two_cnt and three_cnt if num % 3 == 0 else two_cnt if num % 2 == 0 else num % 3 == 0 and three_cnt
 #     i += 1
-# # ========================================
+#  # ========================================
 
 # while i < n:
 #     num = int(input())

@@ -1,10 +1,10 @@
 body {
-    background-color: #898989;
+    background-color:  #898989;
     margin: 0;
     padding: 0;
     font-size: 0.75em;
     line-height: 1.2em;
-    color: #333;
+    color:  #333;
 
 }
 
@@ -46,7 +46,7 @@ nav#top_menu ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 13px;
     font-weight: 100;
-    color: #333;
+    color:  #333;
 }
 
 nav#top_menu ul li {
@@ -58,7 +58,7 @@ nav#top_menu ul li {
 
 nav#top_menu ul li a {
     text-decoration: none;
-    color: #333;
+    color:  #333;
     height: 20px;
     display: block;
     padding: 10px;
@@ -80,11 +80,11 @@ nav#top_menu ul li a:hover {
 
 #login a {
     text-decoration: none;
-    color: #333;
+    color:  #333;
 }
 
 #login a:hover {
-    color: #F90;
+    color:  #F90;
 }
 
 .claer {
@@ -108,10 +108,10 @@ article#front {
 }
 
 #solution {
-    border:solid 1px #FFFFFF;
+    border:solid 1px  #FFFFFF;
     width:910px;
     min-height: 150px;
-    background: #ebebeb;
+    background:  #ebebeb;
     padding: 10px; /*!important; */
     
     /* padding: 10px 2px; */
@@ -119,7 +119,7 @@ article#front {
     margin:0 0 0 20px;
 }
 
-#hosting, #security, #payment {
+#hosting,  #security,  #payment {
     width: 30%;
     float: left;
     padding: 10px;
@@ -130,18 +130,18 @@ article#front {
     src:url("../images/segoeui.eot");
 }
 
-#hosting h3, #security h3, #payment h3{
+#hosting h3,  #security h3,  #payment h3{
     font-family: seo;
     font-size: 14px;
     font-weight: 600;
-    color: #333;
+    color:  #333;
     margin:0 0 10px 80px ;
 }
 
-#hosting p, #security p, #payment p{
+#hosting p,  #security p,  #payment p{
     font-family: seo;
     font-size: 12px;
-    color: #333;
+    color:  #333;
     margin:0 0 0 80px;
 }
 
@@ -149,14 +149,14 @@ article#front {
     background-image: url(../images/icon1.png);
     background-repeat: no-repeat;
     background-position: left 15px;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid  #ccc;
 }
 
 #security {
     background-image: url(../images/icon2.png);
     background-repeat: no-repeat;
     background-position: left 15px;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid  #ccc;
 }
 
 #payment {
@@ -165,13 +165,13 @@ article#front {
     background-position: left 15px;
 }
 
-#sec_news, #news_notice {
+#sec_news,  #news_notice {
     float:left;
     width:420px;
     margin: 15px 0 0 20px;
 }
 
-#sec_news h3 , #news_notice h3 {
+#sec_news h3 ,  #news_notice h3 {
     font-family: seo;
     font-size: 14px;
     font-style: italic;
@@ -184,42 +184,42 @@ article#front {
 }
 
 #sec_news .orange {
-    color: #f26522;
+    color:  #f26522;
 }
 
 #news_notice .brown {
-    color: #827b00;
+    color:  #827b00;
 }
 
 #sec_news dt {
     font-family: "Times New Roman", Times, serif;
     font-size: 16px;
     margin: 5px 0;
-    color: #F00;
+    color:  #F00;
 }
 
 #sec_news dt a{
-    color: #F00;
+    color:  #F00;
     text-decoration: none;
 }
 
 #sec_news dt a:hover {
-    color: #F90
+    color:  #F90
     text-decoration: underline;
 }
 
 #sec_news dd {
     margin-left:0;
-    color: #333;
+    color:  #333;
 }
 
 #sec_news dd a {
-    color: #333;
+    color:  #333;
     text-decoration: none;
 }
 
 #sec_news dd a:hover {
-    color: #F90;
+    color:  #F90;
     text-decoration: underline;
 }
 
@@ -238,7 +238,7 @@ article#front {
     padding:6px 4px;
     border-bottom-width: 1px;
     border-bottom-style: dotted;
-    border-bottom-color: #999;
+    border-bottom-color:  #999;
 }
 
 #news_notice td.contxt {
@@ -247,17 +247,17 @@ article#front {
     background-position: left center;
     padding-left: 15px;
     text-align:left;
-    color: #333;
+    color:  #333;
 }
 
 #news_notice a {
-    color: #333;
+    color:  #333;
     text-decoration: none;
 }
 
 #news_notice a:hover {
     text-decoration: none;
-    color: #F90;
+    color:  #F90;
 }
 
 footer {
@@ -274,18 +274,18 @@ footer hr {
     margin: 0 0 0 35px;
 }
 
-footer #copy {
+footer  #copy {
     font-family:seo;
     width: 450px;
     marain: 20px 0 0 190px;
     float: left;
 }
 
-footer #social {
+footer  #social {
     width: 130px;
     margin: 20px 20px 0 0;
     float: right;
 }
-hooter #social img {
+hooter  #social img {
     margin: 0 7px
 }

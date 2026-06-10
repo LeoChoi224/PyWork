@@ -29,7 +29,7 @@ venv.bak/
 mysql_settings.py
 
 
-### Django ###
+### Django  ###
 *.log
 *.pot
 *.pyc
@@ -39,7 +39,7 @@ db.sqlite3
 db.sqlite3-journal
 media
 
-### Django.Python Stack ###
+### Django.Python Stack  ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
 *$py.class

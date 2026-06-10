@@ -3,18 +3,18 @@
 # 소숫점이 있으면 '실수' (float)  
 # 컴퓨터 프로그래밍에서는 실수를 floating point number 라 함
 
-print(10) # 정수 int
-print(10.0) # 실수 float
-print(10.) # 10.0
-print(.1) # 0.1
+print(10)  # 정수 int
+print(10.0)  # 실수 float
+print(10.)  # 10.0
+print(.1)  # 0.1
 
-print(10 - 2 * 4) # 연산자 우선순위
+print(10 - 2 * 4)  # 연산자 우선순위
 print((10 - 2) * 4)
 
 print(4 * 5)  # 정수와 정수끼리 연산결과 -> int
-print(4 * 5.0) # 실수와 연산결과는 -> float
+print(4 * 5.0)  # 실수와 연산결과는 -> float
 
-print(4 / 2) # / 연산 결과는 무조건 float
+print(4 / 2)  # / 연산 결과는 무조건 float
 
 # 나눗셈 후 소수점 이하를 버리는 연산자 :  // (floordiv)
 # 정수 끼리 딱 떨어지는 결과에 대해서는 정수로 결과가 나옴
@@ -32,7 +32,7 @@ print(3.42 // 1.12)
 
 # 나머지 연산자 %
 print(13 % 3)  # 13 = 3 * 4 + 1
-print(12.5 % 4.1) # 12.5 = 4.1 * 3 + 0.2
+print(12.5 % 4.1)  # 12.5 = 4.1 * 3 + 0.2
     # 📌컴퓨터의 실수 계산 결과는
     # 항상 오차가 있을 수 있다.
 
@@ -95,9 +95,9 @@ print('😀' * 20)
 # length
 
 print(len('파이썬'))
-print(len('hello python')) # 공백도 하나의 문자다!
+print(len('hello python'))  # 공백도 하나의 문자다!
 
-# 자동 접합 (concat) # 인접해 있으면 그냥 자동으로 붙는다 
+# 자동 접합 (concat)  # 인접해 있으면 그냥 자동으로 붙는다 
 print('hello' '로켓')
 
 # 🟦  bool 타입
@@ -111,13 +111,13 @@ print(False)
 # 비교연산자 : == (같다),  != (같지 않다),  >, >=, <, <=
 # 논리연산자 : and, or, not
 
-print(20 > 10) # True
-print(10 > 10) # False
+print(20 > 10)  # True
+print(10 > 10)  # False
 print(10 >= 10)
 
 print(10 * 2 == 10)
 print(10 * 2 != 10)
-print(10 / 2 == 5) # 5.0 == 5
+print(10 / 2 == 5)  # 5.0 == 5
 print(2.1 + 0.2 == 2.3)
 print(2.1 + 0.2)  # ★실수연산결과는 정확하지 않다.  절대 == 비교연산 하지 말자
 

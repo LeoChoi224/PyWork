@@ -29,20 +29,20 @@ sorted ( iterable: Iterablel Tasortedl.
 
 dataset = [5, 4, 2, 8, 1]
 print(dataset)
-print(dataset.sort()) # 원본 변경
+print(dataset.sort())  # 원본 변경
 print(dataset)
 
 dataset = [5, 4, 2, 8, 1]
 print(dataset)
-print(sorted(dataset)) # 원본 변화 안됨.
+print(sorted(dataset))  # 원본 변화 안됨.
 print(dataset)
 
 print('-' * 20)
 
-# dataset = [('aas', 400), ('aasd', 300), ('aaad', 100), ('dasd', 200)] # 확인용
+# dataset = [('aas', 400), ('aasd', 300), ('aaad', 100), ('dasd', 200)]  # 확인용
 dataset = [('c', 400), ('a', 300), ('b', 100), ('d', 200)]
 print(dataset)
-dataset.sort() # 원소가 iterable 인 경우, '첫번째 원소'로 비교, sorted()도 동일
+dataset.sort()  # 원소가 iterable 인 경우, '첫번째 원소'로 비교, sorted()도 동일
 print(dataset)
 
 dataset.sort(key=lambda item: item[1])
@@ -69,11 +69,11 @@ print(sorted(a_dict))
 
 dict_items = a_dict.items()  # (key, value) 쌍으로 이루어진 iterable 객체
 
-print(sorted(dict_items)) # key 오름 차순 정렬 (기본)
+print(sorted(dict_items))  # key 오름 차순 정렬 (기본)
 print(sorted(dict_items, reverse=True))  # key 내림차순
 
-print(sorted(dict_items, key=lambda x: x[1])) # value 오름차순
-print(sorted(dict_items, key=lambda x: x[1], reverse=True)) # value 내림차순
+print(sorted(dict_items, key=lambda x: x[1]))  # value 오름차순
+print(sorted(dict_items, key=lambda x: x[1], reverse=True))  # value 내림차순
 
 
 print('-' * 20)
@@ -103,7 +103,7 @@ data = [
 for d in data: print(d)
 
 # TypeError: '<' not supported between instances of 'dict' and 'dict'
-# print(sorted(data)) # dict 는 대소 비교가 안된다
+# print(sorted(data))  # dict 는 대소 비교가 안된다
 
 print('-' * 20)
 

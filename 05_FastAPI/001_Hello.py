@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-app = FastAPI() # FastAPI 인스턴스 생성
+app = FastAPI()  # FastAPI 인스턴스 생성
 
 """
 실행
@@ -17,7 +17,7 @@ uvicorn 001_Hello:app --reload
 
 """
 
-@app.get("/") # HTTP GET 요청 경로 "/" 받으면 아래 함수가 처리하여 응답
+@app.get("/")  # HTTP GET 요청 경로 "/" 받으면 아래 함수가 처리하여 응답
 def read_root():
     # 리턴하는 값이 응답이 된다.
     return {"message": "Hello FastAPI!"}

@@ -87,7 +87,7 @@ match point:
         print(f'y축 위 (y={y})')
     case (x, 0):
         print(f'x축 위 (x={x})')
-    case (x, y): # x, y = (-4, 10)
+    case (x, y):  # x, y = (-4, 10)
         print(f'좌표: ({x}, {y})')
 
         

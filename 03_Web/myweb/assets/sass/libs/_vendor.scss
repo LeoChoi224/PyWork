@@ -259,13 +259,13 @@
 		$result: null;
 
 		@if type-of($index) != number {
-			@warn "$index: #{quote($index)} is not a number for `remove-nth`.";
+			@warn "$index:  #{quote($index)} is not a number for `remove-nth`.";
 		}
 		@else if $index == 0 {
 			@warn "List index 0 must be a non-zero integer for `remove-nth`.";
 		}
 		@else if abs($index) > length($list) {
-			@warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
+			@warn "List index is  #{$index} but list is only  #{length($list)} item long for `remove-nth`.";
 		}
 		@else {
 
@@ -325,10 +325,10 @@
 	/// @param {string} $name Name.
 	@mixin keyframes($name) {
 
-		@-moz-keyframes #{$name} { @content; }
-		@-webkit-keyframes #{$name} { @content; }
-		@-ms-keyframes #{$name} { @content; }
-		@keyframes #{$name} { @content; }
+		@-moz-keyframes  #{$name} { @content; }
+		@-webkit-keyframes  #{$name} { @content; }
+		@-ms-keyframes  #{$name} { @content; }
+		@keyframes  #{$name} { @content; }
 
 	}
 
@@ -357,20 +357,20 @@
 		// Expand property?
 			@if $expandProperty {
 			    @each $vendor in $vendor-prefixes {
-			        #{$vendor}#{$property}: #{str-replace-all($value, '-prefix-', $vendor)};
+			        #{$vendor}#{$property}:  #{str-replace-all($value, '-prefix-', $vendor)};
 			    }
 			}
 
 		// Expand just the value?
 			@elseif $expandValue {
 			    @each $vendor in $vendor-prefixes {
-			        #{$property}: #{str-replace-all($value, '-prefix-', $vendor)};
+			        #{$property}:  #{str-replace-all($value, '-prefix-', $vendor)};
 			    }
 			}
 
 		// Neither? Treat them as a normal declaration.
 			@else {
-		        #{$property}: #{$value};
+		        #{$property}:  #{$value};
 			}
 
 	}

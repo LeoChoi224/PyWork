@@ -64,11 +64,11 @@ def compute_result(user_choice, computer_choice):
 while True:
     show_menu()   # 메뉴보여주기
 
-    user_choice = input_choice() # 사용자 입력
+    user_choice = input_choice()  # 사용자 입력
     if user_choice == 0:
         break  # 0 이변 종료
    
     # 컴퓨터 선택:   1 - 가위,  2- 바위,  3 - 보
     computer_choice = computer_select()
-    display_choice(user_choice, computer_choice) # 양측의 선택 보여주기
-    compute_result(user_choice, computer_choice) # 승부결과 보여주기    
+    display_choice(user_choice, computer_choice)  # 양측의 선택 보여주기
+    compute_result(user_choice, computer_choice)  # 승부결과 보여주기    

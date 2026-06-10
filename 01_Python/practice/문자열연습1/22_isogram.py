@@ -4,7 +4,7 @@
 # 
 
 data = [
-    "Dermatoglyphics", # -> True
+    "Dermatoglyphics",  # -> True
     "programmer",      # -> False
     "Cocktail",        # -> False  대소문자 동일
     "isogram",         # -> True

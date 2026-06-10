@@ -21,15 +21,15 @@
 student = {"name": "최현진", "email": "choi@mail.com"}
 print(student)
 print(type(student))
-print(len(student)) # key-value  쌍의 개수
+print(len(student))  # key-value  쌍의 개수
 
-print(student['name']) # 방법1
+print(student['name'])  # 방법1
 print(student['email'])
-print(student.get('name')) # 방법2
+print(student.get('name'))  # 방법2
 
 # 존재하지 않는 key의 경우
-# print(student['age']) # KeyError: 'age'
-print(student.get('age')) # None
+# print(student['age'])  # KeyError: 'age'
+print(student.get('age'))  # None
 
 # get()  을 사용하면 예외적인 상황에서도
 # 동작 가능하게 처리 가능
@@ -54,7 +54,7 @@ print('-' * 20)
 # 해당 key값 업데이트
 # 해당 key 가 없으면 새로이 추가
 
-student.update({'name': '양정운'}) # 원본변화
+student.update({'name': '양정운'})  # 원본변화
 print(student)
 
 print(student.update({'age': 22}) )
@@ -67,7 +67,7 @@ print(student)
 data = {
     1: "haha",
     2: "hoho",
-    2: "hehe", # key 중복 불가
+    2: "hehe",  # key 중복 불가
 
     "two": {
         3.14: "pi",
@@ -75,8 +75,8 @@ data = {
     },
 
     False: [10, 20, 30],
-    # [1, 2]: 3.14, # TypeError: unhashable type: 'list'
-    (1, 2): 3.14, # tuple 은 key 로 사용 가능!
+    # [1, 2]: 3.14,  # TypeError: unhashable type: 'list'
+    (1, 2): 3.14,  # tuple 은 key 로 사용 가능!
 }
 
 print(data)
@@ -113,26 +113,26 @@ print("서울" in student)
 
 print("\n🟦 dict() 함수로 dict 생성하기")
 
-print(dict(a=1,b=2)) # {'a': 1, 'b': 2}
+print(dict(a=1,b=2))  # {'a': 1, 'b': 2}
 
 # tuple (key,value)의 list 사용 가능
 print(dict[('name', 'kim'), ('age', 24)])
 
 
 print("\n🟦 빈(empty) 데이터 만들기")
-a = [] # list
+a = []  # list
 print(a, len(a))
 
-a = "" # str
+a = ""  # str
 print(a, len(a))
 
-a = () # tuple
+a = ()  # tuple
 print(a, len(a))
 
-a = {} # dict
+a = {}  # dict
 print(a, len(a))
 
-a = set() # set
+a = set()  # set
 print(a, len(a))
 
 # empty 데이터는 bool 변환시 False 로 변환

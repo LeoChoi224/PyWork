@@ -1,7 +1,7 @@
 -- --------------------------------------
 -- Sub Query
 
--- #7101
+--  #7101
 -- t_emp 테이블에서 
 -- scott 보다 급여를 많이 받는 사람의 이름과 급여 출력
 
@@ -15,7 +15,7 @@ WHERE sal > (SELECT sal FROM t_emp WHERE ename = 'SCOTT')
 
 SELECT * FROM t_professor;
 SELECT * FROM t_department;
--- #7104) 연습
+--  #7104) 연습
 --t_professor, t_department 테이블 :
 --입사일이 송도권 교수보다 나중에 입사한 사람의
 --이름과 입사일, 학과명을 출력하세요
@@ -39,7 +39,7 @@ WHERE
 --		>ALL 최대값을 반환함 (서브쿼리 결과중 가장큰것보다 큰)
 --		EXIST Sub Query 값이 있을 경우 반환
 
--- #7107) 예제
+--  #7107) 예제
 -- t_emp2, t_dept2 테이블 : 
 -- 근무지역 (t_dept2.area) 이 서울 지사인 모든 사원들의 
 -- 사번(empno)과 이름(name), 부서번호(deptno)를 출력하세요
@@ -57,7 +57,7 @@ WHERE deptno IN (SELECT dcode FROM t_dept2 WHERE area = '서울지사')
 ;
 
 
--- #7108) 연습
+--  #7108) 연습
 -- t_emp2 테이블 :
 -- 전체직원중 과장 직급의 최소연봉자보다
 -- 연봉이 높은 사람의
@@ -87,7 +87,7 @@ WHERE pay > (SELECT min(pay) FROM t_emp2 WHERE post = '과장')
 
 
 """실습"""
--- #7110) 연습
+--  #7110) 연습
 -- t_emp2, t_dept2 테이블 : 
 -- 각 부서별 평균 연봉을 구하고 그 중에서 평균 연봉이 가장 적은 부서의 평균연봉보다 
 -- 적게 받는 직원들의 부서명, 직원명, 연봉을 출력 하세요

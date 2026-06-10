@@ -14,8 +14,8 @@ for d in [
     # lower() : 문자열을 전부 소문자로 만드는 함수
 
     str1 := "Apple",
-    (str1.upper(), str1.lower()), # 리턴값이 있기 때문에 원본 변화 없음⭐️
-    str1, # 원본 변경 안함
+    (str1.upper(), str1.lower()),  # 리턴값이 있기 때문에 원본 변화 없음⭐️
+    str1,  # 원본 변경 안함
 
     "Car" == "car",  # 대문자와 소문자는 다르다!
     "Car".upper() == "car".upper(),  # True 같은 문자열 (동등성 비교)
@@ -32,7 +32,7 @@ for d in [
     # 문자열의 좌우 공백 제거
     a := "   Hello, World!    ",  
     f"[{a}]",
-    f"[{a.strip()}]", # 웹,앱등 서비스 환경에서 입력된 문자열값은 기본적으로 좌우 공백 제거 하도록 하자.
+    f"[{a.strip()}]",  # 웹,앱등 서비스 환경에서 입력된 문자열값은 기본적으로 좌우 공백 제거 하도록 하자.
     # str 은 immutable --> str 메소드의 결과로 원본이 변화되진 않는다. 
     # str 메소드의 리턴값이 str 이라면, 메소드 체이닝 (chaining)이 가능하다.
     f"[{a.strip().upper()}]",  
@@ -57,7 +57,7 @@ for d in [
     data.split("-"),
 
     "강아지 고양이 종달새".split(),  # 매개변수 없으면 공백기준으로 쪼갬.
-    "강아지 고양이 종달새".split(" "), # 비추
+    "강아지 고양이 종달새".split(" "),  # 비추
 
     "  강아지   고양이   종달새   ".split(),
     "  강아지   고양이   종달새   ".split(" "),
@@ -68,7 +68,7 @@ for d in [
 
     # 위 동작을 join, split 으로 만들 수 있다?
     # data.split('파이썬')
-    "Python".join(data.split('파이썬')), # 치환하는 효과
+    "Python".join(data.split('파이썬')),  # 치환하는 효과
 
     "\n🟦 index(), find()",
     # 주어진 문자열을 '찾으면' 원본문자열 내의 index 리턴 (0 이상의 값)
@@ -83,8 +83,8 @@ for d in [
     a.find('lo'),
     a.find('l'),
 
-    # a.index('x'), # ValueError: substring not found
-    a.find('x'), # -1
+    # a.index('x'),  # ValueError: substring not found
+    a.find('x'),  # -1
 
 
     "\n🟦 count()",
@@ -101,19 +101,19 @@ for d in [
     a.endswith('.html'),
 
     '\n🟦 패딩 zfill(), rjust(), ljust()',
-    "1".zfill(4), # 비어있는 자리까지 원하는 자리로 맞춰줌
+    "1".zfill(4),  # 비어있는 자리까지 원하는 자리로 맞춰줌
     "2".zfill(4),
     "34".zfill(4),
     "777".zfill(4),
     "10101".zfill(4),
 
-    "1".rjust(5, '*'), # 비어있는 자리에 원하는 문자로 대체, 우측정렬
+    "1".rjust(5, '*'),  # 비어있는 자리에 원하는 문자로 대체, 우측정렬
     "2".rjust(5, '*'),
     "34".rjust(5),
     "777".rjust(5, '*'),
     "101010".rjust(5, '*'),
     
-    "1".ljust(5, '*'), # 비어있는 자리에 원하는 문자로 대체, 좌측정렬
+    "1".ljust(5, '*'),  # 비어있는 자리에 원하는 문자로 대체, 좌측정렬
     "2".ljust(5, '*'),
     "34".ljust(5, '*'),
     "777".ljust(5),
@@ -122,8 +122,8 @@ for d in [
     '\n🟦 ord() chr()',
     # ord() : 문자의 코드값
     # chr() : 코드의 문자값
-    (ord('a'), ord('A')), # 97, 65
-    (chr(97), chr(65)), # 'a', 'A'
+    (ord('a'), ord('A')),  # 97, 65
+    (chr(97), chr(65)),  # 'a', 'A'
 
     # 알파벳 개수
     ord('z') - ord('a') + 1,
@@ -137,7 +137,7 @@ for d in [
         "AAaa",   # 3
         "AaAa"    # 4 
     ],
-     sorted(data), # 3 - 4 - 1 - 2
+     sorted(data),  # 3 - 4 - 1 - 2
 
 ]: print(d)
 
@@ -170,9 +170,9 @@ result = {}
 for ch in word.lower():
     # if 'a' <= ch <= 'z':
     if ch.isalpha():
-        if not result.get(ch): # 첫 등장이며
+        if not result.get(ch):  # 첫 등장이며
             result[ch] = 1
-        else: # 이전에 한번이라도 등장했다면.
+        else:  # 이전에 한번이라도 등장했다면.
             result[ch] += 1
     
     print(f'{ch} -> {result}')
@@ -209,9 +209,5 @@ print({
     for ch in word.lower()
     if ch.isalpha()
 })
-
-
-
-
 
 print('\n' * 15)
