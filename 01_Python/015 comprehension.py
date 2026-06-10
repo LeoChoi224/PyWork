@@ -156,7 +156,3 @@ print({k:v for k, v in fruits.items() if k != 'banana' })
 print({k:v for k, v in fruits.items() if 'e' not in k})
 
 print({k:v for k, v in fruits.items() if v != 'red'})
-
-
-
-

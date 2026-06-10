@@ -10,8 +10,4 @@ const countBiggerThan = function(arr, number) {
 
 }
 console.log(countBiggerThan(data, 10)); // 5
-
-
-
-
   

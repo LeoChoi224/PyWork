@@ -51,10 +51,6 @@ console.log('삭제후', person);
 */
 // console.log('-'.repeat(20));
 // console.log('[object 의 value]');
-
-
-
-
 /****************************************************
  *  object method 와 this
  * object 의 value 는 어떠한 타입도 가능하다

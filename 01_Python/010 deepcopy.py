@@ -154,9 +154,5 @@ print(x, y)
 
 # 'breakpoint' 관리하기
 
-
-
-
-
 print('\n' * 15)
 # 01python(KDT2604)/deepcopy 참고

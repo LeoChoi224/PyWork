@@ -151,12 +151,6 @@ console.log(`[${str.trim()}]`);
 // console.log('-'.repeat(20));
 // console.log('[문자열 앞/뒤로 패딩문자 추가]');
 // str = "5";
-
-
-
-
-
-
 /***********************
  * 문자 코드
  *  charAt(position)        # python ord()
@@ -166,10 +160,6 @@ console.log(`[${str.trim()}]`);
 // console.log('-'.repeat(20));
 // console.log("[문자 코드 [ ], charAt(), charCodeAt()]");
 // str = "HELLO WORLD";
-
-
-
-
 /************************
  * 문자열 대소 비교   <- 파이썬 과 동일 (코드값 비교)
  */

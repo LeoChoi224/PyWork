@@ -102,10 +102,6 @@ if result:
     print(result, '입니다.')
 else:
     print(result, '입니다.')
-
-
-
-
 print("\n🟦 비교연산자 chaining")
 # 비교연산자는 임의로 chaining 된다
 # a <= x <= b 표현 가능

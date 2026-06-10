@@ -168,10 +168,6 @@ class BookDB:
         return row_count
     
 
-
-
-
-
 # ↓동작테스트용 코드
 if __name__ == "__main__":
     ...2153", "hongmook", 999999, "2026-04-10");
@@ -217,15 +213,6 @@ sql = "SELECT no, title, price, publishedAt FROM exam_book ORDER BY publishedAt 
 
 -- SELECT ALL publishedAt DESC [28]
 sql = "SELECT no, title, price, publishedAt FROM exam_book ORDER BY publishedAt DESC"
-
-
-
-
-
-
-
-
-
 
 
 

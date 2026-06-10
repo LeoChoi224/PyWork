@@ -179,10 +179,4 @@ print()
 d = counter()
 for i in range(10):
     print(d(), end=' ')
-
-
-
-
-
-
 print('\n' * 15)

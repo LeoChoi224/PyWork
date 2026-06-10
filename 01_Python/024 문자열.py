@@ -210,8 +210,4 @@ print({
     if ch.isalpha()
 })
 
-
-
-
-
 print('\n' * 15)

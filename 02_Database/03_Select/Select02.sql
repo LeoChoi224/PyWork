@@ -109,9 +109,3 @@ SELECT name, grade, height FROM t_student
 ORDER BY grade ASC,  height DESC;
 
 
-
-
-
-
-
-

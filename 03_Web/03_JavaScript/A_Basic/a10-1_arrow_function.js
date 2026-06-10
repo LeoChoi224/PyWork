@@ -31,9 +31,3 @@ console.log(add(11, 22));
               // ↓ 매개변수 1개일때는 괄호 생략 가능.
 const hello1 = name => console.log(`hello1: ${name}!`);
 hello1('희준맨');
-
-
-
-
-
-

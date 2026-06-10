@@ -10,10 +10,6 @@
 # print(a[::-1][:int(b)])
 
 # ==============================
-
-
-
-
 # 공백을 포함한 문장을 입력 받아서 홀수 번째 단어를 차례로 출력하는 프로그램을 작성하시오.
 
 # 문장의 길이는 100자 이하이다.
@@ -189,10 +185,4 @@ print(sorted(data, key=lambda x: x['birthdate']))
 
 # 평균 오름차순
 print(sorted(data, key=lambda x: sum(x['score']) / len(x['score'])))
-
-
-
-
-
-
 
