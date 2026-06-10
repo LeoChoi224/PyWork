@@ -21,7 +21,12 @@
         })
     }
 
-    // tODO
+    let start = Date.now()
+    Promise.race([p(7000), p(8000), p(9000)]).then((message) => {  // message <- 가장 먼저 끝난 '한개' 의 resolve(value) 의 value 값이 전달됨
+        console.log('가장 빨리 fulfilled 된 하나가 실행됩니다', message) // 출력해주기
+        console.log('경과시간:', Date.now() - start) // 7초 경과!
+    })
+
 }
 
 /*

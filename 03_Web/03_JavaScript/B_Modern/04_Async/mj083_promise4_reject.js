@@ -19,13 +19,18 @@
   const myPromise = new Promise((resolve, reject) => {
     console.log("Promise() 생성 : pending 상태")
     setTimeout(() => {
+      // resolve("김정준")  // resolve(값)  이 값은 then의 callback 매개변수로 전달
+      
       console.log("Promise : rejected 상태로 전환");
-      reject(new Error());
+      reject(new Error("💥에러사유"));  // reject(값) 이 값은 catch의 callback 매개변수로 전달
+
     }, 4000);
   });
 
+  myPromise
+    .then(n => {console.log("then():", n)})
+    .catch(e => {console.log("catch():", e.message)})
   
-  // TODO
  
   // console.log("다음 작업...")
 }

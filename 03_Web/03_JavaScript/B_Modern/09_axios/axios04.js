@@ -3,20 +3,26 @@ const axios = require("axios");
 
 console.log("■ 서울시 지하철 승하차 인원 정보 ■");
 
-const api_key = "너의 키값은?";
+const api_key = "484e536751686d6336306d484d7576";
 
 // 비동기 작업을 순차적으로 진행하려면?
 
-function print(date) {
+async function print(date) {
   console.log('👩', date, '👩');
   url = `http://openapi.seoul.go.kr:8088/${api_key}/json/CardSubwayStatsNew/1/5/${date}`;
 
-  // TODO
-
+  const { data } = await axios.get(url);
+  printResult(data)
 }
 
+// print('20260601');
+// print('20260602');
+// print('20260603');
 // 만약 이를 순차적(동기) 로 진행하려면?
-// TODO
+print('20260601')
+  .then(() => print('20260602'))
+  .then(() => print('20260603'))
+  ;
 
 function printResult(jsObj) {
   const table = [];

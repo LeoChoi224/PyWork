@@ -48,35 +48,68 @@ pending 상태에서, executor 함수 인자중 하나인 reject 함수를 실�
 rejected (거부) 상태가 됩니다.
 
 상태 전환 (참조)
-  https://mdn.mozillademos.org/files/8633/promises.png
-
+  https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png
 */
 
 // pending 상태에서, executor 함수 인자중 하나인 resolve 함수를 실행하면
 // fulfilled (이행) 상태가 됩니다.
 
-// TODO
+new Promise((resolve, reject) => {
+  // pending 상태...
+  // 비동기 작업 상황...
+
+  // ...
+  // 정상 마무리
+  resolve();  // -> fulfilled 상태 전환
+});
+
 
 // pending 상태에서, executor 함수 인자중 하나인 reject 함수를 실행하면
 // rejected (거부) 상태가 됩니다.
 
-// TODO
+// new Promise((result, reject) => {
+//   // pending 상태...
+
+//   // 어떤 에러 상황에서
+//   reject();  // -> rejected 상태 돌입, UnhandledPromiseRejection
+// });
+
 
 //---------------------------------------------
 // 다음의 Promise 객체는 1000ms 후에 fulfilled 됩니다.
 
-// TODO
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve();   // 1초후 resolve() 실행 -> fulfilled 전환
+  }, 1000);
+});
 
 //----------------------------------------
 // p라는 Promise 객체가 fulfilled 되는 시점에 p.then(callback) 안에 설정한
 // callback 함수가 실행됩니다.
 {
-  // TODO
+  const p = new Promise((resolve, reject) => {
+    console.log('p1] Promise 생성: pending 상태');
+
+    setTimeout(() => {
+      console.log("p2] fulfilled 상태로 전환");
+      resolve();
+    }, 1000);
+  });
+
+  // .then(callback)
+  // 위의 Promise 객체가 fulfilled 상태가 되면 실행할 callback 등록  
+  p.then(() => {
+    console.log('p3] 1000ms 후에 fulfilled 됨.');
+  });
+
+  console.log('p4] 언제 찍힐까?')
 }
 
 
 //---------------------------------------------------------------
-// console.log('c1] 다음 코드')
+console.log('c1] 다음 코드')
 
 /*
     then 함수에서 다시 Promise 객체를 리턴하는 방법을 통해
@@ -88,12 +121,22 @@ rejected (거부) 상태가 됩니다.
   function c(){
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log('c] Promise fulfilled 됨.');
+        console.log('c3] Promise fulfilled 됨.');
         resolve();
       }, 3000);
     });
   }
 
+  c()
+  .then(() => {return c();})   // 다시 Promise 객체를 리턴
+  .then(() => c())    // Promise 객체 리턴
+  .then(c)
+  .then(() => {
+    console.log('c4] 12s 이후에 호출됨')
+  })
+  ;
   
-
+  // 위와 같이 Promise 와 then() 으로 작성하는 것이
+  // callback hell 을 만드는 것보다
+  // 가독성 및 유지보수성이 좋다
 }

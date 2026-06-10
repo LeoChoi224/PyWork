@@ -30,19 +30,28 @@ console.log()
 {
   // 1. 선언적 방식
 
-  // TODO
+  class Alpha {}
+  console.log(new Alpha());
 
   // 2. class 표현식을 변수에 할당
-
-  // TODO
+  const Beta = class { };
+  console.log(new Beta());
 
 }
 
 // constructor
 // 최초 초깃값을 객체 안에 집어넣기
-// console.log('\n생성자');
+console.log('\n생성자');
 {
-  // TODO
+  class Alpha {}
+  console.log(new Alpha());
+
+  class Beta {
+    constructor() {
+      console.log('Beata() 생성자 호출');
+    }
+  }
+  console.log(new Beta());
 }
 
 
@@ -50,14 +59,48 @@ console.log()
 console.log()
 {
   // 방법1: constructor 에서 property 명시
-  // TODO
+  class Alpha {
+    constructor(name, age){
+      this.name = name;
+      this.age = age;
+    }
+  }
+
+  let a1 = new Alpha('김정준', 27);
+  let a2 = new Alpha('문태현');
+  let a3 = new Alpha();
+
+  console.log(a1);
+  console.log(a2);
+  console.log(a3);
+
 
 
   // 방법2: class field 를 직접 기술
-  // TODO
+  class Beta {
+    name;   // <-- this.name   초깃값 없으면 undefined 로 초기화
+    age;   // <-- this.age
+  }
+
+  console.log(new Beta())
+
+  class Gamma {
+    name = '양정운';  // 필드 기본값
+    age = 23;
+  }
+  console.log(new Gamma());
+
+  class Theta {
+    name;
+    age;
+
+    constructor(name = '이민재', age = 26) {
+      this.name = name;
+      this.age = age;
+    }
+  }
+
+  console.log(new Theta());
+  console.log(new Theta('박영진', 39));
 }
-
-//────────────────────────────────────────────────────────────────────
-
-
 

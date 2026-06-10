@@ -59,7 +59,7 @@
  */
 
 /**
- * resposne 구조 : https://axios-http.com/docs/res_schema
+ * response 구조 : https://axios-http.com/docs/res_schema
  *   응답 형태는 json 형태
  *
  *    data:    <- 서버로부터의 응답
@@ -98,6 +98,34 @@
     .finally(function () {
       // 항상 실행되는 영역
     });
+
+  Ex)
+  try{
+    const response = await axios.get(....)
+
+  } catch(error) {
+    ...
+  }
 */
 
-// TODO
+// node.js 의 require() 는 다른 파일이나 라이브러리 불러오는 함수.
+const axios = require('axios');
+
+// const url = "https://httpbin.org/get";
+const url = "https://httpbingo.org/get";
+
+axios({
+  method: "post",
+  url,
+})
+  .then(response => {
+    console.log("✅then(): ");
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.log("💥catch(): ")
+    console.log(error);
+  })
+  .finally(() => {
+    console.log('🔅 finally()')
+  })
