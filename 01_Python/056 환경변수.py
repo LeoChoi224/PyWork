@@ -49,8 +49,8 @@ print(os.getenv('PATH')[:100])
 print(os.environ['PATH'][:100])
 
 # 없는 환경변수에 대해...
-print(os.getenv('XXX')) # None
-# print(os.environ['XXX']) # KeyError  발생
+print(os.getenv('XXX'))  # None
+# print(os.environ['XXX'])  # KeyError  발생
 
 from dotenv import load_dotenv
 result = load_dotenv()  # 환경변수 파일을 정상적으로 읽어오면 True 리턴.

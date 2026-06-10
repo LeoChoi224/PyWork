@@ -70,11 +70,11 @@ def toggle_like(db, member_id: int, post_id: int):
     
     # 회원의 좋아요 목록에 이 게시글이 이미 있다면?
     if post in member.liked_posts:
-        member.liked_posts.remove(post) # 좋아요 취소
+        member.liked_posts.remove(post)  # 좋아요 취소
         db.commit()
         return False
     else:                           # 없다면?
-        member.liked_posts.append(post) # 좋아요 추가
+        member.liked_posts.append(post)  # 좋아요 추가
         db.commit()
         return True
 

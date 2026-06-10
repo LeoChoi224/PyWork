@@ -116,8 +116,6 @@ console.log("\n7 수정하기");
   users[1].name = updateUserDto.name;
   console.log(users);  // 바뀌긴 하는데...
 
-  // 그러나! 기존 데이터 users 가 변경된건 아니다.
-  // react 의 연산을 위해서는 내용변경된 '새로운 객체'가 만들어져야 한다.
 
   // map + spread 사용
   const newUsers = users.map(user => user.id === updateUserDto.id ? {...user, ...updateUserDto} : user);

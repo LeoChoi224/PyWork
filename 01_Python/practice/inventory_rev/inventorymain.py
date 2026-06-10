@@ -142,20 +142,20 @@ def main():
             menu_choice = app.choose_menu()
 
             match menu_choice:
-                case 0: # 종료
+                case 0:  # 종료
                     print('프로그램을 종료합니다')
                     break
                 
-                case 1: # 입력
+                case 1:  # 입력
                     app.create_inventory()
                 
-                case 2: # 열람
+                case 2:  # 열람
                     app.show_list()
 
-                case 3: # 수정
+                case 3:  # 수정
                     app.update_inventory()
 
-                case 4: # 삭제
+                case 4:  # 삭제
                     app.remove_inventory()
 
     except Exception as e:
@@ -164,5 +164,5 @@ def main():
         app.close()  # 앱 종료시 자원해제
 
 if __name__ == "__main__":
-    main() # 애플리케이션은 main() 만 호출하는 것으로 동작하게 합니다.
+    main()  # 애플리케이션은 main() 만 호출하는 것으로 동작하게 합니다.
            # ←여기에 다른 코드 추가하지 마세요

@@ -23,7 +23,7 @@ animals = ("dog")
 print(type(animals), animals, len(animals))
 
 animals = ("dog",)
-animals = "dog", # () 없어도 가능
+animals = "dog",  # () 없어도 가능
 print(type(animals), animals, len(animals))
 
 print(student[0])
@@ -32,10 +32,10 @@ print(student[1:3])
 print('-' * 20)
 
 # tuple 은 immutable 하다  <-- 값을 변경할수 없다
-# student[0] = '김수림' # TypeError: 'tuple' object does not support item assignment
+# student[0] = '김수림'  # TypeError: 'tuple' object does not support item assignment
 
 # 내용 변경하는 동작이 없다.
-# student.append('박세정') # AttributeError: 'tuple' object has no attribute 'append'
+# student.append('박세정')  # AttributeError: 'tuple' object has no attribute 'append'
 
 # tuple 은 언제 사용하나?
 # 1. 변경되지 말아야 할 데이터들
@@ -45,13 +45,13 @@ print("\n🟦 Assignment Unpacking")
 # tuple 은 iterable 객체다
 # 대입연산자와 iterable 을 사용하여 여러 개의 변수에 대입 가능 (이를 Assignment unpacking 이라 함)
 
-a, b, c, d = 1, 2, 3, 4 # tuple
+a, b, c, d = 1, 2, 3, 4  # tuple
 print(a, b, c, d)
 
-a, b, c, d = [1, 2, 3, 4] # list
+a, b, c, d = [1, 2, 3, 4]  # list
 print(a, b, c, d)
 
-a, b, c, d = "주술회전" # str
+a, b, c, d = "주술회전"  # str
 print(a, b, c, d)
 
 
@@ -69,7 +69,7 @@ print(a, b)
 (a1, a2), (b1, b2) = ((10, 20), (30, 40))
 print(a1, a2, b1, b2)
 
-# a, b, c  = [1, 2, 3, 4] # ValueError: too many values to unpack (expected 3)
+# a, b, c  = [1, 2, 3, 4]  # ValueError: too many values to unpack (expected 3)
 
 # starred expression 사용하면 unpack 되는 값들보다 적은수의 변수들로도 list 로 받아낼수 있다.
 

@@ -112,7 +112,7 @@
 		background-attachment: fixed;
 		background-repeat: repeat, no-repeat, auto;
 		position: relative;
-		background-color: #150C07;
+		background-color:  #150C07;
 		line-height: 1.75em;
 		overflow-x: hidden;
 		overflow-y: auto;
@@ -158,24 +158,24 @@
 	}
 
 	a {
-		color: #fff;
+		color:  #fff;
 		color: rgba(255, 255, 255, 0.85);
 		text-decoration: none;
 		@include vendor('transition', 'color 0.25s ease-in-out');
 
 		&:hover {
-			color: #d64760;
+			color:  #d64760;
 		}
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 400;
-		color: #fff;
+		color:  #fff;
 		letter-spacing: -0.05em;
 	}
 
 	strong, b {
-		color: #fff;
+		color:  #fff;
 		color: rgba(255, 255, 255, 0.85);
 		font-weight: 600;
 	}
@@ -198,7 +198,7 @@
 
 				a {
 					opacity: 0.35;
-					color: #fff;
+					color:  #fff;
 					@include vendor('transition', 'opacity 0.25s ease-in-out');
 
 					&:hover {
@@ -316,7 +316,7 @@
 			@include vendor('display', 'flex');
 
 			> :last-child {
-				border-right: solid $border #ffffff;
+				border-right: solid $border  #ffffff;
 			}
 		}
 
@@ -327,7 +327,7 @@
 			@include vendor('flex-shrink', '0');
 			margin: ($border * 0.5);
 			height: 16em;
-			box-shadow: 0 0 0 $border #ffffff;
+			box-shadow: 0 0 0 $border  #ffffff;
 
 			&.span-1 {
 				width: $width;
@@ -342,7 +342,7 @@
 			}
 
 			&.intro {
-				background-color: #d64760;
+				background-color:  #d64760;
 				background-image: url('images/overlay.png');
 				@include vendor('display', 'flex');
 				@include vendor('flex-direction', 'column');
@@ -456,12 +456,12 @@
 			.item {
 				@include vendor('flex-grow', '1');
 				@include vendor('flex-shrink', '1');
-				width: calc(50vw - #{$border * 3}) !important;
+				width: calc(50vw -  #{$border * 3}) !important;
 				margin: ($border * 0.5);
-				box-shadow: 0 0 0 $border #ffffff;
+				box-shadow: 0 0 0 $border  #ffffff;
 
 				&.intro {
-					width: calc(100vw - #{$border * 4}) !important;
+					width: calc(100vw -  #{$border * 4}) !important;
 					text-align: center;
 					height: auto;
 					padding: 3em;
@@ -485,7 +485,7 @@
 
 		@include breakpoint('<=xsmall') {
 			.item {
-				//width: calc(100vw - #{$border * 4}) !important;
+				//width: calc(100vw -  #{$border * 4}) !important;
 				height: 10em;
 			}
 		}
@@ -586,9 +586,9 @@
 /* Popup */
 
 	.poptrox-popup {
-		background: #1a1f2c;
+		background:  #1a1f2c;
 		background: rgba(18, 21, 29, 0.9);
-		box-shadow: 0px 0px 0px 10px #fff, 0px 10px 60px 10px rgba(8, 11, 19, 0.55);
+		box-shadow: 0px 0px 0px 10px  #fff, 0px 10px 60px 10px rgba(8, 11, 19, 0.55);
 		cursor: default;
 
 		.loader {
@@ -607,14 +607,14 @@
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			background: #1a1f2c;
+			background:  #1a1f2c;
 			background: rgba(18, 21, 29, 0.85);
 			display: block;
 			width: 100%;
 			line-height: 75px;
 			text-align: center;
 			font-size: 1.25em;
-			color: #fff;
+			color:  #fff;
 		}
 
 		.nav-next, .nav-previous {
@@ -661,9 +661,9 @@
 		}
 
 		@include breakpoint('<=small') {
-			background: #0a0f1c;
+			background:  #0a0f1c;
 			box-shadow: 0px 0px 30px 10px rgba(8, 11, 19, 0.85);
-			border: solid 2.5px #fff;
+			border: solid 2.5px  #fff;
 			@include vendor('box-sizing', 'content-box');
 
 			.caption {

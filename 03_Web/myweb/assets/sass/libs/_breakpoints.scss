@@ -17,7 +17,7 @@
 	/// Wraps @content in a @media block targeting a specific orientation.
 	/// @param {string} $orientation Orientation.
 	@mixin orientation($orientation) {
-		@media screen and (orientation: #{$orientation}) {
+		@media screen and (orientation:  #{$orientation}) {
 			@content;
 		}
 	}
@@ -216,7 +216,7 @@
 			}
 
 		// Output.
-	        @media #{$media} {
+	        @media  #{$media} {
 				@content;
 			}
 

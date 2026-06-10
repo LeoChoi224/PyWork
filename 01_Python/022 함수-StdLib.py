@@ -13,15 +13,15 @@ print("\n🟦 random 모듈")
 import random
 
 for _ in range(10):
-    print(random.random()) # 0.0 <= < 1.0 사이의 난수값 리턴 [0.0, 1.0] 0.0은 포함 1.0은 제외
+    print(random.random())  # 0.0 <= < 1.0 사이의 난수값 리턴 [0.0, 1.0] 0.0은 포함 1.0은 제외
 
 print('-' * 20)
 
-random.seed(43) # seed(k) <- 랜덤 결과값 고정.
+random.seed(43)  # seed(k) <- 랜덤 결과값 고정.
 for _ in range(10):
     print(random.random())
 
-random.seed(None) # 랜덤 시드값 해제
+random.seed(None)  # 랜덤 시드값 해제
 data = ['dog', 'cat', 'bird', 'fish']
 random.shuffle(data)
 print(data)
@@ -85,8 +85,8 @@ import math
 for d in [
     math.pi,
     math.e,   # 자연로그
-    math.radians(180), # 180도 (degree) -> radian
-    math.sqrt(4), # 제곱근, 루트
+    math.radians(180),  # 180도 (degree) -> radian
+    math.sqrt(4),  # 제곱근, 루트
 
     # math 모듈
     #   ceil(n):  주어진 숫자보다 큰 정수중에 가장 작은 정수
@@ -116,16 +116,16 @@ print('\n🟦 time 모듈')
 import time
 
 for d in [
-    time.time(), # 1970.1.1 00:00:00 초 기준으로 경과한 시간 (초)   타임스탬프(time stamp) 라고도 한다
-    time.localtime(), #   '현재' 연,월,일, 시,분,초 요일 정보 등을 담고 있다 -> struct_time
+    time.time(),  # 1970.1.1 00:00:00 초 기준으로 경과한 시간 (초)   타임스탬프(time stamp) 라고도 한다
+    time.localtime(),  #   '현재' 연,월,일, 시,분,초 요일 정보 등을 담고 있다 -> struct_time
     t1 := time.struct_time((2025, 6, 11, 18, 6, 23, 3, 2, 100)),
     time.localtime(time.time()),
-    time.localtime(0), # 0 이면 0시 0분 0초 아닌가?  그런데 9시 라 나온다!  왜?  세계표준시 (UTC) 기준  Asia/Seoul 시간은 +9시간이기 때문
+    time.localtime(0),  # 0 이면 0시 0분 0초 아닌가?  그런데 9시 라 나온다!  왜?  세계표준시 (UTC) 기준  Asia/Seoul 시간은 +9시간이기 때문
 
     # timestramp 를 -> str 으로 포맷팅
-    time.strftime('%x'), # 현재시간 ->mm/dd/yy
-    time.strftime('%c'), # 영어권에서 많이 쓰이는
-    time.strftime('%Y-%m-%d %H:%M:%S', t1), # 우리나라에서 많이 쓰이는, 두번째 매개변수 = 특정시간 지정
+    time.strftime('%x'),  # 현재시간 ->mm/dd/yy
+    time.strftime('%c'),  # 영어권에서 많이 쓰이는
+    time.strftime('%Y-%m-%d %H:%M:%S', t1),  # 우리나라에서 많이 쓰이는, 두번째 매개변수 = 특정시간 지정
     time.strftime('%Y년%m월%d일 %H시%M분%S초', t1),
     time.strftime('%Y년%m월%d일 %p %I시%M분%S초', t1),
 
@@ -135,7 +135,7 @@ for d in [
 # 일정시간 delay. sleep() 함수
 for i in range(5):
     print(i)
-    time.sleep(1) # 이 코드가 끝날때까지 다음 코드가 진행 x -> blocking
+    time.sleep(1)  # 이 코드가 끝날때까지 다음 코드가 진행 x -> blocking
 
 
 print('\n🟦 datetime 모듈')
@@ -147,7 +147,7 @@ print('\n🟦 datetime 모듈')
 import datetime
 
 for d in [
-    dt := datetime.datetime(year=2021, month=10, day=20), # datetime 객체 생성
+    dt := datetime.datetime(year=2021, month=10, day=20),  # datetime 객체 생성
 
     # str -> datetime 으로 변경
     str1 := '2018-07-23 18:59:09',
@@ -157,7 +157,7 @@ for d in [
 
     # timestamp -> datetime 으로 변경
     timestamp := 1463460958000,  # ms
-    dt3 := datetime.datetime.fromtimestamp(timestamp / 1000), # s <- ms
+    dt3 := datetime.datetime.fromtimestamp(timestamp / 1000),  # s <- ms
 
     # datetime -> struct_time으로 변경3
     dt3.timetuple(),
@@ -182,7 +182,7 @@ for i in range(5):
 
 end_time = time.time()
 
-elapsed_time = end_time - start_time # 경과시간
+elapsed_time = end_time - start_time  # 경과시간
 
 print(f"{elapsed_time} 초 경과")
 
@@ -198,13 +198,13 @@ from datetime import timedelta
 
 for d in [
     # elapsed_time = 10.019780158996582,
-    elapsed_time := end_time - start_time, # 경과시간
+    elapsed_time := end_time - start_time,  # 경과시간
     timedelta(seconds=elapsed_time),
     td1 := timedelta(seconds=45632),
-    td2 := timedelta(seconds=86401), # 하루 = 86400초
+    td2 := timedelta(seconds=86401),  # 하루 = 86400초
     tb := timedelta(seconds=106401),
     tb.days,
-    tb.seconds, # 하루(day)를 제외한 나머지 초 (0~86399)
+    tb.seconds,  # 하루(day)를 제외한 나머지 초 (0~86399)
     tb.total_seconds(),
 
     td1 + td2,

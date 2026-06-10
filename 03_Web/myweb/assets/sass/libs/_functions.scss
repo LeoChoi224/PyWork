@@ -8,13 +8,13 @@
 	$result: null;
 
 	@if type-of($index) != number {
-		@warn "$index: #{quote($index)} is not a number for `remove-nth`.";
+		@warn "$index:  #{quote($index)} is not a number for `remove-nth`.";
 	}
 	@else if $index == 0 {
 		@warn "List index 0 must be a non-zero integer for `remove-nth`.";
 	}
 	@else if abs($index) > length($list) {
-		@warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
+		@warn "List index is  #{$index} but list is only  #{length($list)} item long for `remove-nth`.";
 	}
 	@else {
 

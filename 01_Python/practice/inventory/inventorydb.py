@@ -30,7 +30,7 @@ class InventoryDB:
         self.conn.close()
         self.conn = None
 
-    # # DML 구문 실행
+    #  # DML 구문 실행
     # def execute(self, sql):
 
     #     last_row_id = -1
@@ -54,7 +54,7 @@ class InventoryDB:
 
             sql = "SELECT * FROM inventory WHERE id = %s"
             cursor.execute(sql, id)
-            result = cursor.fetchone() # 존재하는 id 라면 결과 한줄, 없다면 None
+            result = cursor.fetchone()  # 존재하는 id 라면 결과 한줄, 없다면 None
 
             if result is None:
                 raise ValueError("ERR-3]ID오류 존재하지 않는 id:", id)
@@ -76,7 +76,7 @@ class InventoryDB:
 
             sql = "SELECT * FROM inventory"
             cursor.execute(sql)
-            result = cursor.fetchall() # 결과값 전체를 리스트[딕트{}, ...]
+            result = cursor.fetchall()  # 결과값 전체를 리스트[딕트{}, ...]
 
             print("id\tname\tprice\tcount\ttime")
             for row in result:
@@ -133,7 +133,7 @@ class InventoryDB:
 
             sql = "DELETE FROM inventory WHERE id = %s"
             cursor.execute(sql, id)
-            result = cursor.rowcount # id = %s 이기에 삭제에 성공시 행이 1개, 아니라면 0
+            result = cursor.rowcount  # id = %s 이기에 삭제에 성공시 행이 1개, 아니라면 0
             
             if cursor.rowcount == 0:
                 raise ValueError("ERR-3]ID오류 존재하지 않는 id:", id)

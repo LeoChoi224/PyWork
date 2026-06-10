@@ -66,7 +66,7 @@ class Database:
         try:
             cursor = self.conn.cursor()
             cursor.execute(sql)
-            result = cursor.fetchall() # => List[Dict]
+            result = cursor.fetchall()  # => List[Dict]
             
         except Exception as e:
             logging.error(e)  # '에러 로그' 작성

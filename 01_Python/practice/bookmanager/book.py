@@ -8,7 +8,7 @@ class Book(BaseModel):
     id: Optional[int] = None
     title: str = Field(...)
     author: str = Field(...)
-    price: int # 필수
+    price: int  # 필수
     stock: int = 0
     published_year: int
     regDate: datetime = datetime.now()

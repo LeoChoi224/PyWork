@@ -22,7 +22,7 @@ def read_item(member_id: int):
         raise HTTPException(
             status_code=404,
             detail="Item not found",
-            headers={"X-Error": "There was an Error"} # header 에는 한글, 특수문자 안됨. -> url encoding 하면 가능
+            headers={"X-Error": "There was an Error"}  # header 에는 한글, 특수문자 안됨. -> url encoding 하면 가능
         )
     return {"member_id": member_id}
 

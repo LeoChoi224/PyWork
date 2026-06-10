@@ -131,7 +131,7 @@ print('\n🟦 break')
 # break 는 감싸고 있는 가장 가까운 순환문을 종료합니다
 
 n = 1
-while True: # 무한 루프
+while True:  # 무한 루프
     print(n, end=" ")
     
     if n == 100: break

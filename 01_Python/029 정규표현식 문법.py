@@ -42,7 +42,7 @@ def regexp_test(regex, input_list):
 
 # ------------------------------
 title = "^ : 바로 문자뒤의 문자열로 시작됨"
-regex = r"^The"  # The 로 시작하는 패턴 # 무조건 해당 단어로 시작인 경우 매칭
+regex = r"^The"  # The 로 시작하는 패턴  # 무조건 해당 단어로 시작인 경우 매칭
 input_list = [
     "The Things",   # ok
     "On The Things",# x
@@ -51,17 +51,17 @@ input_list = [
 ]
 
 title = "$ : 문자열의 마지막이 이 문자열로 마무리 됨"
-regex = r"Man$"  # Man 으로 끝나는 패턴 # 무조건 해당 단어로 끝인 경우 매칭
+regex = r"Man$"  # Man 으로 끝나는 패턴  # 무조건 해당 단어로 끝인 경우 매칭
 input_list = [
     "SuperMan",   # ok
     "AquaMan",    # ok
-    "WonderWoman", # x
-    "WonderWoMan", # OK
+    "WonderWoman",  # x
+    "WonderWoMan",  # OK
     "PostMan ",  # x
 ]
 
 title = "^표현식$ : 정확하게 전체패턴매칭되는 문자열"
-regex = r'^SuperMan$' # 무조건 해당 단어인 경우 매칭
+regex = r'^SuperMan$'  # 무조건 해당 단어인 경우 매칭
 input_list = [
     "SuperMan",  # OK
     "Super Man",  # x
@@ -70,60 +70,60 @@ input_list = [
 ]
 
 title = " . : 어떤 문자든지 임의의 '한문자'에 매칭"
-regex = r"x.z" # x 와 z 사이의 한문자 만 오는 경우 매칭
+regex = r"x.z"  # x 와 z 사이의 한문자 만 오는 경우 매칭
 input_list = [
     "xyz",   # xyz
     "xxzdfdk",  # xxz
-    "aa10x9zbxbz", #x9z, xbz
+    "aa10x9zbxbz",  #x9z, xbz
     "xz",  # 💥
-    "90x zxx_zdf", # "x z", "x_z"
+    "90x zxx_zdf",  # "x z", "x_z"
     "xbz",  # xbz
     "xyyz"  # 💥
 ]
 
 title = " * : 바로 앞의 문자가 없거나 한개 이상에 매칭"
-regex = r"ab*" # a가 무조건 있고 b가 있거나 없을 경우 b가 끝날떄까지 매칭
+regex = r"ab*"  # a가 무조건 있고 b가 있거나 없을 경우 b가 끝날떄까지 매칭
 regex = r"ab*"
 input_list = [
     "a",  # "a"
-    "abc", # "ab"
-    "ab", # "ab"
-    "abbbaaaabababbab", # 8개
+    "abc",  # "ab"
+    "ab",  # "ab"
+    "abbbaaaabababbab",  # 8개
     "bbba",  # a
     "cdef"  # 💥  
 ]
 
 title = " + : 바로 앞의 문자가 한개 혹은 그 이상을 매칭"
-regex = r"ab+" # ab가 둘 다 있을때 b가 끝날때까지
+regex = r"ab+"  # ab가 둘 다 있을때 b가 끝날때까지
 input_list = [
     "a",    # 💥
     "abc",  # ab
     "ab",   # ab
     "abbbaaaabababbab",  # 5개
-    "bbba", # 💥
+    "bbba",  # 💥
     "cdef"   # 💥
 ]
 
 title = " ? : 바로 앞의 문자가 한개 있거나 없는것을 매칭"
-regex = r"ab?" # 
+regex = r"ab?"  # 
 input_list = [
     "a",   # a
     "abc",  # ab
-    "kkabcc", # ab
+    "kkabcc",  # ab
     "abbbaaaabababbab",  # 8개 
     "bbba"  # a
 ]
 
 title = " [] : 안에 존재하는 문자들중 한 문자만을 매칭"
-regex = r"[abc]" # a 또는 b 또는 c 중에 한 문자에 매칭
+regex = r"[abc]"  # a 또는 b 또는 c 중에 한 문자에 매칭
 input_list = [
     "able",   # a, b
     "bible",  # b, b
     "cable",  # c, a, b
     "xenosys",  # 💥
 ]
-regex = r"[abc]+" # a 또는 b 또는 c 중에 한 문자 이상 있다면 해당문자가 포함되는 경우 매칭
-regex = r"[a-z]" # a 부터 z 까지 (1개 이상)
+regex = r"[abc]+"  # a 또는 b 또는 c 중에 한 문자 이상 있다면 해당문자가 포함되는 경우 매칭
+regex = r"[a-z]"  # a 부터 z 까지 (1개 이상)
 regex = r"[a-z]+"  # a 부터 z까지 (1개 이상)
 input_list = [
     "abc100",    # 
@@ -131,23 +131,23 @@ input_list = [
 ]
 regex = r"[a-zA-Z]+"
 regex = r"[a-zA-Z0-9]+"
-regex = r"[a-zA-Z0-9-]+" # - hyphen 도 매칭
+regex = r"[a-zA-Z0-9-]+"  # - hyphen 도 매칭
 regex = r"[0-9]+"
-regex = r"[^0-9]+" # ^  not
+regex = r"[^0-9]+"  # ^  not
 
 title = " {} : 앞에 있는 문자나 문자열의 등장개수를 정함"
-regex = r"ab{2}" # a로 시작하고 b가 x2번 등장하는 패턴
+regex = r"ab{2}"  # a로 시작하고 b가 x2번 등장하는 패턴
 input_list = [
     "abb",  # abb
-    "abbb", # abb
-    "abbbabbbbbbbbabaabab", # 2개
+    "abbb",  # abb
+    "abbbabbbbbbbbabaabab",  # 2개
 ]
 
-regex = r"ab{2,}" # b가 2개 이상의 패턴에 매칭
+regex = r"ab{2,}"  # b가 2개 이상의 패턴에 매칭
 regex = r"ab{3,5}"  # b가 3개에서 5개까지 매칭
 
 title = " () : ()안에 있는 글자들을 그룹화 "
-regex = r"a(b,c)*" # (bc) 가 없거나 한개 이상 매칭, 그룹 전체가 한 묶음
+regex = r"a(b,c)*"  # (bc) 가 없거나 한개 이상 매칭, 그룹 전체가 한 묶음
 input_list = [
     "abc",  # abc
     "abcbcbbac",  # "abcbc", "a"
@@ -202,7 +202,7 @@ input_list = [
     "My name is .."
 ]
 
-# Tip: # 으로 시작하는 주석만 제거
+# Tip:  # 으로 시작하는 주석만 제거
 # 찾기  ^\s*#.*\n?
 # 바꾸기 (빈칸)
 

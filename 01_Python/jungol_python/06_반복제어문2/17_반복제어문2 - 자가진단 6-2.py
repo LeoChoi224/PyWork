@@ -6,7 +6,7 @@ n = int(input())
 i = 0
 sum = 0
 
-while i < n: # n번 순환에 유용.
+while i < n:  # n번 순환에 유용.
     num = int(input())
     sum += num
     i += 1

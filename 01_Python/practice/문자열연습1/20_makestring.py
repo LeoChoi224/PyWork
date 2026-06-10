@@ -3,7 +3,7 @@
 # 
 
 data = [
-    "   The community at Code States might be the biggest asset", # -> TcaCSmbtba
+    "   The community at Code States might be the biggest asset",  # -> TcaCSmbtba
     "i am a  PROGRAMMER   ",     # -> iaaP
     "   THAT   ELEPHANT IS BIG ",  # -> TEIB
 ]

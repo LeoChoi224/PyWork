@@ -23,7 +23,7 @@ class Inventory(BaseModel):
         print(f'🏈 name_must_not_be_empty(name={name}) 호출')
         if not name.strip():
             raise ValueError("ERR-2]문자열오류 insert() 이름이 입력되지 않았습니다")
-        return name # 실제 세팅될 값은 리턴해주어야 한다
+        return name  # 실제 세팅될 값은 리턴해주어야 한다
 
     # mode= : 데이터 검증의 어느 시점에 내 로직을 끼워 넣을 것인가
     

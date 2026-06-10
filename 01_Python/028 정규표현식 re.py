@@ -1,4 +1,4 @@
-print('\n🟦 정규표현식 regular expression') # 파이썬 내에서 다루는 방식
+print('\n🟦 정규표현식 regular expression')  # 파이썬 내에서 다루는 방식
 
 # 문자열 검색, 치환  등의 동작에 있어서
 # 단순한 '문자열 비교' 를 하는 것이 아니라 
@@ -60,11 +60,11 @@ str_input = "-My1234-"
 match = pat.search(str_input)  # 입력문자열에 대해 정규표현식 패턴매칭 수행 -> Match 객체 리턴.
 print(match)
 
-match = pat.search("hello") # 매칭되는게 없으면 None 리턴
+match = pat.search("hello")  # 매칭되는게 없으면 None 리턴
 print(match)
 
 str_input = "MyAlbum MyGoods My Birthday" 
-match = pat.search(str_input) # 첫번째 매칭 결과만 리턴
+match = pat.search(str_input)  # 첫번째 매칭 결과만 리턴
 print(match)
 
 print(pat.findall(str_input))  # 매칭된 모든 결과들을 (Match 객체들)의 list 리턴
@@ -107,18 +107,18 @@ print(m.start())
 print(m.end())
 print(m.span())
 
-print(m.group(1)) # 1번 그룹
+print(m.group(1))  # 1번 그룹
 print(m.start(1))
 print(m.end(1))
 print(m.span(1))
 
-print(m.group(2)) # 2번 그룹
+print(m.group(2))  # 2번 그룹
 print(m.start(2))
 print(m.end(2))
 print(m.span(2))
 
 print()
-print(m.group(0)) # 0 은 default, 매개변수 없을때와 동일
+print(m.group(0))  # 0 은 default, 매개변수 없을때와 동일
 print(m.start(0))
 print(m.end(0))
 print(m.span(0))

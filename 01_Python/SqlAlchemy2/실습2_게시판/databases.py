@@ -2,7 +2,7 @@
 
 import os
 from dotenv import load_dotenv
-load_dotenv() # 환경변수 읽어오기
+load_dotenv()  # 환경변수 읽어오기
 
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")

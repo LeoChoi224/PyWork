@@ -15,7 +15,7 @@ def uniqueInOrder(sentence):
         lambda list, ch: list if list and list[-1] == ch else (list.append(ch) or list),
         # 리스트(초기값)에 값이 없으면 False(이유: 초기값은 빈 리스트여서 인덱스 오류 방지)
         # 있으면 and(SCE)로 마지막 값과 ch 값 비교 -> 서로 다르다면 or로 추가
-        sentence, # 문자열
+        sentence,  # 문자열
         []
     )
     

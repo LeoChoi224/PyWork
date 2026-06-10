@@ -43,7 +43,7 @@ def csv_streamer():
 @app.get("/csv")
 def get_csv():
     return StreamingResponse(
-        csv_streamer(), # Stream 객체. generator
+        csv_streamer(),  # Stream 객체. generator
         headers= {
             "Content-Type": "text/csv", 
             "Content-Disposition": "attachment; filename=sample.csv",   # 요청한 측이 어떠한 이름으로 파일을 받을지 지정
