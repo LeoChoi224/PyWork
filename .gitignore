@@ -123,3 +123,6 @@ config.js
 
 # log파일
 log.txt
+
+# node.js
+node_modules

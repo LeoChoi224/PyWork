@@ -7,38 +7,63 @@ const axios = require("axios");
  */
 // 
 
-const baseURL = 'https://httpbin.org/';
+const baseURL = 'https://httpbingo.org/';
 
-// TODO
+const axios1 = axios.create({
+    // baseURL: baseURL,
+    baseURL,
+
+    headers: {
+        // 기본 header 값
+        'Authorization': 'AUTH_TOKEN',
+
+        // 각 request method 별로 기본 header 값 설정 가능.
+        get: {
+            'x-key': 'abcdef',
+        },
+        post: {
+            'Content-Type': "application/json;charset=utf-8",
+            'Secret': "HELLO SECRET",
+        },
+        put: {
+            'Content-Type': "text/plain;charset=utf-8",
+        },
+    },
+
+})
+
 
 // then() 에 전달할 함수 준비.  (결과 확인용)
 const printData = (response) => {
-    const {data} = response;
+    const { data } = response;
     console.log(data);
 }
 
-(async function(){
+(async function () {
 
     console.log('🧡'.repeat(10));
-    // TODO
-
-    console.log('🧡'.repeat(10));    
-    // TODO
+    await axios1.get('get')   // 'https://httpbingo.org/' + 'get
+        .then(printData);
 
     console.log('🧡'.repeat(10));
-    // TODO
+    await axios1.get('get', {
+        params: { name: "김정준", age: 23 },
+    }).then(printData);
 
     console.log('🧡'.repeat(10));
-    // TODO
+    await axios1.post('post', {  // post() 함수의 두번째 매개변수는 request body data
+        name: "하석이",
+        age: 8,
+    }).then(printData)
+
+    console.log('🧡'.repeat(10));
+    await axios1.put('put', "집에 가고싶다").then(printData);
 
     console.log('💚'.repeat(10));
-    // TODO
+    await axios2.get('get').then(printData);
+
     console.log('💚'.repeat(10));
-    // TODO
-
-    
-    
-
+    await axios2.post('post', 'name=John&age=20&age=44').then(printData);
 })();
 
 
@@ -48,4 +73,15 @@ const printData = (response) => {
  * https://axios-http.com/docs/config_defaults
  */
 
-// TODO
+const axios2 = axios.create();
+
+axios2.defaults.baseURL = baseURL;
+axios2.defaults.headers.common['Authorization'] = 'AUTH_TOKEN';  // common 은 공통 헤더
+axios2.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+// 특정 환경변수 값
+console.log(process.env.PATH);
+
+// 환경변수 활용
+// axios2.defaults.baseURL = process.env.REACT_APP_Server;
+// 여러 모듈이 있을때ㅣ

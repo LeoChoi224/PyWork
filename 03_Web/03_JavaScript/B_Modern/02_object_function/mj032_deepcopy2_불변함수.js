@@ -63,7 +63,7 @@ console.log("\n3. push() 를 사용하면?");
 console.log("\n4. filter()");
 {
   const a = [1, 2, 3];
-  const b = a.filter(x => x !== 1)
+  const b = a.filter(x => x !== 1)  // filter() 불변함수.
   console.log('a', a);
   console.log('b', b);
 }
@@ -81,7 +81,7 @@ console.log("\n5. slice 잘라내기");
   const a = [1, 2, 3];
   const b = a.slice(0, 2)   // slice() 는 불변함수
   console.log('a', a);
-  console.log('b', b); 
+  console.log('b', b);  
 
     // 중간에 삽입하기
     //  [1, 2, 3] =>  [1, 2, 4, 3]
@@ -111,11 +111,13 @@ console.log("\n7 수정하기");
 
   // 이후 아래와 같은 변경사항이 서버로부터 전달되어옴
   let updateUserDto = {id: 2, name: '홍길동'};
-  
+
   // 이렇게 하면 되지 않나?
   users[1].name = updateUserDto.name;
   console.log(users);  // 바뀌긴 하는데...
 
+  // 그러나! 기존 데이터 users 가 변경된건 아니다.
+  // react 의 연산을 위해서는 내용변경된 '새로운 객체'가 만들어져야 한다.
 
   // map + spread 사용
   const newUsers = users.map(user => user.id === updateUserDto.id ? {...user, ...updateUserDto} : user);

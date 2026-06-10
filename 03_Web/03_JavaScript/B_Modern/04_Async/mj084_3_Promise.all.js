@@ -19,7 +19,10 @@
     })
   }
 
-  // TODO
+  let start = Date.now();
+  Promise.all([p1(1000), p1(2000), p1(3000)]).then(() => {
+    console.log(`p1] 모두 fulfilled 됨. 경과시간 ${Date.now() - start}ms`);
+  })
 }
 
 {
@@ -32,5 +35,8 @@
     })
   }
 
-  // TODO
+  Promise.all([p2(4000), p2(5000), p2(6000)]).then(messages => {
+    // messages: 위 resolve(value) 들의 value 값(들)의 배열
+    console.log()
+    console.log(`p2] 모두 fulfilled 된 이후`, messages);})
 }
