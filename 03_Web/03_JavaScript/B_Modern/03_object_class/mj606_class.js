@@ -42,7 +42,7 @@ console.log()
 // 최초 초깃값을 객체 안에 집어넣기
 console.log('\n생성자');
 {
-  class Alpha {}
+  class Alpha { }
   console.log(new Alpha());
 
   class Beta {
@@ -59,7 +59,7 @@ console.log()
 {
   // 방법1: constructor 에서 property 명시
   class Alpha {
-    constructor(name, age){
+    constructor(name, age) {
       this.name = name;
       this.age = age;
     }
@@ -103,31 +103,31 @@ console.log()
   console.log(new Theta('박영진', 39));
 }
 
-  // 방법2: class field 를 직접 기술
-  class Beta {
-    name;   // <-- this.name   초깃값 없으면 undefined 로 초기화
-    age;   // <-- this.age
-  }
-
-  console.log(new Beta())
-
-  class Gamma {
-    name = '양정운';  // 필드 기본값
-    age = 23;
-  }
-  console.log(new Gamma());
-
-  class Theta {
-    name;
-    age;
-
-    constructor(name = '이민재', age = 26) {
-      this.name = name;
-      this.age = age;
-    }
-  }
-
-  console.log(new Theta());
-  console.log(new Theta('박영진', 39));
+// 방법2: class field 를 직접 기술
+class Beta {
+  name;   // <-- this.name   초깃값 없으면 undefined 로 초기화
+  age;   // <-- this.age
 }
+
+console.log(new Beta())
+
+class Gamma {
+  name = '양정운';  // 필드 기본값
+  age = 23;
+}
+console.log(new Gamma());
+
+class Theta {
+  name;
+  age;
+
+  constructor(name = '이민재', age = 26) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+console.log(new Theta());
+console.log(new Theta('박영진', 39));
+
 
