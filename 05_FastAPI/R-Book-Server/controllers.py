@@ -16,7 +16,7 @@ async def list_books(db : AsyncSession = Depends(get_db)):
     """목록: 도서목록 최신순"""
     stmt = select(Book).order_by(Book.created_at.desc(), Book.id.desc())
     result = await db.execute(stmt)
-    return result.scalars().all()
+    return result.scalars().all() 
 
 @router.post("", status_code=status.HTTP_201_CREATED)
 async def create_book(payload: BookCreate, db: AsyncSession = Depends(get_db)):
