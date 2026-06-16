@@ -14,7 +14,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # DDL
 # models.Base.metadata.create_all(database.engine)
 
