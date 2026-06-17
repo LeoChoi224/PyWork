@@ -31,7 +31,7 @@ AsyncSessionLocal = async_sessionmaker(
     expire_on_commit=False,
 )
 
-# Base 클래ㅅ생성
+# Base 클래스생성
 Base = declarative_base()
 
 # Session 주입
