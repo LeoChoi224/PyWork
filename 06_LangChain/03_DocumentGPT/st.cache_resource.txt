@@ -1,0 +1,15 @@
+# @st.cache_resource
+# def embed_file(file매개변수)
+#   https://docs.streamlit.io/develop/api-reference/caching-and-state/st.cache_resource
+#   최초 embed_file(file) 호출시 실행될것이다.  그리고 리턴값을 cache 해둔다.
+#   그러나 두번째 호출시에는 만약 이 매개변수 file 이 동일하다면  
+#                          (즉 유저가 다른 파일을 올리지 않았다면)
+#   Streamlit 은 이 함수의 호출을 재실행하지 않는다.
+#   대신에! 기존에 리턴했던 cache 되었던 값을 다시 리턴된다!
+
+#   show_spinner= 옵션
+#     혹시 기존에 cache 된것이 없으면 cache 데이터가 생성되는 동안 spinner UI 동작
+#     True 혹은 특정 문자열 "Embedding file..." 로 설정해줄수 있다.
+
+#  embed_file(file) <- streamlit 은 매개변수 file 에 대해 hash 해 두었다가
+#                     재호출시 매개변수 file 이 변경되었다는 사실을 알아챈다
