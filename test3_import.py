@@ -70,7 +70,7 @@ from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain_community.document_transformers.html2text import Html2TextTransformer
 
 from langchain_chroma import Chroma
-from langchain_community.vectorstores.faiss import FAISS
+from langchain_faiss import FAISS
 # ✅ pip install chromadb
 import chromadb
 print('chromadb', chromadb.__version__)

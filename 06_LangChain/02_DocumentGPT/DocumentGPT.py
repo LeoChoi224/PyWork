@@ -18,7 +18,7 @@ from langchain_classic.embeddings import CacheBackedEmbeddings
 from langchain_openai.embeddings.base import OpenAIEmbeddings
 from langchain_classic.storage import LocalFileStore 
 from langchain_text_splitters.character import CharacterTextSplitter
-from langchain_community.vectorstores.faiss import FAISS
+from langchain_faiss import FAISS
 
 # LangChain 의 context 안에 있는 callback handler 는
 # 기본적으로 LLM 의 event 를 listen 하는 class 다. 가령.
@@ -40,7 +40,7 @@ class ChatCallbackHandler(BaseCallbackHandler):
     #    이벤트핸들러 함수 참조: https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.base.BaseCallbackHandler.html#langchain_core.callbacks.base.BaseCallbackHandler
 
     # ↓ on_llm_start() : LLM 작업 시작할때 호출
-    #   많은 argument 들이 있지만 이번예제에선 걍 *args, **kwargs 로 받아낸다.  
+    #   많은 argument 들이 있지만 이번예제에선 걍 *args, **kwargs 로 받아낸다.
     def on_llm_start(self, *args, **kwrags):
         self.message = ""  # token 들을 채워나갈 빈 문자열
         self.message_box = st.empty()
@@ -71,9 +71,6 @@ prompt = ChatPromptTemplate.from_messages([
     """),
     ("human", "{question}")
 ])
-
-
-
 
 
 # ────────────────────────────────────────
