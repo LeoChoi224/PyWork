@@ -21,8 +21,7 @@ from langchain_classic.embeddings import CacheBackedEmbeddings
 from langchain_openai.embeddings.base import OpenAIEmbeddings
 from langchain_classic.storage import LocalFileStore 
 from langchain_text_splitters.character import CharacterTextSplitter
-# from langchain_faiss import FAISS
-from langchain_community.vectorstores.faiss import FAISS
+from langchain_community.vectorstores import FAISS
 
 
 # LangChain 의 context 안에 있는 callback handler 는

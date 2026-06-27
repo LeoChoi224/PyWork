@@ -18,7 +18,7 @@ from langchain_classic.embeddings import CacheBackedEmbeddings
 from langchain_openai.embeddings.base import OpenAIEmbeddings
 from langchain_classic.storage import LocalFileStore 
 from langchain_text_splitters.character import CharacterTextSplitter
-from langchain_faiss import FAISS
+from langchain_community.vectorstores import FAISS
 
 # LangChain 의 context 안에 있는 callback handler 는
 # 기본적으로 LLM 의 event 를 listen 하는 class 다. 가령.
