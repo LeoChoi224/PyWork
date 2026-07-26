@@ -5,8 +5,8 @@
     "width": 2000,
     "height": 2000,
     "scrollTop": 0,
-    "scrollLeft": -444,
-    "zoomLevel": 1,
+    "scrollLeft": -231.5272,
+    "zoomLevel": 0.91,
     "show": 511,
     "database": 4,
     "databaseName": "",
@@ -139,25 +139,6 @@
         "meta": {
           "updateAt": 1778134887378,
           "createAt": 1778133647244
-        }
-      },
-      "jrdxn0AOXxeiQ1Fwr26HQ": {
-        "id": "jrdxn0AOXxeiQ1Fwr26HQ",
-        "name": "Deposit",
-        "comment": "예금",
-        "columnIds": [],
-        "seqColumnIds": [],
-        "ui": {
-          "x": 754,
-          "y": 474,
-          "zIndex": 118,
-          "widthName": 60,
-          "widthComment": 60,
-          "color": "#3F51B5"
-        },
-        "meta": {
-          "updateAt": 1778134332129,
-          "createAt": 1778134304703
         }
       },
       "h_t1r8sTe3bnjcMPkHqns": {
@@ -668,34 +649,6 @@
         "meta": {
           "updateAt": 1778134406929,
           "createAt": 1778134406929
-        }
-      },
-      "Ajz1Vtnx0WiwSI-zCNDfj": {
-        "id": "Ajz1Vtnx0WiwSI-zCNDfj",
-        "identification": false,
-        "relationshipType": 4,
-        "startRelationshipType": 2,
-        "start": {
-          "tableId": "NaLJjC88vONatQ5nIDKgI",
-          "columnIds": [
-            "fbbvGaUtO87CyWJbS-N8c"
-          ],
-          "x": 970.5,
-          "y": 292,
-          "direction": 8
-        },
-        "end": {
-          "tableId": "h_t1r8sTe3bnjcMPkHqns",
-          "columnIds": [
-            "hud5kbVgyKxjXIUl_u3YS"
-          ],
-          "x": 985.5,
-          "y": 498,
-          "direction": 4
-        },
-        "meta": {
-          "updateAt": 1778134413456,
-          "createAt": 1778134413456
         }
       },
       "OOMpEi1cykpnqYeAfpd68": {
