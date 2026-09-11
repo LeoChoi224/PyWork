@@ -14,7 +14,7 @@ def create_workflow(llm: ChatOpenAI) -> StateGraph:
 
     # 각 작업을 담담할 에이전트 인스턴스 생성
     communicator = CommunicatorAgent(llm)
-    collectorAgent = CollectorAgent(llm)
+    collector = CollectorAgent(llm)
 
     workflow = StateGraph(StateA)
 
