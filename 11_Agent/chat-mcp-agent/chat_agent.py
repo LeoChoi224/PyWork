@@ -128,6 +128,70 @@ async def read_root(request: Request):  # 라우팅 함수는 Request 객체 받
     """메인 채팅 페이지를 렌더링"""
     return templates.TemplateResponse(request, "index.html")
 
+async def stream_agent_response(agent_executor, message: str, session_id: str):
+    """에이전트의 응답을 스트리밍하는 비동기 제네레이터"""
+
+    if agent_executor is None:
+        yield "💢에이전트가 아직 준비되지 않았습니다. 잠시 후 다시 시도해주세요."
+        return
+
+    try:
+        config = {"configurable": {"thread_id": session_id}}
+        input_message = HumanMessage(content=message)
+
+        # astream_events() : 응답을 스트리밍.  에이전트 처리과정도 이벤트로 단위로 받아 스트리밍 처리
+        async for event in agent_executor.astream_events(
+            {"messages": [input_message]},
+            config=config,
+            version="v2",
+        ):
+            """
+            여기서 event는 이런 형태의 딕셔너리 (예시)
+
+            {
+                "event": "on_chat_model_stream",   # 이벤트 종류
+                "name": "ChatOpenAI",              # 어떤 Runnable이 발생시켰는지
+                "run_id": "...",                   # 이 실행의 고유 ID
+                "parent_ids": [...],               # 상위 실행 체인 (v2부터 채워짐)
+                "tags": [...],
+                "metadata": {...},
+                "data": {...},                     # 실제 내용물, 이벤트 종류마다 다름
+            }
+            """
+
+            kind = event['event']  # 어떤 종류의 이벤트?
+
+            # on_chat_model_stream 이벤트 : LLM이 토큰을 한 조각씩 생성할 때마다 발생
+            # 실제 텍스트 응답을 추출하여 클라이언트로 전송합니다.
+            # event["data"]["chunk"] 는  AIMessageChunk 객체
+            if kind == "on_chat_model_stream":
+                print(f"🟨 chat_model_stream: content= ", end="")
+                content = event['data']['chunk'].content
+                print(content)
+
+                if content:
+                    # 스트리밍 받은 콘텐츠는 StreamingResponse 를 통해 클라이언트로 전송
+                    yield content
+
+            # on_tool_start / on_tool_end: 
+            #   모델이 tool_calls를 만들어서 tools 노드가 실행될 때 시작/종료 시점에 발생.
+            #   event['name'] 에 도구 이름            
+            # 구현을 간단하게 하기 위해 우리가 만드는 채팅 에이전트는 AI 모델의 메시지만 스트리밍으로 출력하겠습니다.
+            elif kind == "on_tool_start":
+                # TODO: 도구 사용 시작을 클라이언트에 알릴 수 있다.
+                print(f"🟨 Tool start: {event['name']}")           
+            elif kind == "on_tool_end":
+                # TODO: 도구 사용 완료을 클라이언트에 알릴 수 있다.
+                print(f"🟨 Tool end: {event['name']}")     
+            else:
+                # 그 외 on_chain_start, on_chain_end, on_chain_stream(그래프 노드 단위), on_llm_start 등 
+                # 훨씬 많은 이벤트가 존재하는데, 이번 예제에선 화면에 찍기만 합니다.
+                print('🟨', event)            
+
+    except Exception as e:
+        print(f"💢스트리밍 중 오류 발생: {e}")
+        yield f"💢오류가 발생했습니다: {e}"
+
 
 # 채팅 API 엔드포인드
 @app.post("/chat")
@@ -135,9 +199,10 @@ async def chat(request: Request, message: str = Form(...), session_id: str = For
     """사용자 메시지를 받아 에이전트의 응답을 스트리밍 합니다."""
     agent_executor = request.app.state.agent_executor
 
-    # 🔷TODO: 스트링밍 응답
-
-    return ""
+    return StreamingResponse(
+        stream_agent_response(agent_executor, message, session_id),
+        media_type="text/event-stream",  # SSE 방식 스트림 응답
+    )
 
 
 
@@ -145,7 +210,7 @@ async def chat(request: Request, message: str = Form(...), session_id: str = For
 # uvicorn을 사용하여 FastAPI 앱을 포트 8001에서 실행합니다. 
 # MCP 서버가 8000번 포트를 사용하므로 다른 포트를 사용합니다.
 if __name__ == "__main__":
-    uvicorn.run(app, host='0.0.0.0', port=8001)
+    uvicorn.run('chat_agent:app', host='0.0.0.0', port=8001, reload=True)
 
 # python 명령으로 실행하기
 
