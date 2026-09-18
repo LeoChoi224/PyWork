@@ -117,11 +117,70 @@ const ChatApp = {
     // 🟦 스트리밍 응답 처리
     async streamBotReponse(message, botMessageElement){
 
-        // 임시
-        botMessageElement.innerHTML = "메세지:" + message
+        try {
 
-    },
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                // URLSearchParams는 { message, session_id } 객체를
+                // "message=...&session_id=..." 형태의 쿼리 문자열로 자동 인코딩해 줍니다.
+                body: new URLSearchParams({
+                    message: message,
+                    session_id: this.sessionId,
+                }),
+            });
 
+            // HTTP 응답코드 200 아니면 예외 발생!
+            if(!response.ok){
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // 확인용
+            // botMessageElement.innerHTML = await response.text();
+
+            // response.body는 ReadableStream이며, getReader()로 스트림을 청크 단위로
+            // 직접 읽을 수 있는 reader 객체를 얻습니다. (서버가 SSE/청크 스트리밍으로 응답)
+            const reader = response.body.getReader();
+
+            // 서버에서 오는 데이터는 바이트(Uint8Array)이므로, 이를 문자열로 디코딩할 TextDecoder를 준비합니다.
+            const decoder = new TextDecoder();
+
+            // 스트리밍 수신하여 누적할 텍스트(마크변환) 저장 변수
+            let content = "";
+
+            // 스트림을 읽어서 화면에 점진적으로 표시합니다.
+            // 무한 루프를 돌며 reader.read()로 청크를 하나씩 꺼내고,
+            // 서버가 스트림을 종료하면(done === true) 반복을 빠져나갑니다.      
+            while(true){
+                // value: 이번에 수신한 청크(Uint8Array), done: 스트림 종료 여부
+                const { value, done } = await reader.read();
+                if (done) break;
+
+                console.log(`value =`, value);
+
+                // 이번 청크를 문자열로 디코딩하여 누적 콘텐츠에 이어 붙입니다.
+                // { stream: true } 옵션은 멀티바이트 문자(예: 한글)가 청크 경계에서
+                // 잘리는 경우에도 다음 청크와 합쳐 올바르게 디코딩되도록 해 줍니다.
+                content += decoder.decode(value, { stream: true });
+
+                // 누적된 전체 마크다운 텍스트를 매 청크마다 다시 HTML로 파싱하여
+                // 봇 메시지 요소에 통째로 반영합니다. (부분 마크다운도 자연스럽게 갱신됨)
+                botMessageElement.innerHTML = marked.parse(content);
+
+                // 새 내용이 추가 될 때마다 채티창 맨 아래로 스크롤
+                this.scrollToBottom();
+            }
+
+
+        } catch(error) {
+            // 네트워크 오류, HTTP오류, 스트림 읽기중 에러... 여기서 처리
+            console.error("스트리밍 중 오류 발생:", error);
+
+            botMessageElement.innerHTML = 
+                "😥죄송합니다. 메시지 처리중 오류가 발생했습니다";
+        }
+
+    }, // end streamBotReponse()
 
 
 
